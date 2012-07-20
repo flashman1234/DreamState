@@ -1,0 +1,459 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		05D9323315B9AEFB00983693 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9323215B9AEFB00983693 /* UIKit.framework */; };
+		05D9323515B9AEFB00983693 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9323415B9AEFB00983693 /* Foundation.framework */; };
+		05D9323715B9AEFB00983693 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9323615B9AEFB00983693 /* CoreGraphics.framework */; };
+		05D9323D15B9AEFB00983693 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05D9323B15B9AEFB00983693 /* InfoPlist.strings */; };
+		05D9323F15B9AEFB00983693 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9323E15B9AEFB00983693 /* main.m */; };
+		05D9324315B9AEFB00983693 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9324215B9AEFB00983693 /* AppDelegate.m */; };
+		05D9324615B9AEFB00983693 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9324515B9AEFB00983693 /* ViewController.m */; };
+		05D9324915B9AEFB00983693 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05D9324715B9AEFB00983693 /* ViewController_iPhone.xib */; };
+		05D9324C15B9AEFB00983693 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05D9324A15B9AEFB00983693 /* ViewController_iPad.xib */; };
+		05D9325415B9AEFB00983693 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9325315B9AEFB00983693 /* SenTestingKit.framework */; };
+		05D9325515B9AEFB00983693 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9323215B9AEFB00983693 /* UIKit.framework */; };
+		05D9325615B9AEFB00983693 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9323415B9AEFB00983693 /* Foundation.framework */; };
+		05D9325E15B9AEFB00983693 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05D9325C15B9AEFB00983693 /* InfoPlist.strings */; };
+		05D9326115B9AEFB00983693 /* DreamStateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9326015B9AEFB00983693 /* DreamStateTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		05D9325715B9AEFB00983693 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 05D9322515B9AEFB00983693 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 05D9322D15B9AEFB00983693;
+			remoteInfo = DreamState;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		05D9322E15B9AEFB00983693 /* DreamState.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamState.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		05D9323215B9AEFB00983693 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		05D9323415B9AEFB00983693 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		05D9323615B9AEFB00983693 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		05D9323A15B9AEFB00983693 /* DreamState-Info.plist */ = {isa = PBXFileReference; path = "DreamState-Info.plist"; sourceTree = "<group>"; };
+		05D9323C15B9AEFB00983693 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		05D9323E15B9AEFB00983693 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		05D9324015B9AEFB00983693 /* DreamState-Prefix.pch */ = {isa = PBXFileReference; path = "DreamState-Prefix.pch"; sourceTree = "<group>"; };
+		05D9324115B9AEFB00983693 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		05D9324215B9AEFB00983693 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		05D9324415B9AEFB00983693 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		05D9324515B9AEFB00983693 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		05D9324815B9AEFB00983693 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
+		05D9324B15B9AEFB00983693 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
+		05D9325215B9AEFB00983693 /* DreamStateTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DreamStateTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		05D9325315B9AEFB00983693 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		05D9325B15B9AEFB00983693 /* DreamStateTests-Info.plist */ = {isa = PBXFileReference; path = "DreamStateTests-Info.plist"; sourceTree = "<group>"; };
+		05D9325D15B9AEFB00983693 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		05D9325F15B9AEFB00983693 /* DreamStateTests.h */ = {isa = PBXFileReference; path = DreamStateTests.h; sourceTree = "<group>"; };
+		05D9326015B9AEFB00983693 /* DreamStateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DreamStateTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		05D9322B15B9AEFB00983693 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05D9323315B9AEFB00983693 /* UIKit.framework in Frameworks */,
+				05D9323515B9AEFB00983693 /* Foundation.framework in Frameworks */,
+				05D9323715B9AEFB00983693 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05D9324E15B9AEFB00983693 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05D9325415B9AEFB00983693 /* SenTestingKit.framework in Frameworks */,
+				05D9325515B9AEFB00983693 /* UIKit.framework in Frameworks */,
+				05D9325615B9AEFB00983693 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		05D9322315B9AEFB00983693 = {
+			isa = PBXGroup;
+			children = (
+				05D9323815B9AEFB00983693 /* DreamState */,
+				05D9325915B9AEFB00983693 /* DreamStateTests */,
+				05D9323115B9AEFB00983693 /* Frameworks */,
+				05D9322F15B9AEFB00983693 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		05D9322F15B9AEFB00983693 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				05D9322E15B9AEFB00983693 /* DreamState.app */,
+				05D9325215B9AEFB00983693 /* DreamStateTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		05D9323115B9AEFB00983693 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				05D9323215B9AEFB00983693 /* UIKit.framework */,
+				05D9323415B9AEFB00983693 /* Foundation.framework */,
+				05D9323615B9AEFB00983693 /* CoreGraphics.framework */,
+				05D9325315B9AEFB00983693 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		05D9323815B9AEFB00983693 /* DreamState */ = {
+			isa = PBXGroup;
+			children = (
+				05D9324115B9AEFB00983693 /* AppDelegate.h */,
+				05D9324215B9AEFB00983693 /* AppDelegate.m */,
+				05D9324415B9AEFB00983693 /* ViewController.h */,
+				05D9324515B9AEFB00983693 /* ViewController.m */,
+				05D9324715B9AEFB00983693 /* ViewController_iPhone.xib */,
+				05D9324A15B9AEFB00983693 /* ViewController_iPad.xib */,
+				05D9323915B9AEFB00983693 /* Supporting Files */,
+			);
+			path = DreamState;
+			sourceTree = "<group>";
+		};
+		05D9323915B9AEFB00983693 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				05D9323A15B9AEFB00983693 /* DreamState-Info.plist */,
+				05D9323B15B9AEFB00983693 /* InfoPlist.strings */,
+				05D9323E15B9AEFB00983693 /* main.m */,
+				05D9324015B9AEFB00983693 /* DreamState-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		05D9325915B9AEFB00983693 /* DreamStateTests */ = {
+			isa = PBXGroup;
+			children = (
+				05D9325F15B9AEFB00983693 /* DreamStateTests.h */,
+				05D9326015B9AEFB00983693 /* DreamStateTests.m */,
+				05D9325A15B9AEFB00983693 /* Supporting Files */,
+			);
+			path = DreamStateTests;
+			sourceTree = "<group>";
+		};
+		05D9325A15B9AEFB00983693 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				05D9325B15B9AEFB00983693 /* DreamStateTests-Info.plist */,
+				05D9325C15B9AEFB00983693 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		05D9322D15B9AEFB00983693 /* DreamState */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05D9326415B9AEFB00983693 /* Build configuration list for PBXNativeTarget "DreamState" */;
+			buildPhases = (
+				05D9322A15B9AEFB00983693 /* Sources */,
+				05D9322B15B9AEFB00983693 /* Frameworks */,
+				05D9322C15B9AEFB00983693 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DreamState;
+			productName = DreamState;
+			productReference = 05D9322E15B9AEFB00983693 /* DreamState.app */;
+			productType = "com.apple.product-type.application";
+		};
+		05D9325115B9AEFB00983693 /* DreamStateTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05D9326715B9AEFB00983693 /* Build configuration list for PBXNativeTarget "DreamStateTests" */;
+			buildPhases = (
+				05D9324D15B9AEFB00983693 /* Sources */,
+				05D9324E15B9AEFB00983693 /* Frameworks */,
+				05D9324F15B9AEFB00983693 /* Resources */,
+				05D9325015B9AEFB00983693 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				05D9325815B9AEFB00983693 /* PBXTargetDependency */,
+			);
+			name = DreamStateTests;
+			productName = DreamStateTests;
+			productReference = 05D9325215B9AEFB00983693 /* DreamStateTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		05D9322515B9AEFB00983693 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = NA;
+			};
+			buildConfigurationList = 05D9322815B9AEFB00983693 /* Build configuration list for PBXProject "DreamState" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 05D9322315B9AEFB00983693;
+			productRefGroup = 05D9322F15B9AEFB00983693 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				05D9322D15B9AEFB00983693 /* DreamState */,
+				05D9325115B9AEFB00983693 /* DreamStateTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		05D9322C15B9AEFB00983693 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05D9323D15B9AEFB00983693 /* InfoPlist.strings in Resources */,
+				05D9324915B9AEFB00983693 /* ViewController_iPhone.xib in Resources */,
+				05D9324C15B9AEFB00983693 /* ViewController_iPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05D9324F15B9AEFB00983693 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05D9325E15B9AEFB00983693 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		05D9325015B9AEFB00983693 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		05D9322A15B9AEFB00983693 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05D9323F15B9AEFB00983693 /* main.m in Sources */,
+				05D9324315B9AEFB00983693 /* AppDelegate.m in Sources */,
+				05D9324615B9AEFB00983693 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05D9324D15B9AEFB00983693 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05D9326115B9AEFB00983693 /* DreamStateTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		05D9325815B9AEFB00983693 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 05D9322D15B9AEFB00983693 /* DreamState */;
+			targetProxy = 05D9325715B9AEFB00983693 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		05D9323B15B9AEFB00983693 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				05D9323C15B9AEFB00983693 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		05D9324715B9AEFB00983693 /* ViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				05D9324815B9AEFB00983693 /* en */,
+			);
+			name = ViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		05D9324A15B9AEFB00983693 /* ViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				05D9324B15B9AEFB00983693 /* en */,
+			);
+			name = ViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		05D9325C15B9AEFB00983693 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				05D9325D15B9AEFB00983693 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		05D9326215B9AEFB00983693 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		05D9326315B9AEFB00983693 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		05D9326515B9AEFB00983693 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DreamState/DreamState-Prefix.pch";
+				INFOPLIST_FILE = "DreamState/DreamState-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		05D9326615B9AEFB00983693 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DreamState/DreamState-Prefix.pch";
+				INFOPLIST_FILE = "DreamState/DreamState-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		05D9326815B9AEFB00983693 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DreamState.app/DreamState";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DreamState/DreamState-Prefix.pch";
+				INFOPLIST_FILE = "DreamStateTests/DreamStateTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		05D9326915B9AEFB00983693 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DreamState.app/DreamState";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DreamState/DreamState-Prefix.pch";
+				INFOPLIST_FILE = "DreamStateTests/DreamStateTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		05D9322815B9AEFB00983693 /* Build configuration list for PBXProject "DreamState" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05D9326215B9AEFB00983693 /* Debug */,
+				05D9326315B9AEFB00983693 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		05D9326415B9AEFB00983693 /* Build configuration list for PBXNativeTarget "DreamState" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05D9326515B9AEFB00983693 /* Debug */,
+				05D9326615B9AEFB00983693 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		05D9326715B9AEFB00983693 /* Build configuration list for PBXNativeTarget "DreamStateTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05D9326815B9AEFB00983693 /* Debug */,
+				05D9326915B9AEFB00983693 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 05D9322515B9AEFB00983693 /* Project object */;
+}
