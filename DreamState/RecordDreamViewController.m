@@ -10,11 +10,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
 
-
-
 @interface RecordDreamViewController ()
 {
-    AVAudioPlayer *player;
     AVAudioRecorder *recorder;
     NSURL *soundFileURL;
     NSDictionary *recordSettings;
@@ -29,49 +26,25 @@
 
 
 @implementation RecordDreamViewController
-@synthesize  recorder, soundFileURL, recordSettings, player, cam, videoURL, mediaPlayer, defaults, audioOrVideo, currentlyRecordingIcon, fileURLAsString;
+@synthesize  recorder, 
+            soundFileURL, 
+            recordSettings, 
+            cam, 
+            videoURL, 
+            mediaPlayer, 
+            defaults, 
+            audioOrVideo, 
+            currentlyRecordingIcon, 
+            fileURLAsString,
+            recButton, 
+            stopButton,
+            deleteButton,
+            display, 
+            fileURL;
 
-@synthesize recButton, stopButton, deleteButton;
-
-@synthesize display, fileURL;
 
 
-
--(IBAction)deleteDream{
-    [self deleteFile];
-}
-
--(IBAction)stopRecording{
-    
-    if ([audioOrVideo isEqualToString:@"Video"]) {
-        [self stopRecordingVideo];
-    }
-    else {
-        [self stopRecordingAudio];
-    }
-}
-
--(IBAction)recordDream
-{
-    if ([audioOrVideo isEqualToString:@"Video"]) {
-        [self recordDreamVideo];
-    }
-    else {
-        [self recordDreamSound];
-    }
-}
-
--(void)deleteFile
-{
-    NSError *error;
-    [[NSFileManager defaultManager] removeItemAtPath: [NSString stringWithFormat:@"%@", fileURLAsString] error: &error];
-    
-    if (error) {
-        NSLog(@"delete file error : %@", error);
-    }
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
+#pragma mark - Play and Record
 
 -(void)playDream{
     
@@ -85,7 +58,10 @@
     }
     fileURL = tempfileURL;
     
+    
+    if (showPreview) {
     [cam.preview  removeFromSuperlayer];
+    }
     
     MPMoviePlayerController *tempMediaPlayer = [[MPMoviePlayerController alloc] initWithContentURL: fileURL];
     self.mediaPlayer = tempMediaPlayer;
@@ -94,16 +70,14 @@
     
     [mediaPlayer.view setFrame: bounds]; 
     [display addSubview:mediaPlayer.view];
-    mediaPlayer.view.layer.zPosition = -1;
+    mediaPlayer.view.layer.zPosition = 10;
     self.mediaPlayer.shouldAutoplay = NO;
-        
+    
+    [mediaPlayer prepareToPlay];
 }
 
 
-
-
-
--(void)recordDreamSound
+-(void)recordAudio
 {
     stopButton.hidden = NO;
     deleteButton.hidden = YES;
@@ -150,18 +124,16 @@
 -(void)stopRecordingAudio
 {
     currentlyRecordingIcon.image = [UIImage imageNamed:@"NotRecording.png"];
-    //playButton.hidden = NO;
     deleteButton.hidden = NO;
     recButton.hidden = NO;
     stopButton.hidden = YES;
-    
     
     [recorder stop];
     [self playDream];
 }
 
 
--(void)recordDreamVideo
+-(void)recordVideo
 {
     stopButton.hidden = NO;
     deleteButton.hidden = YES;
@@ -172,8 +144,7 @@
     
     [self.view insertSubview:currentlyRecordingIcon atIndex:100];
     currentlyRecordingIcon.frame = CGRectMake(280, 20, 20, 20);
-    //currentlyRecordingIcon.
-    
+
     
     DIYCam *tempDIYCam = [[DIYCam alloc] init];
     
@@ -181,14 +152,16 @@
     [[self cam] setDelegate:self];
     [[self cam] setup];
     
-    // Preview
-    cam.preview.frame       = display.frame;
-    [display.layer addSublayer:cam.preview];
+    if (showPreview) {
+        cam.preview.frame       = display.frame;
+        [display.layer addSublayer:cam.preview];
+        
+        CGRect bounds           = CGRectMake(0, 0, display.layer.bounds.size.width, 380);
+        cam.preview.bounds      = bounds;
+        cam.preview.position    = CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
+        cam.preview.zPosition = -1;
+    }
     
-    CGRect bounds           = CGRectMake(0, 0, display.layer.bounds.size.width, 380);
-    cam.preview.bounds      = bounds;
-    cam.preview.position    = CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
-    cam.preview.zPosition = -1;
     
     NSString *videoFile = [self createFileName:@"mov"];
     
@@ -210,11 +183,6 @@
 }
 
 
-
-
-
-
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -225,37 +193,35 @@
 }
 
 
+
+
+#pragma mark - view methods
+
 -(void)appHasResignedActive
 {
-    //NSLog(@"UIApplicationWillResignActiveNotification ");
     [cam stopVideoCapture];
 }
 
 -(void)appHasEnteredForeground
 {
-    //NSLog(@"UIApplicationWillEnterForegroundNotification ");
-//    isRecording = YES;
-//    playButton.hidden = YES;
-    
-    //[self recordDreamVideo];
-    
     [self playDream];
 }
 
 - (void)viewDidLoad
 {
     self.title = @"Record a dream";
-
+    
     NSUserDefaults *tempNSUserDefaults = [NSUserDefaults standardUserDefaults];
     defaults = tempNSUserDefaults;
     
     NSString *tempAudioOrVideo = [defaults objectForKey:@"Recording"];
     audioOrVideo = tempAudioOrVideo;
     
-    
     BOOL tempAutoRecord = [defaults boolForKey:@"AutoRecord"];
     autoRecord = tempAutoRecord;
-    NSLog(@"autoRecord %d", (int)autoRecord);
+    
+    BOOL tempShowPreview = [defaults boolForKey:@"VideoPreview"];
+    showPreview = tempShowPreview;
     
     [super viewDidLoad];
     
@@ -270,23 +236,15 @@
                                              selector:@selector(appHasEnteredForeground)
                                                  name:UIApplicationWillEnterForegroundNotification
                                                object:nil];
-
-    
-    
-   
-    //isRecording = YES;
-    //playButton.hidden = YES;
-    //recordStopButton.image = [UIImage imageNamed:@"Recording.png"];
-    //[self.view insertSubview:recordStopButton atIndex:10];
     
     
     if (autoRecord) {
         if ([audioOrVideo isEqualToString:@"Video"]) {
-            [self recordDreamVideo];
+            [self recordVideo];
         }
         
         else {
-            [self recordDreamSound];
+            [self recordAudio];
         }
     }
 }
@@ -309,29 +267,48 @@
     [recorder stop];
     self.recorder = nil;
     
-    [player stop];
+    [mediaPlayer stop];
     [mediaPlayer.view removeFromSuperview];
     [cam.preview  removeFromSuperlayer];
 
 }
 
-
-
-
-
-
-
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     //return (interfaceOrientation == UIInterfaceOrientationPortrait);
-    
     return NO;
 }
 
 
+#pragma mark - IBActions
 
-#pragma mark - Delegate events
+-(IBAction)deleteDream{
+    [self deleteFile];
+}
+
+-(IBAction)stopRecording{
+    
+    if ([audioOrVideo isEqualToString:@"Video"]) {
+        [self stopRecordingVideo];
+    }
+    else {
+        [self stopRecordingAudio];
+    }
+}
+
+-(IBAction)recordDream
+{
+    if ([audioOrVideo isEqualToString:@"Video"]) {
+        [self recordVideo];
+    }
+    else {
+        [self recordAudio];
+    }
+}
+
+
+
+#pragma mark - Cam Delegate events
 
 - (void)camReady:(DIYCam *)cam
 {
@@ -361,21 +338,22 @@
 - (void)camCaptureComplete:(DIYCam *)cam withAsset:(NSDictionary *)asset
 {
      NSLog(@"Capture complete");
-    
-//    if ([[asset objectForKey:@"type"] isEqualToString:@"video"])
-//    {
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-//            
-//            UIImage *image = [UIImage imageWithContentsOfFile:[asset objectForKey:@"thumbnail"]];
-//            
-//            dispatch_sync(dispatch_get_main_queue(), ^{
-//                thumbnail.image = image;
-//            });
-//            
-//        });
-//    }
 }
 
+
+
+#pragma mark - file control
+
+-(void)deleteFile
+{
+    NSError *error;
+    [[NSFileManager defaultManager] removeItemAtPath: [NSString stringWithFormat:@"%@", fileURLAsString] error: &error];
+    
+    if (error) {
+        NSLog(@"delete file error : %@", error);
+    }
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 -(NSString*)createFileName:(NSString*)fileType
 {

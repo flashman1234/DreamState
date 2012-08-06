@@ -12,25 +12,19 @@
 
 {
     IBOutlet UIDatePicker *dateTimePicker;
-    
     IBOutlet UITableView *alarmTableView;
     
-    
     NSArray *tableDataSource;
-    
     NSDate *existingAlarmDate;
-
-    
 }
 
--(void) presentMessage:(NSString *)message;
+//-(void) presentMessage:(NSString *)message;
 -(void) scheduledNotificationWithDate:(NSDate *) fireDate;
 -(IBAction)alarmSetButtonTapped:(id)sender;
 -(IBAction)alarmCancelButtonTapped:(id)sender;
 
 @property (nonatomic, retain) UITableView *alarmTableView;
 @property (nonatomic, retain) NSArray *tableDataSource;
-
 @property (nonatomic, retain) NSDate *existingAlarmDate;
 
 @end

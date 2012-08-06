@@ -19,59 +19,6 @@
 @synthesize existingAlarmDate;
 
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.tableDataSource count];
-
-}
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [self.alarmTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
-    }
-    
-    NSDictionary *dictionary = [self.tableDataSource objectAtIndex:indexPath.row];
-    cell.textLabel.text = [dictionary objectForKey:@"Title"];
-    
-    
-//    if(indexPath.row == 0)
-//    {
-//        cell.textLabel.text = @"1111";
-//    }
-//    
-//    switch (indexPath.row) {
-//        case 0:
-//            cell.textLabel.text = @"Repeat";
-//            break;
-//        case 1:
-//            cell.textLabel.text = @"Sound";
-//            break;
-//        case 2:
-//            cell.textLabel.text = @"Snooze";
-//            break;
-//        case 3:
-//            cell.textLabel.text = @"Label";
-//            break;
-//        default:
-//            break;
-//    }
-    
-    return cell;
-}
-
-
-
-
-
-
 -(void)scheduledNotificationWithDate:(NSDate *)fireDate {
     UILocalNotification *notification = [[UILocalNotification alloc] init];
     
@@ -83,18 +30,6 @@
     notification.soundName = @"alarm-clock-1.caf";
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
 }
-
--(void)presentMessage:(NSString *)message {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Dream alarm clock" message:message delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
-    [alert show];
-}
-
-
--(IBAction)alarmSetButtonTapped:(id)sender
-{
-    [self saveAlarm];
-}
-
 
 -(void)saveAlarm{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -118,14 +53,46 @@
     [self scheduledNotificationWithDate:dateTimePicker.date];
     
     [self.navigationController popViewControllerAnimated:YES];
-    
 }
 
 
+#pragma mark - Table view
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.tableDataSource count];
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [self.alarmTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+    }
+    
+    NSDictionary *dictionary = [self.tableDataSource objectAtIndex:indexPath.row];
+    cell.textLabel.text = [dictionary objectForKey:@"Title"];
+    
+    return cell;
+}
+
+
+
+#pragma mark - IBActions
+
+-(IBAction)alarmSetButtonTapped:(id)sender
+{
+    [self saveAlarm];
+}
+
 -(IBAction)alarmCancelButtonTapped:(id)sender
 {
-    
-    
+
     UILocalNotification *notificationToCancel=nil;
     for(UILocalNotification *aNotif in [[UIApplication sharedApplication] scheduledLocalNotifications]) {
         if([aNotif.fireDate isEqualToDate:existingAlarmDate]) {
@@ -138,14 +105,10 @@
         [[UIApplication sharedApplication] cancelLocalNotification:notificationToCancel];
     }
 
-    
     [self.navigationController popViewControllerAnimated:YES];
-    
-//    [[UIApplication sharedApplication] cancelAllLocalNotifications];
-//    
-//    [self presentMessage:@"Dream alarm cancelled"];
 }
 
+#pragma mark - View methods
 
 - (void)viewDidLoad
 {
@@ -178,11 +141,9 @@
     [self saveAlarm];
 }
 
-
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

@@ -24,28 +24,12 @@
     return directoryContent;
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    NSArray *dirPaths;
-    NSString *docsDir;
-    
-    dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    docsDir = [dirPaths objectAtIndex:0];
-    
-    //NSString *dreamDirectoryFilePath = [docsDir stringByAppendingPathComponent:@"Dreams"];
-    
-    tableViewArray = [self listFileAtPath:docsDir];
-    
-    [self.dreamTableView reloadData];
-}
+#pragma mark - table view methods
 
-
-// Customize the number of sections in the table view.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1; 
 }
 
-// Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [tableViewArray count]; 
 }
@@ -66,6 +50,21 @@
     return cell;
 }
 
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    SelectedDreamViewController *selectedDreamViewController = [[SelectedDreamViewController alloc]
+                                         initWithNibName:@"SelectedDreamViewController" bundle:nil];
+    selectedDreamViewController.soundFile = [tableViewArray objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:selectedDreamViewController animated:YES];
+    
+}
+
+
+
+#pragma mark - View methods
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -84,8 +83,6 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -95,15 +92,17 @@
     return NO;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)viewWillAppear:(BOOL)animated
 {
+    NSArray *dirPaths;
+    NSString *docsDir;
     
-    SelectedDreamViewController *selectedDreamViewController = [[SelectedDreamViewController alloc]
-                                         initWithNibName:@"SelectedDreamViewController" bundle:nil];
-    selectedDreamViewController.soundFile = [tableViewArray objectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:selectedDreamViewController animated:YES];
+    dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    docsDir = [dirPaths objectAtIndex:0];
     
+    tableViewArray = [self listFileAtPath:docsDir];
+    
+    [self.dreamTableView reloadData];
 }
-
 
 @end

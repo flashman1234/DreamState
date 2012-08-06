@@ -7,13 +7,10 @@
 //
 
 #import "SelectedDreamViewController.h"
-#import <AVFoundation/AVFoundation.h>
-#import <MobileCoreServices/MobileCoreServices.h>
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface SelectedDreamViewController ()
 {
-    AVAudioPlayer *player;
     MPMoviePlayerController *mediaPlayer;
 }
 @end
@@ -25,6 +22,8 @@
 @synthesize display;
 
 
+#pragma mark - IBActions
+
 -(IBAction)playButtonTapped:(id)sender
 {
     [self playBack:soundFile];
@@ -34,6 +33,36 @@
 {
     [self deleteDream:soundFile];
 }
+
+
+-(void)playBack:(NSString *)dreamFileName{
+    
+    NSArray *dirPaths;
+    NSString *docsDir;
+    
+    dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    docsDir = [dirPaths objectAtIndex:0];
+    
+    NSString *soundFilePath = [docsDir stringByAppendingPathComponent:dreamFileName];
+
+    NSURL *videoURL = [NSURL fileURLWithPath:soundFilePath];
+
+    self.mediaPlayer = [[MPMoviePlayerController alloc] initWithContentURL: videoURL];
+    
+    //Use MPMovieControlStyleNone if you want to add my own buttons
+    //self.mediaPlayer.controlStyle = MPMovieControlStyleNone;
+
+    [mediaPlayer prepareToPlay];
+    
+    CGRect bounds           = CGRectMake(0, 0, display.layer.bounds.size.width, 380);
+    
+    [mediaPlayer.view setFrame: bounds]; 
+    [display addSubview:mediaPlayer.view];
+    mediaPlayer.view.layer.zPosition = -1;
+    [mediaPlayer play];
+    
+}
+
 
 -(void)deleteDream:(NSString *)dreamFileName{
     
@@ -53,36 +82,8 @@
 }
 
 
--(void)playBack:(NSString *)dreamFileName{
-    
-    NSArray *dirPaths;
-    NSString *docsDir;
-    
-    dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    docsDir = [dirPaths objectAtIndex:0];
-    
-    NSString *soundFilePath = [docsDir stringByAppendingPathComponent:dreamFileName];
 
-    NSURL *videoURL = [NSURL fileURLWithPath:soundFilePath];
-
-    self.mediaPlayer = [[MPMoviePlayerController alloc] initWithContentURL: videoURL];
-    
-    //self.mediaPlayer.controlStyle = MPMovieControlStyleNone;
-
-    
-    [mediaPlayer prepareToPlay];
-    
-    CGRect bounds           = CGRectMake(0, 0, display.layer.bounds.size.width, 380);
-    
-    [mediaPlayer.view setFrame: bounds];  // player's frame must match parent's
-    [display addSubview:mediaPlayer.view];
-    mediaPlayer.view.layer.zPosition = -1;
-    [mediaPlayer play];
-    
-}
-
-
-
+#pragma mark - view methods
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -96,7 +97,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 -(void)viewDidDisappear:(BOOL)animated{

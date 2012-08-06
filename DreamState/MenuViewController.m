@@ -24,6 +24,8 @@
 @synthesize alarmButton, currentDreamButton, recordDreamButton, settingsButton;
 
 
+#pragma mark - IBActions
+
 -(IBAction)pressAlarmButton{
     AlarmListViewController *alarmController = [[AlarmListViewController alloc] init];
     [self.navigationController pushViewController:alarmController animated:YES];
@@ -45,6 +47,7 @@
 
 }
 
+#pragma mark - View methods
 
 - (void)viewDidLoad
 {

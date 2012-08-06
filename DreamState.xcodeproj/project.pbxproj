@@ -44,6 +44,7 @@
 		05A5CF6115C94B060097DB1C /* InAppSettingsSpecifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF5415C94B060097DB1C /* InAppSettingsSpecifier.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		05A5CF6515C94C8C0097DB1C /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF6315C94C870097DB1C /* SettingsViewController.m */; };
 		05A5CF6615C94C8C0097DB1C /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A5CF6415C94C8A0097DB1C /* SettingsViewController.xib */; };
+		05A5CF6A15CFC2740097DB1C /* MediaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF6915CFC2710097DB1C /* MediaController.m */; };
 		05D9323315B9AEFB00983693 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9323215B9AEFB00983693 /* UIKit.framework */; };
 		05D9323515B9AEFB00983693 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9323415B9AEFB00983693 /* Foundation.framework */; };
 		05D9323715B9AEFB00983693 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9323615B9AEFB00983693 /* CoreGraphics.framework */; };
@@ -140,6 +141,8 @@
 		05A5CF6215C94C850097DB1C /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		05A5CF6315C94C870097DB1C /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		05A5CF6415C94C8A0097DB1C /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		05A5CF6815CFC26F0097DB1C /* MediaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaController.h; sourceTree = "<group>"; };
+		05A5CF6915CFC2710097DB1C /* MediaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaController.m; sourceTree = "<group>"; };
 		05D9322E15B9AEFB00983693 /* DreamState.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamState.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05D9323215B9AEFB00983693 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		05D9323415B9AEFB00983693 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -281,6 +284,25 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		05A5CF6715CFBC790097DB1C /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				05A5CF6215C94C850097DB1C /* SettingsViewController.h */,
+				05A5CF6315C94C870097DB1C /* SettingsViewController.m */,
+				05A5CF6415C94C8A0097DB1C /* SettingsViewController.xib */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		05A5CF6B15CFC28B0097DB1C /* MediaControl */ = {
+			isa = PBXGroup;
+			children = (
+				05A5CF6815CFC26F0097DB1C /* MediaController.h */,
+				05A5CF6915CFC2710097DB1C /* MediaController.m */,
+			);
+			name = MediaControl;
+			sourceTree = "<group>";
+		};
 		05D9322315B9AEFB00983693 = {
 			isa = PBXGroup;
 			children = (
@@ -322,11 +344,11 @@
 		05D9323815B9AEFB00983693 /* DreamState */ = {
 			isa = PBXGroup;
 			children = (
+				05A5CF6B15CFC28B0097DB1C /* MediaControl */,
+				05A5CF6715CFBC790097DB1C /* Settings */,
 				05A5CF3A15C94B040097DB1C /* InAppSettings */,
 				05A5CE1A15C8281A0097DB1C /* AlarmClock */,
 				05209CF615BF3D57001C66CF /* DIYCam */,
-				056E83BD15BB271F000B17FA /* alarm.mp3 */,
-				056E83B615BB1BB9000B17FA /* alarm.caf */,
 				05D9328215B9BD8B00983693 /* DreamTableViewcell.h */,
 				05D9328315B9BD8B00983693 /* DreamTableViewcell.m */,
 				05D9324115B9AEFB00983693 /* AppDelegate.h */,
@@ -345,9 +367,6 @@
 				05D9328615B9C82900983693 /* SelectedDreamViewController.h */,
 				05D9328715B9C82900983693 /* SelectedDreamViewController.m */,
 				05D9328815B9C82900983693 /* SelectedDreamViewController.xib */,
-				05A5CF6215C94C850097DB1C /* SettingsViewController.h */,
-				05A5CF6315C94C870097DB1C /* SettingsViewController.m */,
-				05A5CF6415C94C8A0097DB1C /* SettingsViewController.xib */,
 			);
 			path = DreamState;
 			sourceTree = "<group>";
@@ -355,6 +374,8 @@
 		05D9323915B9AEFB00983693 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				056E83BD15BB271F000B17FA /* alarm.mp3 */,
+				056E83B615BB1BB9000B17FA /* alarm.caf */,
 				05A5CF3415C943B20097DB1C /* 20-gear2.png */,
 				05A5CF3515C943B20097DB1C /* Icon.png */,
 				05A5CE0A15C191E20097DB1C /* Recording.png */,
@@ -545,6 +566,7 @@
 				05A5CF6015C94B060097DB1C /* InAppSettingsReader.m in Sources */,
 				05A5CF6115C94B060097DB1C /* InAppSettingsSpecifier.m in Sources */,
 				05A5CF6515C94C8C0097DB1C /* SettingsViewController.m in Sources */,
+				05A5CF6A15CFC2740097DB1C /* MediaController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

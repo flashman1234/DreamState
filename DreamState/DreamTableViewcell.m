@@ -9,8 +9,6 @@
 #import "DreamTableViewcell.h"
 
 
-
-
 @implementation DreamTableViewcell
 
 @synthesize dreamLabel = _dreamImage;
