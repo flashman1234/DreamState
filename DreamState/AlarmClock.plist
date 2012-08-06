@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Rows</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>Sound (not used yet)</string>
+			<key>Children</key>
+			<array>
+				<string>alarm.caf</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Label (not used yet)</string>
+		</dict>
+	</array>
+</dict>
+</plist>

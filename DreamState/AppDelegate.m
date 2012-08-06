@@ -7,24 +7,169 @@
 //
 
 #import "AppDelegate.h"
+#import <AVFoundation/AVFoundation.h>
+#import "MenuViewController.h"
+#import "RecordDreamViewController.h"
+#import "InAppSettings.h"
 
-#import "ViewController.h"
+
+NSString *localReceived = @"localReceived";
 
 @implementation AppDelegate
 
 @synthesize window = _window;
 @synthesize viewController = _viewController;
+@synthesize tdController = _tdController;
+@synthesize defaults = _defaults;
+@synthesize alarmClockData;
+
+@synthesize alarmSound;
+@synthesize fileURL;
+
++ (void)initialize{
+    if([self class] == [AppDelegate class]){
+        [InAppSettings registerDefaults];
+    }
+}
+
+
+
+
+
+-(void)playAlarmSound{
+    
+    NSString *fileName = @"alarm-clock-1";
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:@"caf"];
+    
+    NSURL *tempfileURL = [NSURL fileURLWithPath:path];
+
+    fileURL = tempfileURL;
+    
+    NSError *error;
+    AVAudioPlayer *theAudio=[[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:&error];
+    
+    alarmSound = theAudio;
+    
+    if (error) {
+        NSLog(@"error : %@", error);
+    }
+    
+    alarmSound.volume = 1.0;
+    
+    alarmSound.delegate = self;
+    
+    [alarmSound prepareToPlay];
+    
+    [alarmSound play];
+    
+}
+
+-(void)stopAlarmSound{
+    [alarmSound stop];
+}
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    [self stopAlarmSound];
+    
+    switch (buttonIndex) {
+    case 1: 
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:localReceived object:self];
+        }
+            break;
+    }
+}
+
+
+
+-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    
+    if (application.applicationState == UIApplicationStateInactive ) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:localReceived object:self];
+    }
+    
+    if(application.applicationState == UIApplicationStateActive ) {
+       
+        [self playAlarmSound];
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle: NSLocalizedString(@"Dream alarm clock",nil)
+                              message: NSLocalizedString(@"Would you like to record a dream?",nil)
+                              delegate: self
+                              cancelButtonTitle: NSLocalizedString(@"No",nil)
+                              otherButtonTitles: NSLocalizedString(@"Yes",nil), nil];
+        [alert show];
+    }
+}
+
+-(void)setAlarmClockPlist{
+    NSString *Path = [[NSBundle mainBundle] bundlePath];
+    NSString *DataPath = [Path stringByAppendingPathComponent:@"AlarmClock.plist"];
+    
+    NSDictionary *tempDict = [[NSDictionary alloc] initWithContentsOfFile:DataPath];
+    self.alarmClockData = tempDict;
+}
+
+-(void)setUserDefaultsAndSync{
+    NSUserDefaults *defaults2 = [NSUserDefaults standardUserDefaults];
+    self.defaults = defaults2;
+    
+    
+    NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:@"Audio",@"Recording",
+                                 @"AutoRecord", [NSNumber numberWithBool:YES],
+                                 nil];
+
+    [self.defaults registerDefaults:appDefaults];
+    [self.defaults synchronize];
+}
+
+-(void)setAudioSession{
+    NSError *error;
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
+    
+    if (error) {
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Dream State error" 
+                                                        message:@"Error is setting up the audo session record category" 
+                                                       delegate:self cancelButtonTitle:@"Ok" 
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+    
+    NSError *error2;
+    [[AVAudioSession sharedInstance] setActive:YES error:&error2];
+    if (error2) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Dream State error" 
+                                                        message:@"Error is setting the audo session to active" 
+                                                       delegate:self cancelButtonTitle:@"Ok" 
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    [self setAlarmClockPlist];
+    
+    [self setUserDefaultsAndSync];
+    
+    [self setAudioSession];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPhone" bundle:nil];
-    } else {
-        self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPad" bundle:nil];
-    }
-    self.window.rootViewController = self.viewController;
+//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        self.viewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController_iPhone" bundle:nil];
+//    } else {
+//        self.viewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController_iPad" bundle:nil];
+//    }
+    
+    UINavigationController *navigationViewController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
+    
+    self.window.rootViewController = navigationViewController;
     [self.window makeKeyAndVisible];
     return YES;
 }

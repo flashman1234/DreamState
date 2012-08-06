@@ -7,20 +7,70 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05209CD115BD564F001C66CF /* alarm-clock-1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 05209CD015BD564F001C66CF /* alarm-clock-1.caf */; };
+		05209CD315BD5F33001C66CF /* clockicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 05209CD215BD5F33001C66CF /* clockicon.png */; };
+		05209CD515BD5FDB001C66CF /* recordicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 05209CD415BD5FDB001C66CF /* recordicon.png */; };
+		05209CD715BD6032001C66CF /* dreams.png in Resources */ = {isa = PBXBuildFile; fileRef = 05209CD615BD6032001C66CF /* dreams.png */; };
+		05209CF115BF3B10001C66CF /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05209CF015BF3B10001C66CF /* CoreMedia.framework */; };
+		05209CFC15BF3D69001C66CF /* DIYCam.m in Sources */ = {isa = PBXBuildFile; fileRef = 05209CF815BF3D69001C66CF /* DIYCam.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		05209CFD15BF3D69001C66CF /* DIYCamUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 05209CFB15BF3D69001C66CF /* DIYCamUtilities.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		05209D0215BF3DD0001C66CF /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 05209CFF15BF3DD0001C66CF /* UIImage+Resize.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		05209D0315BF3DD0001C66CF /* UIImage+Save.m in Sources */ = {isa = PBXBuildFile; fileRef = 05209D0115BF3DD0001C66CF /* UIImage+Save.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		05209D0915BF3F8C001C66CF /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05209D0815BF3F8C001C66CF /* AssetsLibrary.framework */; };
+		05209D0B15BF3F9D001C66CF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05209D0A15BF3F9D001C66CF /* MobileCoreServices.framework */; };
+		05209D0D15BF3FA4001C66CF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05209D0C15BF3FA4001C66CF /* QuartzCore.framework */; };
+		056E83B815BB1BBF000B17FA /* alarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 056E83B615BB1BB9000B17FA /* alarm.caf */; };
+		056E83BE15BB271F000B17FA /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 056E83BD15BB271F000B17FA /* alarm.mp3 */; };
+		05A5CE0C15C191E20097DB1C /* Recording.png in Resources */ = {isa = PBXBuildFile; fileRef = 05A5CE0A15C191E20097DB1C /* Recording.png */; };
+		05A5CE0D15C191E20097DB1C /* NotRecording.png in Resources */ = {isa = PBXBuildFile; fileRef = 05A5CE0B15C191E20097DB1C /* NotRecording.png */; };
+		05A5CE1615C80AA70097DB1C /* AlarmListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CE1415C80AA50097DB1C /* AlarmListViewController.m */; };
+		05A5CE1715C80AA70097DB1C /* AlarmListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A5CE1515C80AA60097DB1C /* AlarmListViewController.xib */; };
+		05A5CE1915C824A70097DB1C /* AlarmClock.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05A5CE1815C824A70097DB1C /* AlarmClock.plist */; };
+		05A5CE8F15C939600097DB1C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A5CE8E15C9395F0097DB1C /* MessageUI.framework */; };
+		05A5CF3615C943B20097DB1C /* 20-gear2.png in Resources */ = {isa = PBXBuildFile; fileRef = 05A5CF3415C943B20097DB1C /* 20-gear2.png */; };
+		05A5CF3715C943B20097DB1C /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 05A5CF3515C943B20097DB1C /* Icon.png */; };
+		05A5CF5515C94B060097DB1C /* InAppSettingsPSChildPaneSpecifierCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF3D15C94B060097DB1C /* InAppSettingsPSChildPaneSpecifierCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		05A5CF5615C94B060097DB1C /* InAppSettingsPSMultiValueSpecifierCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF3F15C94B060097DB1C /* InAppSettingsPSMultiValueSpecifierCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		05A5CF5715C94B060097DB1C /* InAppSettingsPSSliderSpecifierCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF4115C94B060097DB1C /* InAppSettingsPSSliderSpecifierCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		05A5CF5815C94B060097DB1C /* InAppSettingsPSTextFieldSpecifierCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF4315C94B060097DB1C /* InAppSettingsPSTextFieldSpecifierCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		05A5CF5915C94B060097DB1C /* InAppSettingsPSTitleValueSpecifierCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF4515C94B060097DB1C /* InAppSettingsPSTitleValueSpecifierCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		05A5CF5A15C94B060097DB1C /* InAppSettingsPSToggleSwitchSpecifierCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF4715C94B060097DB1C /* InAppSettingsPSToggleSwitchSpecifierCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		05A5CF5B15C94B060097DB1C /* InAppSettingsTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF4915C94B060097DB1C /* InAppSettingsTableCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		05A5CF5C15C94B060097DB1C /* InAppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF4B15C94B060097DB1C /* InAppSettings.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		05A5CF5D15C94B060097DB1C /* InAppSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = 05A5CF4C15C94B060097DB1C /* InAppSettings.png */; };
+		05A5CF5E15C94B060097DB1C /* InAppSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 05A5CF4D15C94B060097DB1C /* InAppSettings@2x.png */; };
+		05A5CF5F15C94B060097DB1C /* InAppSettingsPSMultiValueSpecifierTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF5015C94B060097DB1C /* InAppSettingsPSMultiValueSpecifierTable.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		05A5CF6015C94B060097DB1C /* InAppSettingsReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF5215C94B060097DB1C /* InAppSettingsReader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		05A5CF6115C94B060097DB1C /* InAppSettingsSpecifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF5415C94B060097DB1C /* InAppSettingsSpecifier.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		05A5CF6515C94C8C0097DB1C /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF6315C94C870097DB1C /* SettingsViewController.m */; };
+		05A5CF6615C94C8C0097DB1C /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A5CF6415C94C8A0097DB1C /* SettingsViewController.xib */; };
 		05D9323315B9AEFB00983693 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9323215B9AEFB00983693 /* UIKit.framework */; };
 		05D9323515B9AEFB00983693 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9323415B9AEFB00983693 /* Foundation.framework */; };
 		05D9323715B9AEFB00983693 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9323615B9AEFB00983693 /* CoreGraphics.framework */; };
 		05D9323D15B9AEFB00983693 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05D9323B15B9AEFB00983693 /* InfoPlist.strings */; };
 		05D9323F15B9AEFB00983693 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9323E15B9AEFB00983693 /* main.m */; };
 		05D9324315B9AEFB00983693 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9324215B9AEFB00983693 /* AppDelegate.m */; };
-		05D9324615B9AEFB00983693 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9324515B9AEFB00983693 /* ViewController.m */; };
-		05D9324915B9AEFB00983693 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05D9324715B9AEFB00983693 /* ViewController_iPhone.xib */; };
-		05D9324C15B9AEFB00983693 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05D9324A15B9AEFB00983693 /* ViewController_iPad.xib */; };
+		05D9324615B9AEFB00983693 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9324515B9AEFB00983693 /* MenuViewController.m */; };
+		05D9324915B9AEFB00983693 /* MenuViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05D9324715B9AEFB00983693 /* MenuViewController_iPhone.xib */; };
+		05D9324C15B9AEFB00983693 /* MenuViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05D9324A15B9AEFB00983693 /* MenuViewController_iPad.xib */; };
 		05D9325415B9AEFB00983693 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9325315B9AEFB00983693 /* SenTestingKit.framework */; };
 		05D9325515B9AEFB00983693 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9323215B9AEFB00983693 /* UIKit.framework */; };
 		05D9325615B9AEFB00983693 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9323415B9AEFB00983693 /* Foundation.framework */; };
 		05D9325E15B9AEFB00983693 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05D9325C15B9AEFB00983693 /* InfoPlist.strings */; };
 		05D9326115B9AEFB00983693 /* DreamStateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9326015B9AEFB00983693 /* DreamStateTests.m */; };
+		05D9327215B9B8FB00983693 /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9327015B9B8FB00983693 /* AlarmViewController.m */; };
+		05D9327315B9B8FB00983693 /* AlarmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05D9327115B9B8FB00983693 /* AlarmViewController.xib */; };
+		05D9327715B9B96400983693 /* CurrentDreamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9327515B9B96400983693 /* CurrentDreamsViewController.m */; };
+		05D9327815B9B96400983693 /* CurrentDreamsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05D9327615B9B96400983693 /* CurrentDreamsViewController.xib */; };
+		05D9327C15B9B97A00983693 /* RecordDreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9327A15B9B97A00983693 /* RecordDreamViewController.m */; };
+		05D9327D15B9B97A00983693 /* RecordDreamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05D9327B15B9B97A00983693 /* RecordDreamViewController.xib */; };
+		05D9327F15B9BA1900983693 /* alarm-clock-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 05D9327E15B9BA1900983693 /* alarm-clock-1.mp3 */; };
+		05D9328115B9BC8700983693 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9328015B9BC8700983693 /* AVFoundation.framework */; };
+		05D9328515B9BD9000983693 /* DreamTableViewcell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9328315B9BD8B00983693 /* DreamTableViewcell.m */; };
+		05D9328915B9C82900983693 /* SelectedDreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9328715B9C82900983693 /* SelectedDreamViewController.m */; };
+		05D9328A15B9C82900983693 /* SelectedDreamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05D9328815B9C82900983693 /* SelectedDreamViewController.xib */; };
+		05E0E30F15BFF92B005BAEF0 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E0E30E15BFF92B005BAEF0 /* MediaPlayer.framework */; };
+		05E0E31615C022C8005BAEF0 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 05E0E31515C022C8005BAEF0 /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,26 +84,100 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05209CD015BD564F001C66CF /* alarm-clock-1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "alarm-clock-1.caf"; sourceTree = "<group>"; };
+		05209CD215BD5F33001C66CF /* clockicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clockicon.png; sourceTree = "<group>"; };
+		05209CD415BD5FDB001C66CF /* recordicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recordicon.png; sourceTree = "<group>"; };
+		05209CD615BD6032001C66CF /* dreams.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dreams.png; sourceTree = "<group>"; };
+		05209CF015BF3B10001C66CF /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		05209CF715BF3D69001C66CF /* DIYCam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIYCam.h; sourceTree = "<group>"; };
+		05209CF815BF3D69001C66CF /* DIYCam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIYCam.m; sourceTree = "<group>"; };
+		05209CF915BF3D69001C66CF /* DIYCamDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIYCamDefaults.h; sourceTree = "<group>"; };
+		05209CFA15BF3D69001C66CF /* DIYCamUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIYCamUtilities.h; sourceTree = "<group>"; };
+		05209CFB15BF3D69001C66CF /* DIYCamUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIYCamUtilities.m; sourceTree = "<group>"; };
+		05209CFE15BF3DD0001C66CF /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		05209CFF15BF3DD0001C66CF /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		05209D0015BF3DD0001C66CF /* UIImage+Save.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Save.h"; sourceTree = "<group>"; };
+		05209D0115BF3DD0001C66CF /* UIImage+Save.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Save.m"; sourceTree = "<group>"; };
+		05209D0815BF3F8C001C66CF /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		05209D0A15BF3F9D001C66CF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		05209D0C15BF3FA4001C66CF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		056E83B615BB1BB9000B17FA /* alarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm.caf; sourceTree = "<group>"; };
+		056E83BD15BB271F000B17FA /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
+		05A5CE0A15C191E20097DB1C /* Recording.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Recording.png; sourceTree = "<group>"; };
+		05A5CE0B15C191E20097DB1C /* NotRecording.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotRecording.png; sourceTree = "<group>"; };
+		05A5CE1315C80AA50097DB1C /* AlarmListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmListViewController.h; sourceTree = "<group>"; };
+		05A5CE1415C80AA50097DB1C /* AlarmListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmListViewController.m; sourceTree = "<group>"; };
+		05A5CE1515C80AA60097DB1C /* AlarmListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlarmListViewController.xib; sourceTree = "<group>"; };
+		05A5CE1815C824A70097DB1C /* AlarmClock.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AlarmClock.plist; sourceTree = "<group>"; };
+		05A5CE8E15C9395F0097DB1C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		05A5CF3415C943B20097DB1C /* 20-gear2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20-gear2.png"; sourceTree = "<group>"; };
+		05A5CF3515C943B20097DB1C /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		05A5CF3C15C94B060097DB1C /* InAppSettingsPSChildPaneSpecifierCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppSettingsPSChildPaneSpecifierCell.h; sourceTree = "<group>"; };
+		05A5CF3D15C94B060097DB1C /* InAppSettingsPSChildPaneSpecifierCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppSettingsPSChildPaneSpecifierCell.m; sourceTree = "<group>"; };
+		05A5CF3E15C94B060097DB1C /* InAppSettingsPSMultiValueSpecifierCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppSettingsPSMultiValueSpecifierCell.h; sourceTree = "<group>"; };
+		05A5CF3F15C94B060097DB1C /* InAppSettingsPSMultiValueSpecifierCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppSettingsPSMultiValueSpecifierCell.m; sourceTree = "<group>"; };
+		05A5CF4015C94B060097DB1C /* InAppSettingsPSSliderSpecifierCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppSettingsPSSliderSpecifierCell.h; sourceTree = "<group>"; };
+		05A5CF4115C94B060097DB1C /* InAppSettingsPSSliderSpecifierCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppSettingsPSSliderSpecifierCell.m; sourceTree = "<group>"; };
+		05A5CF4215C94B060097DB1C /* InAppSettingsPSTextFieldSpecifierCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppSettingsPSTextFieldSpecifierCell.h; sourceTree = "<group>"; };
+		05A5CF4315C94B060097DB1C /* InAppSettingsPSTextFieldSpecifierCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppSettingsPSTextFieldSpecifierCell.m; sourceTree = "<group>"; };
+		05A5CF4415C94B060097DB1C /* InAppSettingsPSTitleValueSpecifierCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppSettingsPSTitleValueSpecifierCell.h; sourceTree = "<group>"; };
+		05A5CF4515C94B060097DB1C /* InAppSettingsPSTitleValueSpecifierCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppSettingsPSTitleValueSpecifierCell.m; sourceTree = "<group>"; };
+		05A5CF4615C94B060097DB1C /* InAppSettingsPSToggleSwitchSpecifierCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppSettingsPSToggleSwitchSpecifierCell.h; sourceTree = "<group>"; };
+		05A5CF4715C94B060097DB1C /* InAppSettingsPSToggleSwitchSpecifierCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppSettingsPSToggleSwitchSpecifierCell.m; sourceTree = "<group>"; };
+		05A5CF4815C94B060097DB1C /* InAppSettingsTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppSettingsTableCell.h; sourceTree = "<group>"; };
+		05A5CF4915C94B060097DB1C /* InAppSettingsTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppSettingsTableCell.m; sourceTree = "<group>"; };
+		05A5CF4A15C94B060097DB1C /* InAppSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppSettings.h; sourceTree = "<group>"; };
+		05A5CF4B15C94B060097DB1C /* InAppSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppSettings.m; sourceTree = "<group>"; };
+		05A5CF4C15C94B060097DB1C /* InAppSettings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InAppSettings.png; sourceTree = "<group>"; };
+		05A5CF4D15C94B060097DB1C /* InAppSettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InAppSettings@2x.png"; sourceTree = "<group>"; };
+		05A5CF4E15C94B060097DB1C /* InAppSettingsConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppSettingsConstants.h; sourceTree = "<group>"; };
+		05A5CF4F15C94B060097DB1C /* InAppSettingsPSMultiValueSpecifierTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppSettingsPSMultiValueSpecifierTable.h; sourceTree = "<group>"; };
+		05A5CF5015C94B060097DB1C /* InAppSettingsPSMultiValueSpecifierTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppSettingsPSMultiValueSpecifierTable.m; sourceTree = "<group>"; };
+		05A5CF5115C94B060097DB1C /* InAppSettingsReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppSettingsReader.h; sourceTree = "<group>"; };
+		05A5CF5215C94B060097DB1C /* InAppSettingsReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppSettingsReader.m; sourceTree = "<group>"; };
+		05A5CF5315C94B060097DB1C /* InAppSettingsSpecifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppSettingsSpecifier.h; sourceTree = "<group>"; };
+		05A5CF5415C94B060097DB1C /* InAppSettingsSpecifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppSettingsSpecifier.m; sourceTree = "<group>"; };
+		05A5CF6215C94C850097DB1C /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		05A5CF6315C94C870097DB1C /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		05A5CF6415C94C8A0097DB1C /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		05D9322E15B9AEFB00983693 /* DreamState.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamState.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05D9323215B9AEFB00983693 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		05D9323415B9AEFB00983693 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		05D9323615B9AEFB00983693 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		05D9323A15B9AEFB00983693 /* DreamState-Info.plist */ = {isa = PBXFileReference; path = "DreamState-Info.plist"; sourceTree = "<group>"; };
+		05D9323A15B9AEFB00983693 /* DreamState-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DreamState-Info.plist"; sourceTree = "<group>"; };
 		05D9323C15B9AEFB00983693 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		05D9323E15B9AEFB00983693 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		05D9324015B9AEFB00983693 /* DreamState-Prefix.pch */ = {isa = PBXFileReference; path = "DreamState-Prefix.pch"; sourceTree = "<group>"; };
-		05D9324115B9AEFB00983693 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		05D9324015B9AEFB00983693 /* DreamState-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DreamState-Prefix.pch"; sourceTree = "<group>"; };
+		05D9324115B9AEFB00983693 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		05D9324215B9AEFB00983693 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		05D9324415B9AEFB00983693 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
-		05D9324515B9AEFB00983693 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		05D9324815B9AEFB00983693 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
-		05D9324B15B9AEFB00983693 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
+		05D9324415B9AEFB00983693 /* MenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		05D9324515B9AEFB00983693 /* MenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		05D9324815B9AEFB00983693 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MenuViewController_iPhone.xib; sourceTree = "<group>"; };
+		05D9324B15B9AEFB00983693 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MenuViewController_iPad.xib; sourceTree = "<group>"; };
 		05D9325215B9AEFB00983693 /* DreamStateTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DreamStateTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05D9325315B9AEFB00983693 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		05D9325B15B9AEFB00983693 /* DreamStateTests-Info.plist */ = {isa = PBXFileReference; path = "DreamStateTests-Info.plist"; sourceTree = "<group>"; };
+		05D9325B15B9AEFB00983693 /* DreamStateTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DreamStateTests-Info.plist"; sourceTree = "<group>"; };
 		05D9325D15B9AEFB00983693 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		05D9325F15B9AEFB00983693 /* DreamStateTests.h */ = {isa = PBXFileReference; path = DreamStateTests.h; sourceTree = "<group>"; };
+		05D9325F15B9AEFB00983693 /* DreamStateTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DreamStateTests.h; sourceTree = "<group>"; };
 		05D9326015B9AEFB00983693 /* DreamStateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DreamStateTests.m; sourceTree = "<group>"; };
+		05D9326F15B9B8FB00983693 /* AlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmViewController.h; sourceTree = "<group>"; };
+		05D9327015B9B8FB00983693 /* AlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmViewController.m; sourceTree = "<group>"; };
+		05D9327115B9B8FB00983693 /* AlarmViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlarmViewController.xib; sourceTree = "<group>"; };
+		05D9327415B9B96400983693 /* CurrentDreamsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentDreamsViewController.h; sourceTree = "<group>"; };
+		05D9327515B9B96400983693 /* CurrentDreamsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentDreamsViewController.m; sourceTree = "<group>"; };
+		05D9327615B9B96400983693 /* CurrentDreamsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CurrentDreamsViewController.xib; sourceTree = "<group>"; };
+		05D9327915B9B97A00983693 /* RecordDreamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordDreamViewController.h; sourceTree = "<group>"; };
+		05D9327A15B9B97A00983693 /* RecordDreamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordDreamViewController.m; sourceTree = "<group>"; };
+		05D9327B15B9B97A00983693 /* RecordDreamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordDreamViewController.xib; sourceTree = "<group>"; };
+		05D9327E15B9BA1900983693 /* alarm-clock-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "alarm-clock-1.mp3"; sourceTree = "<group>"; };
+		05D9328015B9BC8700983693 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		05D9328215B9BD8B00983693 /* DreamTableViewcell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DreamTableViewcell.h; sourceTree = "<group>"; };
+		05D9328315B9BD8B00983693 /* DreamTableViewcell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DreamTableViewcell.m; sourceTree = "<group>"; };
+		05D9328615B9C82900983693 /* SelectedDreamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedDreamViewController.h; sourceTree = "<group>"; };
+		05D9328715B9C82900983693 /* SelectedDreamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedDreamViewController.m; sourceTree = "<group>"; };
+		05D9328815B9C82900983693 /* SelectedDreamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectedDreamViewController.xib; sourceTree = "<group>"; };
+		05E0E30E15BFF92B005BAEF0 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		05E0E31515C022C8005BAEF0 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +185,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05A5CE8F15C939600097DB1C /* MessageUI.framework in Frameworks */,
+				05E0E30F15BFF92B005BAEF0 /* MediaPlayer.framework in Frameworks */,
+				05209D0D15BF3FA4001C66CF /* QuartzCore.framework in Frameworks */,
+				05209D0B15BF3F9D001C66CF /* MobileCoreServices.framework in Frameworks */,
+				05209D0915BF3F8C001C66CF /* AssetsLibrary.framework in Frameworks */,
+				05209CF115BF3B10001C66CF /* CoreMedia.framework in Frameworks */,
+				05D9328115B9BC8700983693 /* AVFoundation.framework in Frameworks */,
 				05D9323315B9AEFB00983693 /* UIKit.framework in Frameworks */,
 				05D9323515B9AEFB00983693 /* Foundation.framework in Frameworks */,
 				05D9323715B9AEFB00983693 /* CoreGraphics.framework in Frameworks */,
@@ -80,9 +211,87 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05209CF615BF3D57001C66CF /* DIYCam */ = {
+			isa = PBXGroup;
+			children = (
+				05209CFE15BF3DD0001C66CF /* UIImage+Resize.h */,
+				05209CFF15BF3DD0001C66CF /* UIImage+Resize.m */,
+				05209D0015BF3DD0001C66CF /* UIImage+Save.h */,
+				05209D0115BF3DD0001C66CF /* UIImage+Save.m */,
+				05209CF715BF3D69001C66CF /* DIYCam.h */,
+				05209CF815BF3D69001C66CF /* DIYCam.m */,
+				05209CF915BF3D69001C66CF /* DIYCamDefaults.h */,
+				05209CFA15BF3D69001C66CF /* DIYCamUtilities.h */,
+				05209CFB15BF3D69001C66CF /* DIYCamUtilities.m */,
+			);
+			name = DIYCam;
+			sourceTree = "<group>";
+		};
+		05A5CE1A15C8281A0097DB1C /* AlarmClock */ = {
+			isa = PBXGroup;
+			children = (
+				05A5CE1815C824A70097DB1C /* AlarmClock.plist */,
+				05A5CE1315C80AA50097DB1C /* AlarmListViewController.h */,
+				05A5CE1415C80AA50097DB1C /* AlarmListViewController.m */,
+				05A5CE1515C80AA60097DB1C /* AlarmListViewController.xib */,
+				05D9326F15B9B8FB00983693 /* AlarmViewController.h */,
+				05D9327015B9B8FB00983693 /* AlarmViewController.m */,
+				05D9327115B9B8FB00983693 /* AlarmViewController.xib */,
+			);
+			name = AlarmClock;
+			sourceTree = "<group>";
+		};
+		05A5CF3A15C94B040097DB1C /* InAppSettings */ = {
+			isa = PBXGroup;
+			children = (
+				05A5CF3B15C94B060097DB1C /* Cells */,
+				05A5CF4A15C94B060097DB1C /* InAppSettings.h */,
+				05A5CF4B15C94B060097DB1C /* InAppSettings.m */,
+				05A5CF4C15C94B060097DB1C /* InAppSettings.png */,
+				05A5CF4D15C94B060097DB1C /* InAppSettings@2x.png */,
+				05A5CF4E15C94B060097DB1C /* InAppSettingsConstants.h */,
+				05A5CF4F15C94B060097DB1C /* InAppSettingsPSMultiValueSpecifierTable.h */,
+				05A5CF5015C94B060097DB1C /* InAppSettingsPSMultiValueSpecifierTable.m */,
+				05A5CF5115C94B060097DB1C /* InAppSettingsReader.h */,
+				05A5CF5215C94B060097DB1C /* InAppSettingsReader.m */,
+				05A5CF5315C94B060097DB1C /* InAppSettingsSpecifier.h */,
+				05A5CF5415C94B060097DB1C /* InAppSettingsSpecifier.m */,
+			);
+			path = InAppSettings;
+			sourceTree = "<group>";
+		};
+		05A5CF3B15C94B060097DB1C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				05A5CF3C15C94B060097DB1C /* InAppSettingsPSChildPaneSpecifierCell.h */,
+				05A5CF3D15C94B060097DB1C /* InAppSettingsPSChildPaneSpecifierCell.m */,
+				05A5CF3E15C94B060097DB1C /* InAppSettingsPSMultiValueSpecifierCell.h */,
+				05A5CF3F15C94B060097DB1C /* InAppSettingsPSMultiValueSpecifierCell.m */,
+				05A5CF4015C94B060097DB1C /* InAppSettingsPSSliderSpecifierCell.h */,
+				05A5CF4115C94B060097DB1C /* InAppSettingsPSSliderSpecifierCell.m */,
+				05A5CF4215C94B060097DB1C /* InAppSettingsPSTextFieldSpecifierCell.h */,
+				05A5CF4315C94B060097DB1C /* InAppSettingsPSTextFieldSpecifierCell.m */,
+				05A5CF4415C94B060097DB1C /* InAppSettingsPSTitleValueSpecifierCell.h */,
+				05A5CF4515C94B060097DB1C /* InAppSettingsPSTitleValueSpecifierCell.m */,
+				05A5CF4615C94B060097DB1C /* InAppSettingsPSToggleSwitchSpecifierCell.h */,
+				05A5CF4715C94B060097DB1C /* InAppSettingsPSToggleSwitchSpecifierCell.m */,
+				05A5CF4815C94B060097DB1C /* InAppSettingsTableCell.h */,
+				05A5CF4915C94B060097DB1C /* InAppSettingsTableCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		05D9322315B9AEFB00983693 = {
 			isa = PBXGroup;
 			children = (
+				05E0E31515C022C8005BAEF0 /* Settings.bundle */,
+				05A5CE8E15C9395F0097DB1C /* MessageUI.framework */,
+				05E0E30E15BFF92B005BAEF0 /* MediaPlayer.framework */,
+				05209D0C15BF3FA4001C66CF /* QuartzCore.framework */,
+				05209D0A15BF3F9D001C66CF /* MobileCoreServices.framework */,
+				05209D0815BF3F8C001C66CF /* AssetsLibrary.framework */,
+				05209CF015BF3B10001C66CF /* CoreMedia.framework */,
+				05D9328015B9BC8700983693 /* AVFoundation.framework */,
 				05D9323815B9AEFB00983693 /* DreamState */,
 				05D9325915B9AEFB00983693 /* DreamStateTests */,
 				05D9323115B9AEFB00983693 /* Frameworks */,
@@ -113,13 +322,32 @@
 		05D9323815B9AEFB00983693 /* DreamState */ = {
 			isa = PBXGroup;
 			children = (
+				05A5CF3A15C94B040097DB1C /* InAppSettings */,
+				05A5CE1A15C8281A0097DB1C /* AlarmClock */,
+				05209CF615BF3D57001C66CF /* DIYCam */,
+				056E83BD15BB271F000B17FA /* alarm.mp3 */,
+				056E83B615BB1BB9000B17FA /* alarm.caf */,
+				05D9328215B9BD8B00983693 /* DreamTableViewcell.h */,
+				05D9328315B9BD8B00983693 /* DreamTableViewcell.m */,
 				05D9324115B9AEFB00983693 /* AppDelegate.h */,
 				05D9324215B9AEFB00983693 /* AppDelegate.m */,
-				05D9324415B9AEFB00983693 /* ViewController.h */,
-				05D9324515B9AEFB00983693 /* ViewController.m */,
-				05D9324715B9AEFB00983693 /* ViewController_iPhone.xib */,
-				05D9324A15B9AEFB00983693 /* ViewController_iPad.xib */,
+				05D9324415B9AEFB00983693 /* MenuViewController.h */,
+				05D9324515B9AEFB00983693 /* MenuViewController.m */,
+				05D9324715B9AEFB00983693 /* MenuViewController_iPhone.xib */,
+				05D9324A15B9AEFB00983693 /* MenuViewController_iPad.xib */,
 				05D9323915B9AEFB00983693 /* Supporting Files */,
+				05D9327915B9B97A00983693 /* RecordDreamViewController.h */,
+				05D9327A15B9B97A00983693 /* RecordDreamViewController.m */,
+				05D9327B15B9B97A00983693 /* RecordDreamViewController.xib */,
+				05D9327415B9B96400983693 /* CurrentDreamsViewController.h */,
+				05D9327515B9B96400983693 /* CurrentDreamsViewController.m */,
+				05D9327615B9B96400983693 /* CurrentDreamsViewController.xib */,
+				05D9328615B9C82900983693 /* SelectedDreamViewController.h */,
+				05D9328715B9C82900983693 /* SelectedDreamViewController.m */,
+				05D9328815B9C82900983693 /* SelectedDreamViewController.xib */,
+				05A5CF6215C94C850097DB1C /* SettingsViewController.h */,
+				05A5CF6315C94C870097DB1C /* SettingsViewController.m */,
+				05A5CF6415C94C8A0097DB1C /* SettingsViewController.xib */,
 			);
 			path = DreamState;
 			sourceTree = "<group>";
@@ -127,6 +355,15 @@
 		05D9323915B9AEFB00983693 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				05A5CF3415C943B20097DB1C /* 20-gear2.png */,
+				05A5CF3515C943B20097DB1C /* Icon.png */,
+				05A5CE0A15C191E20097DB1C /* Recording.png */,
+				05A5CE0B15C191E20097DB1C /* NotRecording.png */,
+				05209CD615BD6032001C66CF /* dreams.png */,
+				05209CD415BD5FDB001C66CF /* recordicon.png */,
+				05209CD215BD5F33001C66CF /* clockicon.png */,
+				05209CD015BD564F001C66CF /* alarm-clock-1.caf */,
+				05D9327E15B9BA1900983693 /* alarm-clock-1.mp3 */,
 				05D9323A15B9AEFB00983693 /* DreamState-Info.plist */,
 				05D9323B15B9AEFB00983693 /* InfoPlist.strings */,
 				05D9323E15B9AEFB00983693 /* main.m */,
@@ -226,8 +463,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				05D9323D15B9AEFB00983693 /* InfoPlist.strings in Resources */,
-				05D9324915B9AEFB00983693 /* ViewController_iPhone.xib in Resources */,
-				05D9324C15B9AEFB00983693 /* ViewController_iPad.xib in Resources */,
+				05D9324915B9AEFB00983693 /* MenuViewController_iPhone.xib in Resources */,
+				05D9324C15B9AEFB00983693 /* MenuViewController_iPad.xib in Resources */,
+				05D9327315B9B8FB00983693 /* AlarmViewController.xib in Resources */,
+				05D9327815B9B96400983693 /* CurrentDreamsViewController.xib in Resources */,
+				05D9327D15B9B97A00983693 /* RecordDreamViewController.xib in Resources */,
+				05D9327F15B9BA1900983693 /* alarm-clock-1.mp3 in Resources */,
+				05D9328A15B9C82900983693 /* SelectedDreamViewController.xib in Resources */,
+				056E83B815BB1BBF000B17FA /* alarm.caf in Resources */,
+				056E83BE15BB271F000B17FA /* alarm.mp3 in Resources */,
+				05209CD115BD564F001C66CF /* alarm-clock-1.caf in Resources */,
+				05209CD315BD5F33001C66CF /* clockicon.png in Resources */,
+				05209CD515BD5FDB001C66CF /* recordicon.png in Resources */,
+				05209CD715BD6032001C66CF /* dreams.png in Resources */,
+				05E0E31615C022C8005BAEF0 /* Settings.bundle in Resources */,
+				05A5CE0C15C191E20097DB1C /* Recording.png in Resources */,
+				05A5CE0D15C191E20097DB1C /* NotRecording.png in Resources */,
+				05A5CE1715C80AA70097DB1C /* AlarmListViewController.xib in Resources */,
+				05A5CE1915C824A70097DB1C /* AlarmClock.plist in Resources */,
+				05A5CF3615C943B20097DB1C /* 20-gear2.png in Resources */,
+				05A5CF3715C943B20097DB1C /* Icon.png in Resources */,
+				05A5CF5D15C94B060097DB1C /* InAppSettings.png in Resources */,
+				05A5CF5E15C94B060097DB1C /* InAppSettings@2x.png in Resources */,
+				05A5CF6615C94C8C0097DB1C /* SettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,7 +522,29 @@
 			files = (
 				05D9323F15B9AEFB00983693 /* main.m in Sources */,
 				05D9324315B9AEFB00983693 /* AppDelegate.m in Sources */,
-				05D9324615B9AEFB00983693 /* ViewController.m in Sources */,
+				05D9324615B9AEFB00983693 /* MenuViewController.m in Sources */,
+				05D9327215B9B8FB00983693 /* AlarmViewController.m in Sources */,
+				05D9327715B9B96400983693 /* CurrentDreamsViewController.m in Sources */,
+				05D9327C15B9B97A00983693 /* RecordDreamViewController.m in Sources */,
+				05D9328515B9BD9000983693 /* DreamTableViewcell.m in Sources */,
+				05D9328915B9C82900983693 /* SelectedDreamViewController.m in Sources */,
+				05209CFC15BF3D69001C66CF /* DIYCam.m in Sources */,
+				05209CFD15BF3D69001C66CF /* DIYCamUtilities.m in Sources */,
+				05209D0215BF3DD0001C66CF /* UIImage+Resize.m in Sources */,
+				05209D0315BF3DD0001C66CF /* UIImage+Save.m in Sources */,
+				05A5CE1615C80AA70097DB1C /* AlarmListViewController.m in Sources */,
+				05A5CF5515C94B060097DB1C /* InAppSettingsPSChildPaneSpecifierCell.m in Sources */,
+				05A5CF5615C94B060097DB1C /* InAppSettingsPSMultiValueSpecifierCell.m in Sources */,
+				05A5CF5715C94B060097DB1C /* InAppSettingsPSSliderSpecifierCell.m in Sources */,
+				05A5CF5815C94B060097DB1C /* InAppSettingsPSTextFieldSpecifierCell.m in Sources */,
+				05A5CF5915C94B060097DB1C /* InAppSettingsPSTitleValueSpecifierCell.m in Sources */,
+				05A5CF5A15C94B060097DB1C /* InAppSettingsPSToggleSwitchSpecifierCell.m in Sources */,
+				05A5CF5B15C94B060097DB1C /* InAppSettingsTableCell.m in Sources */,
+				05A5CF5C15C94B060097DB1C /* InAppSettings.m in Sources */,
+				05A5CF5F15C94B060097DB1C /* InAppSettingsPSMultiValueSpecifierTable.m in Sources */,
+				05A5CF6015C94B060097DB1C /* InAppSettingsReader.m in Sources */,
+				05A5CF6115C94B060097DB1C /* InAppSettingsSpecifier.m in Sources */,
+				05A5CF6515C94C8C0097DB1C /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,20 +575,20 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		05D9324715B9AEFB00983693 /* ViewController_iPhone.xib */ = {
+		05D9324715B9AEFB00983693 /* MenuViewController_iPhone.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				05D9324815B9AEFB00983693 /* en */,
 			);
-			name = ViewController_iPhone.xib;
+			name = MenuViewController_iPhone.xib;
 			sourceTree = "<group>";
 		};
-		05D9324A15B9AEFB00983693 /* ViewController_iPad.xib */ = {
+		05D9324A15B9AEFB00983693 /* MenuViewController_iPad.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				05D9324B15B9AEFB00983693 /* en */,
 			);
-			name = ViewController_iPad.xib;
+			name = MenuViewController_iPad.xib;
 			sourceTree = "<group>";
 		};
 		05D9325C15B9AEFB00983693 /* InfoPlist.strings */ = {
@@ -345,6 +625,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv6 armv7";
 			};
 			name = Debug;
 		};
@@ -366,16 +647,25 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv6 armv7";
 			};
 			name = Release;
 		};
 		05D9326515B9AEFB00983693 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = armv6;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DreamState/DreamState-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "DreamState/DreamState-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv6 armv7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -383,10 +673,21 @@
 		05D9326615B9AEFB00983693 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = armv6;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DreamState/DreamState-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "DreamState/DreamState-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv6 armv7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -444,6 +745,7 @@
 				05D9326615B9AEFB00983693 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		05D9326715B9AEFB00983693 /* Build configuration list for PBXNativeTarget "DreamStateTests" */ = {
 			isa = XCConfigurationList;
@@ -452,6 +754,7 @@
 				05D9326915B9AEFB00983693 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
