@@ -23,6 +23,9 @@ extern NSString *localReceived;
      AVAudioPlayer *alarmSound;
     
     NSURL *fileURL;
+    
+    //NSString *alarmSoundName;
+    
 }
 
 @property (strong, nonatomic) UIWindow *window;
@@ -38,6 +41,10 @@ extern NSString *localReceived;
 @property (nonatomic, retain) AVAudioPlayer *alarmSound;
 
 @property (nonatomic, retain)  NSURL *fileURL;
+
+
+//@property (nonatomic, retain) NSString *alarmSoundName;
+
 
 
 

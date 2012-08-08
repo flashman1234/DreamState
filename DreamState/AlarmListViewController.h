@@ -21,4 +21,6 @@
 
 @property (nonatomic, retain) UITableView *tableView;
 
+@property(nonatomic, retain)IBOutlet UILabel *noAlarmsLabel;
+
 @end

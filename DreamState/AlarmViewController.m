@@ -8,6 +8,8 @@
 
 #import "AlarmViewController.h"
 #import "AppDelegate.h"
+#import "AlarmSoundViewController.h"
+#import "AlarmLabelViewController.h"
 
 @interface AlarmViewController ()
 
@@ -18,16 +20,26 @@
 @synthesize tableDataSource;
 @synthesize existingAlarmDate;
 
+@synthesize alarmSound;
+@synthesize alarmName;
+
+@synthesize nameLabel;
+@synthesize valueLabel;
+
+
 
 -(void)scheduledNotificationWithDate:(NSDate *)fireDate {
     UILocalNotification *notification = [[UILocalNotification alloc] init];
     
     notification.fireDate = fireDate;
     notification.alertBody = @"Would you like to record a dream?";
-       
+    NSDictionary *userInfoDict = [[NSDictionary alloc] initWithObjectsAndKeys:alarmName, @"AlarmName", alarmSound, @"AlarmSound", nil];
+    
+    notification.userInfo = userInfoDict;
+
     existingAlarmDate = nil;
     
-    notification.soundName = @"alarm-clock-1.caf";
+    notification.soundName = [self.alarmSound stringByAppendingString:@".caf"];
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
 }
 
@@ -42,7 +54,6 @@
     for(UILocalNotification *aNotif in [[UIApplication sharedApplication] scheduledLocalNotifications]) {
         if([aNotif.fireDate isEqualToDate:existingAlarmDate]) {
             notificationToCancel=aNotif;
-            NSLog(@"notificationToCancel : %@", notificationToCancel.fireDate);
             break;
         }
     }
@@ -57,6 +68,40 @@
 
 
 #pragma mark - Table view
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row == 0) {
+        //Get the dictionary of the selected data source.
+        NSDictionary *dictionary = [self.tableDataSource objectAtIndex:indexPath.row];
+        
+        //Get the children of the present item.
+        NSArray *Children = [dictionary objectForKey:@"Children"];
+        
+        if([Children count] != 0) {
+          
+            AlarmSoundViewController *alarmSoundViewController = [[AlarmSoundViewController alloc] init];
+        
+            [self.navigationController pushViewController:alarmSoundViewController animated:YES];
+        
+            alarmSoundViewController.tableDataSource = Children;
+        }
+        
+    }
+
+    if (indexPath.row == 1) {
+        
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        UILabel *vLabel = (UILabel *)[cell viewWithTag:2];
+
+        AlarmLabelViewController *alarmLabelViewController = [[AlarmLabelViewController alloc] init];
+        alarmLabelViewController.existingName = vLabel.text;
+        
+        [self.navigationController pushViewController:alarmLabelViewController animated:YES];
+    }
+}
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -65,18 +110,61 @@
     return [self.tableDataSource count];
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [self.alarmTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        
+        nameLabel = [[UILabel alloc] initWithFrame:CGRectMake( 7.0, 0.0, 140.0, 44.0 )];
+        
+        nameLabel.font = [UIFont systemFontOfSize: 12.0];
+        nameLabel.textAlignment = UITextAlignmentLeft;
+        nameLabel.textColor = [UIColor darkGrayColor];
+        nameLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
+        nameLabel.backgroundColor = [UIColor clearColor];
+        //add tag to make label accessible when the view is reloaded.
+        nameLabel.tag = 1;
+        
+        [cell.contentView addSubview: nameLabel];
+        
+        valueLabel = [[UILabel alloc] initWithFrame: CGRectMake( 165.0, 0.0,120, 44.0 )];
+        
+        valueLabel.font = [UIFont systemFontOfSize: 11];
+        valueLabel.textAlignment = UITextAlignmentRight;
+        valueLabel.textColor = [UIColor blueColor];
+        valueLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
+        valueLabel.backgroundColor = [UIColor clearColor];
+        //add tag to make label accessible when the view is reloaded.
+        valueLabel.tag = 2;
+        
+        [cell.contentView addSubview: valueLabel];
     }
     
-    NSDictionary *dictionary = [self.tableDataSource objectAtIndex:indexPath.row];
-    cell.textLabel.text = [dictionary objectForKey:@"Title"];
+     NSDictionary *dictionary = [self.tableDataSource objectAtIndex:indexPath.row];
+    
+    if ([[dictionary objectForKey:@"Title"] isEqualToString:@"Sound"]) {
+        
+        UILabel *nLabel = (UILabel *)[cell viewWithTag:1];
+        nLabel.text = @"Sound";
+        
+        UILabel *vLabel = (UILabel *)[cell viewWithTag:2];
+        vLabel.text = self.alarmSound;
+        
+
+    }
+    else if([[dictionary objectForKey:@"Title"] isEqualToString:@"Label"])
+    {
+        UILabel *nLabel = (UILabel *)[cell viewWithTag:1];
+        nLabel.text = @"Label";
+
+        UILabel *vLabel = (UILabel *)[cell viewWithTag:2];
+        vLabel.text = self.alarmName;
+    }
+    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
@@ -92,12 +180,10 @@
 
 -(IBAction)alarmCancelButtonTapped:(id)sender
 {
-
     UILocalNotification *notificationToCancel=nil;
     for(UILocalNotification *aNotif in [[UIApplication sharedApplication] scheduledLocalNotifications]) {
         if([aNotif.fireDate isEqualToDate:existingAlarmDate]) {
             notificationToCancel=aNotif;
-            NSLog(@"notificationToCancel : %@", notificationToCancel.fireDate);
             break;
         }
     }
@@ -116,6 +202,15 @@
     
     self.title = @"Alarm clock";
     
+    if (!alarmSound) {
+        self.alarmSound = @"alarm 1";
+    }
+    
+    if (!alarmName) {
+        self.alarmName = @"";
+    }
+    
+    
     if (existingAlarmDate) {
         dateTimePicker.date = existingAlarmDate;
     }
@@ -123,17 +218,20 @@
         dateTimePicker.date = [NSDate date];
     }
 
-    NSArray *tempArray = [[NSArray alloc] init];
-    self.tableDataSource = tempArray;
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.tableDataSource = [appDelegate.alarmClockData objectForKey:@"Rows"];
     
-    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
                                              initWithBarButtonSystemItem:UIBarButtonSystemItemSave 
                                               target:self action:@selector(saveAlarm:)];
-    
+}
+
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.alarmTableView reloadData];
 }
 
 
@@ -148,12 +246,6 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-//        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-//    } else {
-//        return YES;
-//    }
-
-    return NO;
+    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
 }
 @end

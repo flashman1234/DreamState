@@ -20,8 +20,17 @@
 
 -(NSArray *)listFileAtPath:(NSString *)path
 {
-    NSArray *directoryContent = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:NULL];
-    return directoryContent;
+    
+    NSError* error = nil;
+    NSMutableArray  *myArray = (NSMutableArray*)[[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:&error];
+    
+    [myArray sortUsingSelector:@selector(compare:)];
+
+    NSSortDescriptor* sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:nil ascending:NO selector:@selector(localizedCompare:)];        
+    NSArray* sortedArray = [myArray sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    
+    return sortedArray;
+    
 }
 
 #pragma mark - table view methods
@@ -45,8 +54,24 @@
                 reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.text = [tableViewArray objectAtIndex:indexPath.row];
     
+    
+    NSString *fileName = [tableViewArray objectAtIndex:indexPath.row];
+    NSString *fileNameDate = [fileName substringToIndex:[fileName length] - 4];
+    
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"dd-MM-yyyy HH:mm:ss"];
+    
+    NSDate *date = [format dateFromString:fileNameDate];
+
+    NSDateFormatter *f2 = [[NSDateFormatter alloc] init];
+    [f2 setDateFormat:@"d MMM YYYY"];
+
+    NSString *s = [f2 stringFromDate:date];    
+       
+    cell.textLabel.text = s;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+     
     return cell;
 }
 
@@ -87,9 +112,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    //return (interfaceOrientation == UIInterfaceOrientationPortrait);
-    
-    return NO;
+    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
 }
 
 -(void)viewWillAppear:(BOOL)animated

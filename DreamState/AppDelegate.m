@@ -24,6 +24,7 @@ NSString *localReceived = @"localReceived";
 @synthesize alarmClockData;
 
 @synthesize alarmSound;
+
 @synthesize fileURL;
 
 + (void)initialize{
@@ -32,13 +33,9 @@ NSString *localReceived = @"localReceived";
     }
 }
 
-
-
-
-
--(void)playAlarmSound{
+-(void)playAlarmSound:(NSString *)sound{
     
-    NSString *fileName = @"alarm-clock-1";
+    NSString *fileName = sound;// [sound substringToIndex:[sound length] - 4];
     
     NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:@"caf"];
     
@@ -87,13 +84,17 @@ NSString *localReceived = @"localReceived";
 
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
     
+    NSDictionary *notDict = notification.userInfo;
+    
+    NSString *alarmSoundName = [notDict valueForKey:@"AlarmSound"];
+
     if (application.applicationState == UIApplicationStateInactive ) {
         [[NSNotificationCenter defaultCenter] postNotificationName:localReceived object:self];
     }
     
     if(application.applicationState == UIApplicationStateActive ) {
        
-        [self playAlarmSound];
+        [self playAlarmSound:alarmSoundName];
         UIAlertView *alert = [[UIAlertView alloc]
                               initWithTitle: NSLocalizedString(@"Dream alarm clock",nil)
                               message: NSLocalizedString(@"Would you like to record a dream?",nil)
@@ -152,6 +153,8 @@ NSString *localReceived = @"localReceived";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    //self.alarmSoundName = @"alarm-clock-1.caf";
     
     [self setAlarmClockPlist];
     

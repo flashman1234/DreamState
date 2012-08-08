@@ -18,6 +18,8 @@
 @synthesize notificationsArray;
 @synthesize tableView;
 
+@synthesize noAlarmsLabel;
+
 - (void)addAlarmButtonTapped:(id)sender {
 
     AlarmViewController *alarmViewControllerControllerTemp = [[AlarmViewController alloc] init];
@@ -32,21 +34,34 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     AlarmViewController *selectedAlarmViewController = [[AlarmViewController alloc] init];
     
     UILocalNotification *notifcation = [self.notificationsArray objectAtIndex:indexPath.row];
     
+    NSDictionary *notDict = notifcation.userInfo;
+    
+    NSString *alarmName = [notDict valueForKey:@"AlarmName"];
+    NSString *alarmSound = [notDict valueForKey:@"AlarmSound"];
     
     selectedAlarmViewController.existingAlarmDate = notifcation.fireDate;
+    
+    selectedAlarmViewController.alarmSound = alarmSound;
+    selectedAlarmViewController.alarmName = alarmName;
+    
     [self.navigationController pushViewController:selectedAlarmViewController animated:YES];
     
 }
 
 
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    if ([self.notificationsArray count] == 0) {
+        noAlarmsLabel.frame = CGRectMake(115, 150, 100, 30);
+        [self.view addSubview:noAlarmsLabel];
+    }
+    else {
+        [noAlarmsLabel removeFromSuperview];
+    }
     return [self.notificationsArray count];
 }
 
@@ -61,10 +76,19 @@
     
     // Configure the cell.
     UILocalNotification *notifcation = [self.notificationsArray objectAtIndex:indexPath.row];
-      
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM/dd/yyyy hh:mma"];
-    [[cell textLabel] setText:[dateFormatter stringFromDate:notifcation.fireDate]];
+    
+    NSDictionary *notDict = notifcation.userInfo;
+    
+    NSString *alarmName = [notDict valueForKey:@"AlarmName"];
+
+    if ([alarmName length] == 0) {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MM/dd/yyyy hh:mma"];
+        [[cell textLabel] setText:[dateFormatter stringFromDate:notifcation.fireDate]];
+    }
+    else {
+        [[cell textLabel] setText:alarmName];
+    }
     
     return cell;
 }
@@ -96,7 +120,6 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
                                               initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
                                               target:self action:@selector(addAlarmButtonTapped:)];
-    
 }
 
 - (void)viewDidUnload
@@ -106,9 +129,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    //return (interfaceOrientation == UIInterfaceOrientationPortrait);
-    
-    return NO;
+    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
 }
 
 @end

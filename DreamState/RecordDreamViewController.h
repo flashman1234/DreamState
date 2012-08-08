@@ -28,6 +28,7 @@
 }
 
 @property(nonatomic, retain)IBOutlet UIImageView *currentlyRecordingIcon;
+@property(nonatomic, retain)IBOutlet UILabel *recordingAudioLabel;
 
 @property(nonatomic, retain)IBOutlet UIButton *recButton;
 @property(nonatomic, retain)IBOutlet UIButton *stopButton;

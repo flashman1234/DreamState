@@ -6,15 +6,20 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>Sound (not used yet)</string>
+			<string>Sound</string>
 			<key>Children</key>
 			<array>
-				<string>alarm.caf</string>
+				<string>alarm 1</string>
+				<string>alarm 2</string>
 			</array>
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>Label (not used yet)</string>
+			<string>Label</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Repeat</string>
 		</dict>
 	</array>
 </dict>

@@ -35,6 +35,7 @@
             defaults, 
             audioOrVideo, 
             currentlyRecordingIcon, 
+recordingAudioLabel,
             fileURLAsString,
             recButton, 
             stopButton,
@@ -82,7 +83,13 @@
     stopButton.hidden = NO;
     deleteButton.hidden = YES;
     recButton.hidden = YES;
-    currentlyRecordingIcon.image = [UIImage imageNamed:@"Recording.png"];
+    
+    //[self.view bringSubviewToFront:currentlyRecordingIcon];
+    
+    [self.view insertSubview:currentlyRecordingIcon atIndex:100];
+    currentlyRecordingIcon.frame = CGRectMake(280, 20, 20, 20);
+    
+    
     
     NSURL *tempSoundFileURL = [NSURL fileURLWithPath:[self createFileName:@"caf"]];
     soundFileURL = tempSoundFileURL;
@@ -140,7 +147,7 @@
     recButton.hidden = YES;
     currentlyRecordingIcon.image = [UIImage imageNamed:@"Recording.png"];
     
-    [self.view bringSubviewToFront:currentlyRecordingIcon];
+    //[self.view bringSubviewToFront:currentlyRecordingIcon];
     
     [self.view insertSubview:currentlyRecordingIcon atIndex:100];
     currentlyRecordingIcon.frame = CGRectMake(280, 20, 20, 20);
@@ -256,7 +263,19 @@
         [cam stopVideoCapture];
     }
     [super viewWillDisappear:animated];
+    
+    [mediaPlayer stop];
+    [mediaPlayer.view removeFromSuperview];
 }
+
+
+//-(void)viewDidDisappear:(BOOL)animated{
+//    
+//    [super viewDidDisappear:(BOOL)animated];
+//    [mediaPlayer stop];
+//    [mediaPlayer.view removeFromSuperview];
+//}
+
 
 - (void)viewDidUnload
 {
@@ -275,8 +294,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    //return (interfaceOrientation == UIInterfaceOrientationPortrait);
-    return NO;
+    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
 }
 
 

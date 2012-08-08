@@ -45,18 +45,25 @@
     
     NSString *soundFilePath = [docsDir stringByAppendingPathComponent:dreamFileName];
 
-    NSURL *videoURL = [NSURL fileURLWithPath:soundFilePath];
+    NSURL *fileURL = [NSURL fileURLWithPath:soundFilePath];
 
-    self.mediaPlayer = [[MPMoviePlayerController alloc] initWithContentURL: videoURL];
+    self.mediaPlayer = [[MPMoviePlayerController alloc] initWithContentURL: fileURL];
     
     //Use MPMovieControlStyleNone if you want to add my own buttons
     //self.mediaPlayer.controlStyle = MPMovieControlStyleNone;
 
     [mediaPlayer prepareToPlay];
     
-    CGRect bounds           = CGRectMake(0, 0, display.layer.bounds.size.width, 380);
+    CGRect bounds           = CGRectMake(0, 0, display.layer.bounds.size.width, display.layer.bounds.size.height - 30);
     
     [mediaPlayer.view setFrame: bounds]; 
+    
+    //force player into portrait
+    NSString *fileType = [soundFilePath substringFromIndex:[soundFilePath length] - 3];
+    if ([fileType isEqualToString:@"mov"]) {
+        [mediaPlayer.view setTransform:CGAffineTransformMakeRotation(-M_PI_2)];
+    }
+    
     [display addSubview:mediaPlayer.view];
     mediaPlayer.view.layer.zPosition = -1;
     [mediaPlayer play];
@@ -115,9 +122,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    //return (interfaceOrientation == UIInterfaceOrientationPortrait);
-    
-    return NO;
+    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
 }
 
 @end

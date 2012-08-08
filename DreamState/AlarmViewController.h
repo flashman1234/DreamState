@@ -16,9 +16,15 @@
     
     NSArray *tableDataSource;
     NSDate *existingAlarmDate;
+    
+    NSString *alarmSound;
+    NSString *alarmName;
+    
+    UILabel* nameLabel;
+    UILabel* valueLabel;
+    
 }
 
-//-(void) presentMessage:(NSString *)message;
 -(void) scheduledNotificationWithDate:(NSDate *) fireDate;
 -(IBAction)alarmSetButtonTapped:(id)sender;
 -(IBAction)alarmCancelButtonTapped:(id)sender;
@@ -26,5 +32,11 @@
 @property (nonatomic, retain) UITableView *alarmTableView;
 @property (nonatomic, retain) NSArray *tableDataSource;
 @property (nonatomic, retain) NSDate *existingAlarmDate;
+
+@property (nonatomic, retain) NSString *alarmSound;
+@property (nonatomic, retain) NSString *alarmName;
+
+@property (nonatomic, retain)  UILabel* nameLabel;
+@property (nonatomic, retain)  UILabel* valueLabel;
 
 @end

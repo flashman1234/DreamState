@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		05209CD115BD564F001C66CF /* alarm-clock-1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 05209CD015BD564F001C66CF /* alarm-clock-1.caf */; };
+		05209CD115BD564F001C66CF /* alarm 1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 05209CD015BD564F001C66CF /* alarm 1.caf */; };
 		05209CD315BD5F33001C66CF /* clockicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 05209CD215BD5F33001C66CF /* clockicon.png */; };
 		05209CD515BD5FDB001C66CF /* recordicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 05209CD415BD5FDB001C66CF /* recordicon.png */; };
 		05209CD715BD6032001C66CF /* dreams.png in Resources */ = {isa = PBXBuildFile; fileRef = 05209CD615BD6032001C66CF /* dreams.png */; };
@@ -45,6 +45,7 @@
 		05A5CF6515C94C8C0097DB1C /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF6315C94C870097DB1C /* SettingsViewController.m */; };
 		05A5CF6615C94C8C0097DB1C /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A5CF6415C94C8A0097DB1C /* SettingsViewController.xib */; };
 		05A5CF6A15CFC2740097DB1C /* MediaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF6915CFC2710097DB1C /* MediaController.m */; };
+		05A5CF6F15D1469B0097DB1C /* alarm 2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 05A5CF6E15D1469A0097DB1C /* alarm 2.caf */; };
 		05D9323315B9AEFB00983693 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9323215B9AEFB00983693 /* UIKit.framework */; };
 		05D9323515B9AEFB00983693 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9323415B9AEFB00983693 /* Foundation.framework */; };
 		05D9323715B9AEFB00983693 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9323615B9AEFB00983693 /* CoreGraphics.framework */; };
@@ -65,13 +66,16 @@
 		05D9327815B9B96400983693 /* CurrentDreamsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05D9327615B9B96400983693 /* CurrentDreamsViewController.xib */; };
 		05D9327C15B9B97A00983693 /* RecordDreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9327A15B9B97A00983693 /* RecordDreamViewController.m */; };
 		05D9327D15B9B97A00983693 /* RecordDreamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05D9327B15B9B97A00983693 /* RecordDreamViewController.xib */; };
-		05D9327F15B9BA1900983693 /* alarm-clock-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 05D9327E15B9BA1900983693 /* alarm-clock-1.mp3 */; };
 		05D9328115B9BC8700983693 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9328015B9BC8700983693 /* AVFoundation.framework */; };
 		05D9328515B9BD9000983693 /* DreamTableViewcell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9328315B9BD8B00983693 /* DreamTableViewcell.m */; };
 		05D9328915B9C82900983693 /* SelectedDreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9328715B9C82900983693 /* SelectedDreamViewController.m */; };
 		05D9328A15B9C82900983693 /* SelectedDreamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05D9328815B9C82900983693 /* SelectedDreamViewController.xib */; };
 		05E0E30F15BFF92B005BAEF0 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E0E30E15BFF92B005BAEF0 /* MediaPlayer.framework */; };
 		05E0E31615C022C8005BAEF0 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 05E0E31515C022C8005BAEF0 /* Settings.bundle */; };
+		05E5A9FC15D150C2004684E0 /* AlarmSoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E5A9FA15D150C2004684E0 /* AlarmSoundViewController.m */; };
+		05E5A9FD15D150C2004684E0 /* AlarmSoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05E5A9FB15D150C2004684E0 /* AlarmSoundViewController.xib */; };
+		05E5AA0715D27290004684E0 /* AlarmLabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E5AA0515D27290004684E0 /* AlarmLabelViewController.m */; };
+		05E5AA0815D27290004684E0 /* AlarmLabelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05E5AA0615D27290004684E0 /* AlarmLabelViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,7 +89,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		05209CD015BD564F001C66CF /* alarm-clock-1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "alarm-clock-1.caf"; sourceTree = "<group>"; };
+		05209CD015BD564F001C66CF /* alarm 1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "alarm 1.caf"; sourceTree = "<group>"; };
 		05209CD215BD5F33001C66CF /* clockicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clockicon.png; sourceTree = "<group>"; };
 		05209CD415BD5FDB001C66CF /* recordicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recordicon.png; sourceTree = "<group>"; };
 		05209CD615BD6032001C66CF /* dreams.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dreams.png; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 		05A5CF6415C94C8A0097DB1C /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		05A5CF6815CFC26F0097DB1C /* MediaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaController.h; sourceTree = "<group>"; };
 		05A5CF6915CFC2710097DB1C /* MediaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaController.m; sourceTree = "<group>"; };
+		05A5CF6E15D1469A0097DB1C /* alarm 2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "alarm 2.caf"; sourceTree = "<group>"; };
 		05D9322E15B9AEFB00983693 /* DreamState.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamState.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05D9323215B9AEFB00983693 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		05D9323415B9AEFB00983693 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -172,7 +177,6 @@
 		05D9327915B9B97A00983693 /* RecordDreamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordDreamViewController.h; sourceTree = "<group>"; };
 		05D9327A15B9B97A00983693 /* RecordDreamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordDreamViewController.m; sourceTree = "<group>"; };
 		05D9327B15B9B97A00983693 /* RecordDreamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordDreamViewController.xib; sourceTree = "<group>"; };
-		05D9327E15B9BA1900983693 /* alarm-clock-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "alarm-clock-1.mp3"; sourceTree = "<group>"; };
 		05D9328015B9BC8700983693 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		05D9328215B9BD8B00983693 /* DreamTableViewcell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DreamTableViewcell.h; sourceTree = "<group>"; };
 		05D9328315B9BD8B00983693 /* DreamTableViewcell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DreamTableViewcell.m; sourceTree = "<group>"; };
@@ -181,6 +185,12 @@
 		05D9328815B9C82900983693 /* SelectedDreamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectedDreamViewController.xib; sourceTree = "<group>"; };
 		05E0E30E15BFF92B005BAEF0 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		05E0E31515C022C8005BAEF0 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		05E5A9F915D150C2004684E0 /* AlarmSoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmSoundViewController.h; sourceTree = "<group>"; };
+		05E5A9FA15D150C2004684E0 /* AlarmSoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmSoundViewController.m; sourceTree = "<group>"; };
+		05E5A9FB15D150C2004684E0 /* AlarmSoundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlarmSoundViewController.xib; sourceTree = "<group>"; };
+		05E5AA0415D2728F004684E0 /* AlarmLabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmLabelViewController.h; sourceTree = "<group>"; };
+		05E5AA0515D27290004684E0 /* AlarmLabelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmLabelViewController.m; sourceTree = "<group>"; };
+		05E5AA0615D27290004684E0 /* AlarmLabelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlarmLabelViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +250,12 @@
 				05D9326F15B9B8FB00983693 /* AlarmViewController.h */,
 				05D9327015B9B8FB00983693 /* AlarmViewController.m */,
 				05D9327115B9B8FB00983693 /* AlarmViewController.xib */,
+				05E5A9F915D150C2004684E0 /* AlarmSoundViewController.h */,
+				05E5A9FA15D150C2004684E0 /* AlarmSoundViewController.m */,
+				05E5A9FB15D150C2004684E0 /* AlarmSoundViewController.xib */,
+				05E5AA0415D2728F004684E0 /* AlarmLabelViewController.h */,
+				05E5AA0515D27290004684E0 /* AlarmLabelViewController.m */,
+				05E5AA0615D27290004684E0 /* AlarmLabelViewController.xib */,
 			);
 			name = AlarmClock;
 			sourceTree = "<group>";
@@ -374,6 +390,8 @@
 		05D9323915B9AEFB00983693 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				05209CD015BD564F001C66CF /* alarm 1.caf */,
+				05A5CF6E15D1469A0097DB1C /* alarm 2.caf */,
 				056E83BD15BB271F000B17FA /* alarm.mp3 */,
 				056E83B615BB1BB9000B17FA /* alarm.caf */,
 				05A5CF3415C943B20097DB1C /* 20-gear2.png */,
@@ -383,8 +401,6 @@
 				05209CD615BD6032001C66CF /* dreams.png */,
 				05209CD415BD5FDB001C66CF /* recordicon.png */,
 				05209CD215BD5F33001C66CF /* clockicon.png */,
-				05209CD015BD564F001C66CF /* alarm-clock-1.caf */,
-				05D9327E15B9BA1900983693 /* alarm-clock-1.mp3 */,
 				05D9323A15B9AEFB00983693 /* DreamState-Info.plist */,
 				05D9323B15B9AEFB00983693 /* InfoPlist.strings */,
 				05D9323E15B9AEFB00983693 /* main.m */,
@@ -489,11 +505,10 @@
 				05D9327315B9B8FB00983693 /* AlarmViewController.xib in Resources */,
 				05D9327815B9B96400983693 /* CurrentDreamsViewController.xib in Resources */,
 				05D9327D15B9B97A00983693 /* RecordDreamViewController.xib in Resources */,
-				05D9327F15B9BA1900983693 /* alarm-clock-1.mp3 in Resources */,
 				05D9328A15B9C82900983693 /* SelectedDreamViewController.xib in Resources */,
 				056E83B815BB1BBF000B17FA /* alarm.caf in Resources */,
 				056E83BE15BB271F000B17FA /* alarm.mp3 in Resources */,
-				05209CD115BD564F001C66CF /* alarm-clock-1.caf in Resources */,
+				05209CD115BD564F001C66CF /* alarm 1.caf in Resources */,
 				05209CD315BD5F33001C66CF /* clockicon.png in Resources */,
 				05209CD515BD5FDB001C66CF /* recordicon.png in Resources */,
 				05209CD715BD6032001C66CF /* dreams.png in Resources */,
@@ -507,6 +522,9 @@
 				05A5CF5D15C94B060097DB1C /* InAppSettings.png in Resources */,
 				05A5CF5E15C94B060097DB1C /* InAppSettings@2x.png in Resources */,
 				05A5CF6615C94C8C0097DB1C /* SettingsViewController.xib in Resources */,
+				05A5CF6F15D1469B0097DB1C /* alarm 2.caf in Resources */,
+				05E5A9FD15D150C2004684E0 /* AlarmSoundViewController.xib in Resources */,
+				05E5AA0815D27290004684E0 /* AlarmLabelViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,6 +585,8 @@
 				05A5CF6115C94B060097DB1C /* InAppSettingsSpecifier.m in Sources */,
 				05A5CF6515C94C8C0097DB1C /* SettingsViewController.m in Sources */,
 				05A5CF6A15CFC2740097DB1C /* MediaController.m in Sources */,
+				05E5A9FC15D150C2004684E0 /* AlarmSoundViewController.m in Sources */,
+				05E5AA0715D27290004684E0 /* AlarmLabelViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
