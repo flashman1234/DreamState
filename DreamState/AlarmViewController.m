@@ -8,12 +8,13 @@
 
 #import "AlarmViewController.h"
 #import "AppDelegate.h"
+
 #import "AlarmSoundViewController.h"
 #import "AlarmLabelViewController.h"
+#import "AlarmDaysViewController.h"
 
-@interface AlarmViewController ()
-
-@end
+#import "Alarm.h"
+#import "Day.h"
 
 @implementation AlarmViewController
 @synthesize alarmTableView;
@@ -22,9 +23,13 @@
 
 @synthesize alarmSound;
 @synthesize alarmName;
+@synthesize alarmRepeatDays;
+@synthesize tidyDay;
 
 @synthesize nameLabel;
 @synthesize valueLabel;
+
+@synthesize managedObjectContext;
 
 
 
@@ -43,6 +48,10 @@
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
 }
 
+-(void)saveAlarm:(id)sender{
+    [self saveAlarm];
+}
+
 -(void)saveAlarm{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.timeZone = [NSTimeZone defaultTimeZone];
@@ -50,6 +59,7 @@
     dateFormatter.dateStyle = NSDateFormatterShortStyle;
     
     
+    //if there is a current notification, then remove it before adding new one.
     UILocalNotification *notificationToCancel=nil;
     for(UILocalNotification *aNotif in [[UIApplication sharedApplication] scheduledLocalNotifications]) {
         if([aNotif.fireDate isEqualToDate:existingAlarmDate]) {
@@ -62,9 +72,42 @@
     }
 
     [self scheduledNotificationWithDate:dateTimePicker.date];
+    [self storeAlarmInStore:dateTimePicker.date];
     
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+-(void)storeAlarmInStore:(NSDate *)fireDate{
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+
+    Alarm *alarm = [NSEntityDescription
+                    insertNewObjectForEntityForName:@"Alarm"
+                    inManagedObjectContext:context];
+    
+    [alarm setValue:alarmName forKey:@"name"];
+    [alarm setValue:alarmSound forKey:@"sound"];
+    
+    
+    for (NSString *myArrayElement in alarmRepeatDays) {
+        
+        Day *day = [NSEntityDescription
+                                    insertNewObjectForEntityForName:@"Day"
+                                    inManagedObjectContext:context];
+        
+        [day setValue:myArrayElement forKey:@"day"];
+        
+        [day setValue:alarm forKey:@"alarm"];
+    }
+        
+    
+       NSError *error;
+    if (![context save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+    
+}
+
 
 
 #pragma mark - Table view
@@ -99,6 +142,14 @@
         
         [self.navigationController pushViewController:alarmLabelViewController animated:YES];
     }
+    
+    if (indexPath.row == 2) {
+        
+        AlarmDaysViewController *alarmDaysViewController = [[AlarmDaysViewController alloc] init];
+        alarmDaysViewController.selectedDayArray = [alarmRepeatDays mutableCopy];
+        
+        [self.navigationController pushViewController:alarmDaysViewController animated:YES];
+    }
 }
 
 
@@ -107,7 +158,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.tableDataSource count];
+    //return [self.tableDataSource count];
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -164,9 +216,38 @@
         vLabel.text = self.alarmName;
     }
     
+    else if([[dictionary objectForKey:@"Title"] isEqualToString:@"Repeat"])
+    {
+        UILabel *nLabel = (UILabel *)[cell viewWithTag:1];
+        nLabel.text = @"Repeat";
+        
+        UILabel *vLabel = (UILabel *)[cell viewWithTag:2];
+        vLabel.text = [self tidyDaysFromArray:self.alarmRepeatDays];
+    }
+    
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
+}
+
+
+-(NSString *)tidyDaysFromArray:(NSArray *)array{
+    
+    NSString *tidyDayTemp = [[NSString alloc]init];
+    tidyDay = tidyDayTemp;
+    
+    for (NSString *myArrayElement in array) {
+        NSString *shortDay = [myArrayElement substringToIndex:3];
+        
+        tidyDay = [tidyDay stringByAppendingString:shortDay];
+        tidyDay = [tidyDay stringByAppendingString:@", "];
+
+    }
+    if ([tidyDay length] > 0) {
+        tidyDay = [tidyDay substringToIndex:[tidyDay length] - 2];
+        return tidyDay;
+    }
+    return @"";    
 }
 
 
@@ -199,7 +280,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     self.title = @"Alarm clock";
     
     if (!alarmSound) {
@@ -234,10 +315,6 @@
     [self.alarmTableView reloadData];
 }
 
-
--(void)saveAlarm:(id)sender{
-    [self saveAlarm];
-}
 
 - (void)viewDidUnload
 {

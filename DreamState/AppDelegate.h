@@ -13,6 +13,9 @@
 #import <CoreAudio/CoreAudioTypes.h>
 #import <AudioToolbox/AudioToolbox.h>
 
+
+
+
 extern NSString *localReceived;
 
 
@@ -23,8 +26,10 @@ extern NSString *localReceived;
      AVAudioPlayer *alarmSound;
     
     NSURL *fileURL;
-    
-    //NSString *alarmSoundName;
+//    
+//    NSManagedObjectModel *managedObjectModel;
+//    NSManagedObjectContext *managedObjectContext;
+//    NSPersistentStoreCoordinator *persistentStoreCoordinator;
     
 }
 
@@ -43,10 +48,14 @@ extern NSString *localReceived;
 @property (nonatomic, retain)  NSURL *fileURL;
 
 
-//@property (nonatomic, retain) NSString *alarmSoundName;
 
 
+@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
+@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
+- (void)saveContext;
+- (NSURL *)applicationDocumentsDirectory;
 
 
 @end

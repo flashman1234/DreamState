@@ -18,6 +18,8 @@
 
 @synthesize dreamTableView;
 
+@synthesize managedObjectContext;
+
 -(NSArray *)listFileAtPath:(NSString *)path
 {
     
@@ -116,7 +118,17 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated
-{
+{    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"Alarm" inManagedObjectContext:managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSError *error;
+    NSArray *alarms = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    NSLog(@"self.alarms : %@", alarms);
+
+    
+    
     NSArray *dirPaths;
     NSString *docsDir;
     

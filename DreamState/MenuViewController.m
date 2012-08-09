@@ -16,6 +16,10 @@
 #import "SettingsViewController.h"
 #import "InAppSettings.h"
 
+
+#import "Alarm.h"
+
+
 @interface MenuViewController ()
 
 @end
@@ -23,16 +27,22 @@
 @implementation MenuViewController
 @synthesize alarmButton, currentDreamButton, recordDreamButton, settingsButton;
 
+@synthesize alarms;
+
+
+@synthesize managedObjectContext;
 
 #pragma mark - IBActions
 
 -(IBAction)pressAlarmButton{
     AlarmListViewController *alarmController = [[AlarmListViewController alloc] init];
+    alarmController.managedObjectContext = [self managedObjectContext];
     [self.navigationController pushViewController:alarmController animated:YES];
    
 }
 -(IBAction)pressCurrentDreamButton{
     CurrentDreamsViewController *currentDreamsController = [[CurrentDreamsViewController alloc] init];
+    currentDreamsController.managedObjectContext = [self managedObjectContext];
     [self.navigationController pushViewController:currentDreamsController animated:YES];
     
 }
@@ -53,6 +63,19 @@
 {
     [super viewDidLoad];
     self.title = @"Dream State";
+    
+    if (managedObjectContext == nil) {
+        managedObjectContext = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
+    }
+    
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"Alarm" inManagedObjectContext:managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSError *error;
+    self.alarms = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    NSLog(@"self.alarms : %@", self.alarms);
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localAction) name:localReceived object:nil];
 

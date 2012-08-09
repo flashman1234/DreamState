@@ -17,4 +17,6 @@
 
 @property (nonatomic, retain) UITableView *dreamTableView;
 
+@property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
+
 @end

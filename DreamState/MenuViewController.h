@@ -27,5 +27,9 @@
 -(IBAction)pressRecordDreamButton;
 -(IBAction)pressSettingsButton;
 
+@property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
+
+@property (nonatomic, strong) NSArray *alarms;
+
 
 @end

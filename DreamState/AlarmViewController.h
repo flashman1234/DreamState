@@ -14,14 +14,15 @@
     IBOutlet UIDatePicker *dateTimePicker;
     IBOutlet UITableView *alarmTableView;
     
-    NSArray *tableDataSource;
-    NSDate *existingAlarmDate;
-    
-    NSString *alarmSound;
-    NSString *alarmName;
-    
-    UILabel* nameLabel;
-    UILabel* valueLabel;
+//    NSArray *tableDataSource;
+//    NSDate *existingAlarmDate;
+//    
+//    NSString *alarmSound;
+//    NSString *alarmName;
+//
+//    
+//    UILabel* nameLabel;
+//    UILabel* valueLabel;
     
 }
 
@@ -35,8 +36,14 @@
 
 @property (nonatomic, retain) NSString *alarmSound;
 @property (nonatomic, retain) NSString *alarmName;
+@property (nonatomic, retain) NSArray *alarmRepeatDays;
+
+@property (nonatomic, retain) NSString *tidyDay;
+
 
 @property (nonatomic, retain)  UILabel* nameLabel;
 @property (nonatomic, retain)  UILabel* valueLabel;
+
+@property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
 
 @end

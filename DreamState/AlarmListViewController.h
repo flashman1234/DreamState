@@ -15,12 +15,15 @@
     
 }
 
-@property (nonatomic, retain) AlarmViewController *tdController;
+//@property (nonatomic, retain) AlarmViewController *tdController;
 
 @property (nonatomic, retain) NSArray *notificationsArray;
 
 @property (nonatomic, retain) UITableView *tableView;
 
 @property(nonatomic, retain)IBOutlet UILabel *noAlarmsLabel;
+
+
+@property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
 
 @end

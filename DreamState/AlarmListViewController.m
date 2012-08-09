@@ -14,19 +14,22 @@
 @end
 
 @implementation AlarmListViewController
-@synthesize tdController;
+//@synthesize tdController;
 @synthesize notificationsArray;
 @synthesize tableView;
 
 @synthesize noAlarmsLabel;
 
+@synthesize managedObjectContext;
+
 - (void)addAlarmButtonTapped:(id)sender {
 
     AlarmViewController *alarmViewControllerControllerTemp = [[AlarmViewController alloc] init];
     
-    self.tdController = alarmViewControllerControllerTemp;
+    //self.tdController = alarmViewControllerControllerTemp;
+    alarmViewControllerControllerTemp.managedObjectContext = [self managedObjectContext];
               
-    [self.navigationController pushViewController:self.tdController animated:YES]; 
+    [self.navigationController pushViewController:alarmViewControllerControllerTemp animated:YES]; 
 }
 
 
