@@ -13,7 +13,7 @@
 
 @interface Day : NSManagedObject
 
-@property (nonatomic, retain) NSString * day;
+@property (nonatomic, retain) NSString *day;
 @property (nonatomic, retain) Alarm *alarm;
 
 @end

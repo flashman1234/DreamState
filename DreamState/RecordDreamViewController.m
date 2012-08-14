@@ -9,6 +9,9 @@
 #import "RecordDreamViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import "Dream.h"
+#import "AppDelegate.h"
+#import "DreamNameViewController.h"
 
 @interface RecordDreamViewController ()
 {
@@ -35,7 +38,7 @@
             defaults, 
             audioOrVideo, 
             currentlyRecordingIcon, 
-recordingAudioLabel,
+            recordingAudioLabel,
             fileURLAsString,
             recButton, 
             stopButton,
@@ -43,6 +46,9 @@ recordingAudioLabel,
             display, 
             fileURL;
 
+@synthesize managedObjectContext;
+@synthesize dream;
+@synthesize nameButton;
 
 
 #pragma mark - Play and Record
@@ -59,15 +65,16 @@ recordingAudioLabel,
     }
     fileURL = tempfileURL;
     
-    
     if (showPreview) {
-    [cam.preview  removeFromSuperlayer];
+        if (cam.preview) {
+            [cam.preview  removeFromSuperlayer];
+        }
     }
     
     MPMoviePlayerController *tempMediaPlayer = [[MPMoviePlayerController alloc] initWithContentURL: fileURL];
     self.mediaPlayer = tempMediaPlayer;
 
-    CGRect bounds = CGRectMake(0, 0, display.layer.bounds.size.width, 380);
+    CGRect bounds = CGRectMake(0, 100, display.layer.bounds.size.width, 280);
     
     [mediaPlayer.view setFrame: bounds]; 
     [display addSubview:mediaPlayer.view];
@@ -84,12 +91,8 @@ recordingAudioLabel,
     deleteButton.hidden = YES;
     recButton.hidden = YES;
     
-    //[self.view bringSubviewToFront:currentlyRecordingIcon];
-    
     [self.view insertSubview:currentlyRecordingIcon atIndex:100];
     currentlyRecordingIcon.frame = CGRectMake(280, 20, 20, 20);
-    
-    
     
     NSURL *tempSoundFileURL = [NSURL fileURLWithPath:[self createFileName:@"caf"]];
     soundFileURL = tempSoundFileURL;
@@ -125,6 +128,31 @@ recordingAudioLabel,
     else {
         [recorder prepareToRecord];
         [recorder record];
+        
+        //save details to db
+        NSManagedObjectContext *context = [self managedObjectContext];
+        
+        //Dream *dream = [NSEntityDescription
+        dream = [NSEntityDescription
+                        insertNewObjectForEntityForName:@"Dream"
+                        inManagedObjectContext:context];
+        
+       
+           
+        NSDateFormatter *dreamDateFormatter = [[NSDateFormatter alloc] init];
+        [dreamDateFormatter setDateFormat: @"dd MMM yyyy"];
+        
+        NSString *dreamDateAsString = [dreamDateFormatter stringFromDate:[NSDate date]];
+        
+        dream.name = [dreamDateAsString stringByAppendingString:@" - Audio"];
+        dream.fileUrl = [soundFileURL path];
+        dream.date = dreamDateAsString;
+        dream.mediaType = @"Audio";
+        
+        NSError *error;
+        if (![context save:&error]) {
+            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        }
     }
 }
 
@@ -147,12 +175,9 @@ recordingAudioLabel,
     recButton.hidden = YES;
     currentlyRecordingIcon.image = [UIImage imageNamed:@"Recording.png"];
     
-    //[self.view bringSubviewToFront:currentlyRecordingIcon];
-    
     [self.view insertSubview:currentlyRecordingIcon atIndex:100];
     currentlyRecordingIcon.frame = CGRectMake(280, 20, 20, 20);
 
-    
     DIYCam *tempDIYCam = [[DIYCam alloc] init];
     
     cam = tempDIYCam;
@@ -176,6 +201,29 @@ recordingAudioLabel,
     videoURL = tempVideoURL;
 
     [cam startVideoCapture:videoFile];
+    
+    //save details to db
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    dream = [NSEntityDescription
+                    insertNewObjectForEntityForName:@"Dream"
+                    inManagedObjectContext:context];
+    
+    NSDateFormatter *dreamDateFormatter = [[NSDateFormatter alloc] init];
+    [dreamDateFormatter setDateFormat: @"dd MMM yyyy"];
+    
+    NSString *dreamDateAsString = [dreamDateFormatter stringFromDate:[NSDate date]];
+    
+    dream.name = [dreamDateAsString stringByAppendingString:@" - Video"];
+    dream.fileUrl = videoFile;
+    dream.date = dreamDateAsString;
+    dream.mediaType = @"Video";
+    
+    NSError *error;
+    if (![context save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+
 
 }
 
@@ -188,19 +236,6 @@ recordingAudioLabel,
     [cam stopVideoCapture];
     [self playDream];
 }
-
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-
-
 
 #pragma mark - view methods
 
@@ -261,20 +296,15 @@ recordingAudioLabel,
     if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
        
         [cam stopVideoCapture];
+               
     }
     [super viewWillDisappear:animated];
     
     [mediaPlayer stop];
     [mediaPlayer.view removeFromSuperview];
+    
 }
 
-
-//-(void)viewDidDisappear:(BOOL)animated{
-//    
-//    [super viewDidDisappear:(BOOL)animated];
-//    [mediaPlayer stop];
-//    [mediaPlayer.view removeFromSuperview];
-//}
 
 
 - (void)viewDidUnload
@@ -322,6 +352,14 @@ recordingAudioLabel,
     else {
         [self recordAudio];
     }
+}
+
+-(IBAction)nameDream
+{
+    DreamNameViewController *dreamNameViewController = [[DreamNameViewController alloc] init];
+    dreamNameViewController.managedObjectContext = [self managedObjectContext];
+    dreamNameViewController.existingDream = dream;
+    [self.navigationController pushViewController:dreamNameViewController animated:YES];
 }
 
 

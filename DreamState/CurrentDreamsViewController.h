@@ -10,7 +10,7 @@
 
 @interface CurrentDreamsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 {
-    NSArray *tableViewArray;
+    //
     
     IBOutlet UITableView  *dreamTableView;
 }
@@ -18,5 +18,9 @@
 @property (nonatomic, retain) UITableView *dreamTableView;
 
 @property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
+
+@property (nonatomic, retain) NSArray *dreamArray;
+
+//@property (nonatomic, retain) NSArray *tableViewArray;
 
 @end

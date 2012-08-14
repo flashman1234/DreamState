@@ -16,10 +16,19 @@
 #import "Alarm.h"
 #import "Day.h"
 
+#import "NotificationLoader.h"
+
+#import "Alarmhelper.h"
+
 @implementation AlarmViewController
 @synthesize alarmTableView;
 @synthesize tableDataSource;
-@synthesize existingAlarmDate;
+
+
+//@synthesize existingAlarmDate;
+@synthesize existingAlarm;
+
+
 
 @synthesize alarmSound;
 @synthesize alarmName;
@@ -31,63 +40,52 @@
 
 @synthesize managedObjectContext;
 
+@synthesize existingDayNames;
 
-
--(void)scheduledNotificationWithDate:(NSDate *)fireDate {
-    UILocalNotification *notification = [[UILocalNotification alloc] init];
-    
-    notification.fireDate = fireDate;
-    notification.alertBody = @"Would you like to record a dream?";
-    NSDictionary *userInfoDict = [[NSDictionary alloc] initWithObjectsAndKeys:alarmName, @"AlarmName", alarmSound, @"AlarmSound", nil];
-    
-    notification.userInfo = userInfoDict;
-
-    existingAlarmDate = nil;
-    
-    notification.soundName = [self.alarmSound stringByAppendingString:@".caf"];
-    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
-}
 
 -(void)saveAlarm:(id)sender{
-    [self saveAlarm];
-}
-
--(void)saveAlarm{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.timeZone = [NSTimeZone defaultTimeZone];
-    dateFormatter.timeStyle = NSDateFormatterShortStyle;
-    dateFormatter.dateStyle = NSDateFormatterShortStyle;
-    
-    
-    //if there is a current notification, then remove it before adding new one.
-    UILocalNotification *notificationToCancel=nil;
-    for(UILocalNotification *aNotif in [[UIApplication sharedApplication] scheduledLocalNotifications]) {
-        if([aNotif.fireDate isEqualToDate:existingAlarmDate]) {
-            notificationToCancel=aNotif;
-            break;
-        }
-    }
-    if (notificationToCancel) {
-        [[UIApplication sharedApplication] cancelLocalNotification:notificationToCancel];
-    }
-
-    [self scheduledNotificationWithDate:dateTimePicker.date];
     [self storeAlarmInStore:dateTimePicker.date];
+    
+    NotificationLoader *notificationLoader = [[NotificationLoader alloc] init];
+    notificationLoader.managedObjectContext = [self managedObjectContext];
+    [notificationLoader loadNotifications];
     
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)storeAlarmInStore:(NSDate *)fireDate{
+    
     NSManagedObjectContext *context = [self managedObjectContext];
     
-
-    Alarm *alarm = [NSEntityDescription
-                    insertNewObjectForEntityForName:@"Alarm"
-                    inManagedObjectContext:context];
+    Alarm *alarm;
     
+    if (existingAlarm) {
+        alarm = existingAlarm;
+    }
+    else {
+        alarm = [NSEntityDescription
+                 insertNewObjectForEntityForName:@"Alarm"
+                 inManagedObjectContext:context];
+
+    }
+   
     [alarm setValue:alarmName forKey:@"name"];
     [alarm setValue:alarmSound forKey:@"sound"];
+    [alarm setValue:[NSNumber numberWithBool:YES] forKey:@"enabled"];
     
+    
+    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+    [outputFormatter setDateFormat:@"HH:mm"]; //24hr time format
+    NSString *timeString = [outputFormatter stringFromDate:dateTimePicker.date];
+    
+    [alarm setValue:timeString forKey:@"time"];
+    
+    
+    for (NSManagedObject *aDay in alarm.day) {
+        [context deleteObject:aDay];
+    }
+    NSError *saveError = nil;
+    [context save:&saveError];
     
     for (NSString *myArrayElement in alarmRepeatDays) {
         
@@ -107,6 +105,26 @@
     }
     
 }
+
+//-(NSString *)tidyDaysFromArray:(NSArray *)array{
+//
+//    NSString *tidyDayTemp = [[NSString alloc]init];
+//    tidyDay = tidyDayTemp;
+//    
+//    for (NSString *myArrayElement in array) {
+//        NSString *shortDay = [myArrayElement substringToIndex:3];
+//        
+//        tidyDay = [tidyDay stringByAppendingString:shortDay];
+//        tidyDay = [tidyDay stringByAppendingString:@", "];
+//        
+//    }
+//    if ([tidyDay length] > 0) {
+//        tidyDay = [tidyDay substringToIndex:[tidyDay length] - 2];
+//        return tidyDay;
+//    }
+//    return @"";    
+//}
+
 
 
 
@@ -222,7 +240,10 @@
         nLabel.text = @"Repeat";
         
         UILabel *vLabel = (UILabel *)[cell viewWithTag:2];
-        vLabel.text = [self tidyDaysFromArray:self.alarmRepeatDays];
+        //vLabel.text = [self tidyDaysFromArray:self.alarmRepeatDays];
+        Alarmhelper *helper = [[Alarmhelper alloc] init];
+        
+        vLabel.text = [helper tidyDaysFromArray:self.alarmRepeatDays];
     }
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -231,45 +252,21 @@
 }
 
 
--(NSString *)tidyDaysFromArray:(NSArray *)array{
-    
-    NSString *tidyDayTemp = [[NSString alloc]init];
-    tidyDay = tidyDayTemp;
-    
-    for (NSString *myArrayElement in array) {
-        NSString *shortDay = [myArrayElement substringToIndex:3];
-        
-        tidyDay = [tidyDay stringByAppendingString:shortDay];
-        tidyDay = [tidyDay stringByAppendingString:@", "];
-
-    }
-    if ([tidyDay length] > 0) {
-        tidyDay = [tidyDay substringToIndex:[tidyDay length] - 2];
-        return tidyDay;
-    }
-    return @"";    
-}
 
 
 
 #pragma mark - IBActions
 
--(IBAction)alarmSetButtonTapped:(id)sender
-{
-    [self saveAlarm];
-}
-
 -(IBAction)alarmCancelButtonTapped:(id)sender
 {
-    UILocalNotification *notificationToCancel=nil;
-    for(UILocalNotification *aNotif in [[UIApplication sharedApplication] scheduledLocalNotifications]) {
-        if([aNotif.fireDate isEqualToDate:existingAlarmDate]) {
-            notificationToCancel=aNotif;
-            break;
-        }
-    }
-    if (notificationToCancel) {
-        [[UIApplication sharedApplication] cancelLocalNotification:notificationToCancel];
+    if (existingAlarm) {
+        
+        //DELETE THE DAYS ASSOCIATED WITH IT AS WELL - CASCADE IN MODEL?
+        
+        [[self managedObjectContext] deleteObject:existingAlarm];
+        
+        NSError *saveError = nil;
+        [managedObjectContext save:&saveError];
     }
 
     [self.navigationController popViewControllerAnimated:YES];
@@ -283,20 +280,32 @@
 
     self.title = @"Alarm clock";
     
-    if (!alarmSound) {
-        self.alarmSound = @"alarm 1";
-    }
-    
-    if (!alarmName) {
-        self.alarmName = @"";
-    }
-    
-    
-    if (existingAlarmDate) {
-        dateTimePicker.date = existingAlarmDate;
+    if (existingAlarm) {
+        
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"HH:mm"];
+        NSDate *date = [dateFormat dateFromString:existingAlarm.time];  
+        
+        dateTimePicker.date = date;
+        
+        self.alarmSound = existingAlarm.sound;
+        self.alarmName = existingAlarm.name;
+        
+        NSArray *existingDays = [existingAlarm.day allObjects];
+        NSMutableArray *existingDayNamesTemp = [[NSMutableArray alloc] init];
+        existingDayNames = existingDayNamesTemp;
+        
+        for (Day *day in existingDays) {
+            [existingDayNames addObject:day.day];
+        }
+        
+        self.alarmRepeatDays = existingDayNames;
+ 
     }
     else {
         dateTimePicker.date = [NSDate date];
+        self.alarmSound = @"alarm 1";
+        self.alarmName = @"Alarm";
     }
 
     

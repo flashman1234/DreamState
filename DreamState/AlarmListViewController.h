@@ -10,20 +10,21 @@
 #import "AlarmViewController.h"
 
 @interface AlarmListViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>{
-    NSArray *notificationsArray;
-    IBOutlet UITableView *tableView;
     
+    IBOutlet UITableView *tableView;
 }
-
-//@property (nonatomic, retain) AlarmViewController *tdController;
-
-@property (nonatomic, retain) NSArray *notificationsArray;
-
-@property (nonatomic, retain) UITableView *tableView;
 
 @property(nonatomic, retain)IBOutlet UILabel *noAlarmsLabel;
 
+//@property (nonatomic, retain) NSArray *notificationsArray;
+@property (nonatomic, retain) UITableView *tableView;
 
 @property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
+
+@property (nonatomic, retain) NSArray *alarmArray;
+
+@property (nonatomic, retain) UISwitch *enabledSwitch;
+
+- (UITableViewCell *) getCellContentView:(NSString *)cellIdentifier;
 
 @end

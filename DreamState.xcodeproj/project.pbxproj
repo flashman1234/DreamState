@@ -42,8 +42,6 @@
 		05A5CF5F15C94B060097DB1C /* InAppSettingsPSMultiValueSpecifierTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF5015C94B060097DB1C /* InAppSettingsPSMultiValueSpecifierTable.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		05A5CF6015C94B060097DB1C /* InAppSettingsReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF5215C94B060097DB1C /* InAppSettingsReader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		05A5CF6115C94B060097DB1C /* InAppSettingsSpecifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF5415C94B060097DB1C /* InAppSettingsSpecifier.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		05A5CF6515C94C8C0097DB1C /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF6315C94C870097DB1C /* SettingsViewController.m */; };
-		05A5CF6615C94C8C0097DB1C /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A5CF6415C94C8A0097DB1C /* SettingsViewController.xib */; };
 		05A5CF6A15CFC2740097DB1C /* MediaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF6915CFC2710097DB1C /* MediaController.m */; };
 		05A5CF6F15D1469B0097DB1C /* alarm 2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 05A5CF6E15D1469A0097DB1C /* alarm 2.caf */; };
 		05D9323315B9AEFB00983693 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9323215B9AEFB00983693 /* UIKit.framework */; };
@@ -78,10 +76,16 @@
 		05E5AA0815D27290004684E0 /* AlarmLabelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05E5AA0615D27290004684E0 /* AlarmLabelViewController.xib */; };
 		05E5AA0A15D2C666004684E0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E5AA0915D2C666004684E0 /* CoreData.framework */; };
 		05E5AA1015D2D4E5004684E0 /* DreamState.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 05E5AA0E15D2D4E5004684E0 /* DreamState.xcdatamodeld */; };
-		05E5AA6915D2E7B6004684E0 /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E5AA6815D2E7B6004684E0 /* Alarm.m */; };
 		05E5AA6C15D2E7D6004684E0 /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E5AA6B15D2E7D5004684E0 /* Day.m */; };
 		05E5AA7615D3C4A6004684E0 /* AlarmDaysViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E5AA7415D3C4A0004684E0 /* AlarmDaysViewController.m */; };
 		05E5AA7715D3C4A6004684E0 /* AlarmDaysViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05E5AA7515D3C4A2004684E0 /* AlarmDaysViewController.xib */; };
+		05E5AA7C15D40D8F004684E0 /* NotificationLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E5AA7B15D40D8F004684E0 /* NotificationLoader.m */; };
+		05E5AA8815D56C90004684E0 /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E5AA8715D56C90004684E0 /* Alarm.m */; };
+		05E5AA8B15D56CD1004684E0 /* Dream.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E5AA8A15D56CD0004684E0 /* Dream.m */; };
+		05E5AA8F15D8F09F004684E0 /* Alarmhelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E5AA8E15D8F09E004684E0 /* Alarmhelper.m */; };
+		05E5AA9315D94C1D004684E0 /* DreamNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E5AA9115D94C1C004684E0 /* DreamNameViewController.m */; };
+		05E5AA9415D94C1D004684E0 /* DreamNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05E5AA9215D94C1C004684E0 /* DreamNameViewController.xib */; };
+		05E5AA9715D96C67004684E0 /* DreamHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E5AA9615D96C66004684E0 /* DreamHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,9 +152,6 @@
 		05A5CF5215C94B060097DB1C /* InAppSettingsReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppSettingsReader.m; sourceTree = "<group>"; };
 		05A5CF5315C94B060097DB1C /* InAppSettingsSpecifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppSettingsSpecifier.h; sourceTree = "<group>"; };
 		05A5CF5415C94B060097DB1C /* InAppSettingsSpecifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppSettingsSpecifier.m; sourceTree = "<group>"; };
-		05A5CF6215C94C850097DB1C /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
-		05A5CF6315C94C870097DB1C /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		05A5CF6415C94C8A0097DB1C /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		05A5CF6815CFC26F0097DB1C /* MediaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaController.h; sourceTree = "<group>"; };
 		05A5CF6915CFC2710097DB1C /* MediaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaController.m; sourceTree = "<group>"; };
 		05A5CF6E15D1469A0097DB1C /* alarm 2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "alarm 2.caf"; sourceTree = "<group>"; };
@@ -199,13 +200,25 @@
 		05E5AA0615D27290004684E0 /* AlarmLabelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlarmLabelViewController.xib; sourceTree = "<group>"; };
 		05E5AA0915D2C666004684E0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		05E5AA0F15D2D4E5004684E0 /* DreamState.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DreamState.xcdatamodel; sourceTree = "<group>"; };
-		05E5AA6715D2E7B4004684E0 /* Alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alarm.h; sourceTree = "<group>"; };
-		05E5AA6815D2E7B6004684E0 /* Alarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alarm.m; sourceTree = "<group>"; };
 		05E5AA6A15D2E7D3004684E0 /* Day.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Day.h; sourceTree = "<group>"; };
 		05E5AA6B15D2E7D5004684E0 /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Day.m; sourceTree = "<group>"; };
 		05E5AA7315D3C49F004684E0 /* AlarmDaysViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmDaysViewController.h; sourceTree = "<group>"; };
 		05E5AA7415D3C4A0004684E0 /* AlarmDaysViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmDaysViewController.m; sourceTree = "<group>"; };
 		05E5AA7515D3C4A2004684E0 /* AlarmDaysViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlarmDaysViewController.xib; sourceTree = "<group>"; };
+		05E5AA7A15D40D8F004684E0 /* NotificationLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationLoader.h; sourceTree = "<group>"; };
+		05E5AA7B15D40D8F004684E0 /* NotificationLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationLoader.m; sourceTree = "<group>"; };
+		05E5AA8615D56C90004684E0 /* Alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alarm.h; sourceTree = "<group>"; };
+		05E5AA8715D56C90004684E0 /* Alarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alarm.m; sourceTree = "<group>"; };
+		05E5AA8915D56CD0004684E0 /* Dream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dream.h; sourceTree = "<group>"; };
+		05E5AA8A15D56CD0004684E0 /* Dream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dream.m; sourceTree = "<group>"; };
+		05E5AA8C15D56D9D004684E0 /* DreamState 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DreamState 2.xcdatamodel"; sourceTree = "<group>"; };
+		05E5AA8D15D8F09D004684E0 /* Alarmhelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alarmhelper.h; sourceTree = "<group>"; };
+		05E5AA8E15D8F09E004684E0 /* Alarmhelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alarmhelper.m; sourceTree = "<group>"; };
+		05E5AA9015D94C1C004684E0 /* DreamNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DreamNameViewController.h; sourceTree = "<group>"; };
+		05E5AA9115D94C1C004684E0 /* DreamNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DreamNameViewController.m; sourceTree = "<group>"; };
+		05E5AA9215D94C1C004684E0 /* DreamNameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DreamNameViewController.xib; sourceTree = "<group>"; };
+		05E5AA9515D96C64004684E0 /* DreamHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DreamHelper.h; sourceTree = "<group>"; };
+		05E5AA9615D96C66004684E0 /* DreamHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DreamHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,6 +288,8 @@
 				05E5AA7315D3C49F004684E0 /* AlarmDaysViewController.h */,
 				05E5AA7415D3C4A0004684E0 /* AlarmDaysViewController.m */,
 				05E5AA7515D3C4A2004684E0 /* AlarmDaysViewController.xib */,
+				05E5AA8D15D8F09D004684E0 /* Alarmhelper.h */,
+				05E5AA8E15D8F09E004684E0 /* Alarmhelper.m */,
 			);
 			name = AlarmClock;
 			sourceTree = "<group>";
@@ -317,16 +332,6 @@
 				05A5CF4915C94B060097DB1C /* InAppSettingsTableCell.m */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		05A5CF6715CFBC790097DB1C /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				05A5CF6215C94C850097DB1C /* SettingsViewController.h */,
-				05A5CF6315C94C870097DB1C /* SettingsViewController.m */,
-				05A5CF6415C94C8A0097DB1C /* SettingsViewController.xib */,
-			);
-			name = Settings;
 			sourceTree = "<group>";
 		};
 		05A5CF6B15CFC28B0097DB1C /* MediaControl */ = {
@@ -380,14 +385,13 @@
 		05D9323815B9AEFB00983693 /* DreamState */ = {
 			isa = PBXGroup;
 			children = (
+				05E5AA7915D40D65004684E0 /* Notification */,
+				05E5AA7815D403F1004684E0 /* Recording */,
 				05E5AA6D15D3BC6A004684E0 /* Entities */,
 				05A5CF6B15CFC28B0097DB1C /* MediaControl */,
-				05A5CF6715CFBC790097DB1C /* Settings */,
 				05A5CF3A15C94B040097DB1C /* InAppSettings */,
 				05A5CE1A15C8281A0097DB1C /* AlarmClock */,
 				05209CF615BF3D57001C66CF /* DIYCam */,
-				05D9328215B9BD8B00983693 /* DreamTableViewcell.h */,
-				05D9328315B9BD8B00983693 /* DreamTableViewcell.m */,
 				05D9324115B9AEFB00983693 /* AppDelegate.h */,
 				05D9324215B9AEFB00983693 /* AppDelegate.m */,
 				05D9324415B9AEFB00983693 /* MenuViewController.h */,
@@ -395,15 +399,6 @@
 				05D9324715B9AEFB00983693 /* MenuViewController_iPhone.xib */,
 				05D9324A15B9AEFB00983693 /* MenuViewController_iPad.xib */,
 				05D9323915B9AEFB00983693 /* Supporting Files */,
-				05D9327915B9B97A00983693 /* RecordDreamViewController.h */,
-				05D9327A15B9B97A00983693 /* RecordDreamViewController.m */,
-				05D9327B15B9B97A00983693 /* RecordDreamViewController.xib */,
-				05D9327415B9B96400983693 /* CurrentDreamsViewController.h */,
-				05D9327515B9B96400983693 /* CurrentDreamsViewController.m */,
-				05D9327615B9B96400983693 /* CurrentDreamsViewController.xib */,
-				05D9328615B9C82900983693 /* SelectedDreamViewController.h */,
-				05D9328715B9C82900983693 /* SelectedDreamViewController.m */,
-				05D9328815B9C82900983693 /* SelectedDreamViewController.xib */,
 			);
 			path = DreamState;
 			sourceTree = "<group>";
@@ -453,12 +448,46 @@
 		05E5AA6D15D3BC6A004684E0 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				05E5AA6715D2E7B4004684E0 /* Alarm.h */,
-				05E5AA6815D2E7B6004684E0 /* Alarm.m */,
+				05E5AA8615D56C90004684E0 /* Alarm.h */,
+				05E5AA8715D56C90004684E0 /* Alarm.m */,
+				05E5AA8915D56CD0004684E0 /* Dream.h */,
+				05E5AA8A15D56CD0004684E0 /* Dream.m */,
 				05E5AA6A15D2E7D3004684E0 /* Day.h */,
 				05E5AA6B15D2E7D5004684E0 /* Day.m */,
 			);
 			name = Entities;
+			sourceTree = "<group>";
+		};
+		05E5AA7815D403F1004684E0 /* Recording */ = {
+			isa = PBXGroup;
+			children = (
+				05D9328215B9BD8B00983693 /* DreamTableViewcell.h */,
+				05D9328315B9BD8B00983693 /* DreamTableViewcell.m */,
+				05D9327915B9B97A00983693 /* RecordDreamViewController.h */,
+				05D9327A15B9B97A00983693 /* RecordDreamViewController.m */,
+				05D9327B15B9B97A00983693 /* RecordDreamViewController.xib */,
+				05D9327415B9B96400983693 /* CurrentDreamsViewController.h */,
+				05D9327515B9B96400983693 /* CurrentDreamsViewController.m */,
+				05D9327615B9B96400983693 /* CurrentDreamsViewController.xib */,
+				05D9328615B9C82900983693 /* SelectedDreamViewController.h */,
+				05D9328715B9C82900983693 /* SelectedDreamViewController.m */,
+				05D9328815B9C82900983693 /* SelectedDreamViewController.xib */,
+				05E5AA9015D94C1C004684E0 /* DreamNameViewController.h */,
+				05E5AA9115D94C1C004684E0 /* DreamNameViewController.m */,
+				05E5AA9215D94C1C004684E0 /* DreamNameViewController.xib */,
+				05E5AA9515D96C64004684E0 /* DreamHelper.h */,
+				05E5AA9615D96C66004684E0 /* DreamHelper.m */,
+			);
+			name = Recording;
+			sourceTree = "<group>";
+		};
+		05E5AA7915D40D65004684E0 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				05E5AA7A15D40D8F004684E0 /* NotificationLoader.h */,
+				05E5AA7B15D40D8F004684E0 /* NotificationLoader.m */,
+			);
+			name = Notification;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -554,11 +583,11 @@
 				05A5CF3715C943B20097DB1C /* Icon.png in Resources */,
 				05A5CF5D15C94B060097DB1C /* InAppSettings.png in Resources */,
 				05A5CF5E15C94B060097DB1C /* InAppSettings@2x.png in Resources */,
-				05A5CF6615C94C8C0097DB1C /* SettingsViewController.xib in Resources */,
 				05A5CF6F15D1469B0097DB1C /* alarm 2.caf in Resources */,
 				05E5A9FD15D150C2004684E0 /* AlarmSoundViewController.xib in Resources */,
 				05E5AA0815D27290004684E0 /* AlarmLabelViewController.xib in Resources */,
 				05E5AA7715D3C4A6004684E0 /* AlarmDaysViewController.xib in Resources */,
+				05E5AA9415D94C1D004684E0 /* DreamNameViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,14 +646,18 @@
 				05A5CF5F15C94B060097DB1C /* InAppSettingsPSMultiValueSpecifierTable.m in Sources */,
 				05A5CF6015C94B060097DB1C /* InAppSettingsReader.m in Sources */,
 				05A5CF6115C94B060097DB1C /* InAppSettingsSpecifier.m in Sources */,
-				05A5CF6515C94C8C0097DB1C /* SettingsViewController.m in Sources */,
 				05A5CF6A15CFC2740097DB1C /* MediaController.m in Sources */,
 				05E5A9FC15D150C2004684E0 /* AlarmSoundViewController.m in Sources */,
 				05E5AA0715D27290004684E0 /* AlarmLabelViewController.m in Sources */,
 				05E5AA1015D2D4E5004684E0 /* DreamState.xcdatamodeld in Sources */,
-				05E5AA6915D2E7B6004684E0 /* Alarm.m in Sources */,
 				05E5AA6C15D2E7D6004684E0 /* Day.m in Sources */,
 				05E5AA7615D3C4A6004684E0 /* AlarmDaysViewController.m in Sources */,
+				05E5AA7C15D40D8F004684E0 /* NotificationLoader.m in Sources */,
+				05E5AA8815D56C90004684E0 /* Alarm.m in Sources */,
+				05E5AA8B15D56CD1004684E0 /* Dream.m in Sources */,
+				05E5AA8F15D8F09F004684E0 /* Alarmhelper.m in Sources */,
+				05E5AA9315D94C1D004684E0 /* DreamNameViewController.m in Sources */,
+				05E5AA9715D96C67004684E0 /* DreamHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -842,9 +875,10 @@
 		05E5AA0E15D2D4E5004684E0 /* DreamState.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				05E5AA8C15D56D9D004684E0 /* DreamState 2.xcdatamodel */,
 				05E5AA0F15D2D4E5004684E0 /* DreamState.xcdatamodel */,
 			);
-			currentVersion = 05E5AA0F15D2D4E5004684E0 /* DreamState.xcdatamodel */;
+			currentVersion = 05E5AA8C15D56D9D004684E0 /* DreamState 2.xcdatamodel */;
 			path = DreamState.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

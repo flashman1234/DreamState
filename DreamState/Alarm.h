@@ -2,7 +2,7 @@
 //  Alarm.h
 //  DreamState
 //
-//  Created by Michal Thompson on 8/8/12.
+//  Created by Michal Thompson on 8/10/12.
 //  Copyright (c) 2012 NA. All rights reserved.
 //
 
@@ -15,6 +15,8 @@
 
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * sound;
+@property (nonatomic, retain) NSString * time;
+@property (nonatomic, retain) NSNumber * enabled;
 @property (nonatomic, retain) NSSet *day;
 @end
 

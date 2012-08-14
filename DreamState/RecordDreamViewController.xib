@@ -108,6 +108,7 @@
 								<string key="NSFrame">{{181, 5}, {51, 35}}</string>
 								<reference key="NSSuperview" ref="349717626"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="845129948"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -115,6 +116,28 @@
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<int key="IBUIButtonType">1</int>
 								<string key="IBUINormalTitle">Del</string>
+								<reference key="IBUIHighlightedTitleColor" ref="328804205"/>
+								<object class="NSColor" key="IBUINormalTitleColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+								</object>
+								<reference key="IBUINormalTitleShadowColor" ref="111322638"/>
+								<reference key="IBUIFontDescription" ref="201339103"/>
+								<reference key="IBUIFont" ref="434079162"/>
+							</object>
+							<object class="IBUIButton" id="845129948">
+								<reference key="NSNextResponder" ref="349717626"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{242, 5}, {67, 35}}</string>
+								<reference key="NSSuperview" ref="349717626"/>
+								<reference key="NSWindow"/>
+								<string key="NSReuseIdentifierKey">_NS:9</string>
+								<bool key="IBUIOpaque">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<int key="IBUIContentHorizontalAlignment">0</int>
+								<int key="IBUIContentVerticalAlignment">0</int>
+								<int key="IBUIButtonType">1</int>
+								<string key="IBUINormalTitle">Name</string>
 								<reference key="IBUIHighlightedTitleColor" ref="328804205"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
 									<int key="NSColorSpace">1</int>
@@ -147,6 +170,11 @@
 							<object class="IBUIBarButtonItem" id="220872824">
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<reference key="IBUICustomView" ref="563870859"/>
+								<reference key="IBUIToolbar" ref="349717626"/>
+							</object>
+							<object class="IBUIBarButtonItem" id="275854736">
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<reference key="IBUICustomView" ref="845129948"/>
 								<reference key="IBUIToolbar" ref="349717626"/>
 							</object>
 						</array>
@@ -4658,6 +4686,14 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					<int key="connectionID">37</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">nameButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="845129948"/>
+					</object>
+					<int key="connectionID">47</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">recordDream</string>
 						<reference key="source" ref="1013578674"/>
@@ -4683,6 +4719,23 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<int key="IBEventType">7</int>
 					</object>
 					<int key="connectionID">33</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">nameDream</string>
+						<reference key="source" ref="845129948"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">48</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">nameDream</string>
+						<reference key="source" ref="275854736"/>
+						<reference key="destination" ref="372490531"/>
+					</object>
+					<int key="connectionID">46</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -4719,6 +4772,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<reference ref="111140826"/>
 							<reference ref="264713612"/>
 							<reference ref="220872824"/>
+							<reference ref="275854736"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
 					</object>
@@ -4771,6 +4825,19 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<reference key="object" ref="131629282"/>
 						<reference key="parent" ref="0"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">42</int>
+						<reference key="object" ref="275854736"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="845129948"/>
+						</array>
+						<reference key="parent" ref="349717626"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">41</int>
+						<reference key="object" ref="845129948"/>
+						<reference key="parent" ref="275854736"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -4788,12 +4855,14 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				<string key="30.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="36.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="41.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="42.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">37</int>
+			<int key="maxID">48</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4802,12 +4871,17 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="deleteDream">id</string>
+						<string key="nameDream">id</string>
 						<string key="recordDream">id</string>
 						<string key="stopRecording">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="deleteDream">
 							<string key="name">deleteDream</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="nameDream">
+							<string key="name">nameDream</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="recordDream">
@@ -4823,6 +4897,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<string key="currentlyRecordingIcon">UIImageView</string>
 						<string key="deleteButton">UIButton</string>
 						<string key="display">UIView</string>
+						<string key="nameButton">UIButton</string>
 						<string key="recButton">UIButton</string>
 						<string key="recordingAudioLabel">UILabel</string>
 						<string key="stopButton">UIButton</string>
@@ -4839,6 +4914,10 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<object class="IBToOneOutletInfo" key="display">
 							<string key="name">display</string>
 							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="nameButton">
+							<string key="name">nameButton</string>
+							<string key="candidateClassName">UIButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="recButton">
 							<string key="name">recButton</string>

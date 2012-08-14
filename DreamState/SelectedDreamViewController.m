@@ -8,6 +8,7 @@
 
 #import "SelectedDreamViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "DreamNameViewController.h"
 
 @interface SelectedDreamViewController ()
 {
@@ -19,57 +20,82 @@
 
 @synthesize soundFile;
 @synthesize mediaPlayer;
-@synthesize display;
+//@synthesize display;
+@synthesize managedObjectContext;
+@synthesize existingDream;
+@synthesize labelDreamName;
+@synthesize nameButton;
 
 
 #pragma mark - IBActions
 
 -(IBAction)playButtonTapped:(id)sender
 {
-    [self playBack:soundFile];
+    [self playDream];
 }
 
 -(IBAction)deleteButtonTapped:(id)sender
 {
-    [self deleteDream:soundFile];
+    //[self deleteDream:soundFile];
+    [self deleteDream];
+}
+
+-(IBAction)nameDream{
+    DreamNameViewController *dreamNameViewController = [[DreamNameViewController alloc] init];
+    dreamNameViewController.managedObjectContext = [self managedObjectContext];
+    dreamNameViewController.existingDream = existingDream;
+    [self.navigationController pushViewController:dreamNameViewController animated:YES];
 }
 
 
--(void)playBack:(NSString *)dreamFileName{
-    
-    NSArray *dirPaths;
-    NSString *docsDir;
-    
-    dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    docsDir = [dirPaths objectAtIndex:0];
-    
-    NSString *soundFilePath = [docsDir stringByAppendingPathComponent:dreamFileName];
 
-    NSURL *fileURL = [NSURL fileURLWithPath:soundFilePath];
-
+-(void)playDream{
+    
+    NSURL *fileURL = [NSURL fileURLWithPath:[existingDream fileUrl]];
+    
     self.mediaPlayer = [[MPMoviePlayerController alloc] initWithContentURL: fileURL];
     
-    //Use MPMovieControlStyleNone if you want to add my own buttons
-    //self.mediaPlayer.controlStyle = MPMovieControlStyleNone;
-
-    [mediaPlayer prepareToPlay];
-    
-    CGRect bounds           = CGRectMake(0, 0, display.layer.bounds.size.width, display.layer.bounds.size.height - 30);
-    
-    [mediaPlayer.view setFrame: bounds]; 
-    
-    //force player into portrait
-    NSString *fileType = [soundFilePath substringFromIndex:[soundFilePath length] - 3];
+    NSString *fileType = [[existingDream fileUrl] substringFromIndex:[[existingDream fileUrl] length] - 3];
     if ([fileType isEqualToString:@"mov"]) {
         [mediaPlayer.view setTransform:CGAffineTransformMakeRotation(-M_PI_2)];
     }
     
-    [display addSubview:mediaPlayer.view];
+    //Use MPMovieControlStyleNone if you want to add my own buttons
+    self.mediaPlayer.controlStyle = MPMovieControlStyleNone;
+    
+    //CGRect bounds           = CGRectMake(0, -46, self.view.bounds.size.width, self.view.bounds.size.height +92);
+    [mediaPlayer.view setFrame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 30)]; 
+    
+
+    
+    [self.view addSubview:mediaPlayer.view];
     mediaPlayer.view.layer.zPosition = -1;
+    
+    [mediaPlayer prepareToPlay];
+
     [mediaPlayer play];
     
 }
 
+-(void)deleteDream{
+    NSError *error;
+    [[NSFileManager defaultManager] removeItemAtPath: [existingDream fileUrl] error: &error];
+    if (error) {
+        NSLog(@"error : %@", error.localizedDescription);
+    }
+    
+    [[self managedObjectContext] deleteObject:existingDream];
+    
+    NSError *saveError = nil;
+    [managedObjectContext save:&saveError];
+    if (saveError) {
+        NSLog(@"error : %@", saveError.localizedDescription);
+    }
+    
+    [mediaPlayer stop];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 -(void)deleteDream:(NSString *)dreamFileName{
     
@@ -92,18 +118,11 @@
 
 #pragma mark - view methods
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -111,6 +130,11 @@
     [super viewDidDisappear:(BOOL)animated];
     [mediaPlayer stop];
     [mediaPlayer.view removeFromSuperview];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+	labelDreamName.text = existingDream.name;
 }
 
 

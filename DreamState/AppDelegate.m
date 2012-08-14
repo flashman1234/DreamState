@@ -15,6 +15,10 @@
 #import "Alarm.h"
 #import "Day.h"
 
+#import "Dream.h"
+
+
+#import "NotificationLoader.h"
 
 NSString *localReceived = @"localReceived";
 
@@ -107,11 +111,20 @@ NSString *localReceived = @"localReceived";
     }
     
     if(application.applicationState == UIApplicationStateActive ) {
-       
+    
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat: @"yyyy-MM-dd HH:mm:ss zzz"]; 
+        
+        NSString *stringFromDate = [dateFormat stringFromDate:notification.fireDate];
+        
+        
+        //notification.alertBody = stringFromDate;// @"Would you like to record a dream?";
+
+        
         [self playAlarmSound:alarmSoundName];
         UIAlertView *alert = [[UIAlertView alloc]
                               initWithTitle: NSLocalizedString(@"Dream alarm clock",nil)
-                              message: NSLocalizedString(@"Would you like to record a dream?",nil)
+                              message: stringFromDate // NSLocalizedString(@"Would you like to record a dream?",nil)
                               delegate: self
                               cancelButtonTitle: NSLocalizedString(@"No",nil)
                               otherButtonTitles: NSLocalizedString(@"Yes",nil), nil];
@@ -167,56 +180,11 @@ NSString *localReceived = @"localReceived";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    /*
+    //reload notifications
+    NotificationLoader *notificationLoader = [[NotificationLoader alloc] init];
+    notificationLoader.managedObjectContext = [self managedObjectContext];
+    [notificationLoader loadNotifications];
     
-    NSManagedObjectContext *context = [self managedObjectContext];
-    
-    
-    
-    Alarm *alarm = [NSEntityDescription
-                                       insertNewObjectForEntityForName:@"Alarm"
-                                       inManagedObjectContext:context];
-   
-    [alarm setValue:@"Alarm2Name" forKey:@"name"];
-    [alarm setValue:@"Alarm2Sound" forKey:@"sound"];
-    
-    
-    
-    
-    Day *day = [NSEntityDescription
-                                          insertNewObjectForEntityForName:@"Day"
-                                          inManagedObjectContext:context];
-    
-    [day setValue:@"Mon" forKey:@"day"];
-    
-    NSManagedObject *day2 = [NSEntityDescription
-                            insertNewObjectForEntityForName:@"Day"
-                            inManagedObjectContext:context];
-    
-    
-    
-    [day2 setValue:@"Tue" forKey:@"day"];
-    
-    
-
-    
-    //[alarm setValue:day forKey:@"day"];
-    [day setValue:alarm forKey:@"alarm"];
-    
-    [day2 setValue:alarm forKey:@"alarm"];
-    
-    
-    
-    
-    
-    NSError *error;
-    if (![context save:&error]) {
-        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-    }
-    
-     */
-     
-        
     [self setAlarmClockPlist];
     
     [self setUserDefaultsAndSync];
@@ -323,9 +291,15 @@ NSString *localReceived = @"localReceived";
     
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"DreamState.sqlite"];
     
+    
+    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+                             [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+    
+    
     NSError *error = nil;
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+    if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error]) {
         /*
          Replace this implementation with code to handle the error appropriately.
          

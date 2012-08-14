@@ -13,7 +13,7 @@
 #import "CurrentDreamsViewController.h"
 #import "RecordDreamViewController.h"
 #import "AppDelegate.h"
-#import "SettingsViewController.h"
+
 #import "InAppSettings.h"
 
 
@@ -48,6 +48,7 @@
 }
 -(IBAction)pressRecordDreamButton{
     RecordDreamViewController *recordDreamController = [[RecordDreamViewController alloc] init];
+    recordDreamController.managedObjectContext = [self managedObjectContext];
     [self.navigationController pushViewController:recordDreamController animated:YES];
 }
 
@@ -68,14 +69,13 @@
         managedObjectContext = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
     }
     
-    
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription
                                    entityForName:@"Alarm" inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
     NSError *error;
     self.alarms = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    NSLog(@"self.alarms : %@", self.alarms);
+   
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localAction) name:localReceived object:nil];
 
@@ -86,6 +86,7 @@
     [self.navigationController popToRootViewControllerAnimated:NO];
     
     RecordDreamViewController *recordDreamController = [[RecordDreamViewController alloc] init];
+    recordDreamController.managedObjectContext = self.managedObjectContext;
     [self.navigationController pushViewController:recordDreamController animated:YES];
     
 }

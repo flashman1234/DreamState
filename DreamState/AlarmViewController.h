@@ -7,32 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Alarm.h"
 
 @interface AlarmViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
-
 {
     IBOutlet UIDatePicker *dateTimePicker;
     IBOutlet UITableView *alarmTableView;
-    
-//    NSArray *tableDataSource;
-//    NSDate *existingAlarmDate;
-//    
-//    NSString *alarmSound;
-//    NSString *alarmName;
-//
-//    
-//    UILabel* nameLabel;
-//    UILabel* valueLabel;
-    
 }
 
--(void) scheduledNotificationWithDate:(NSDate *) fireDate;
--(IBAction)alarmSetButtonTapped:(id)sender;
 -(IBAction)alarmCancelButtonTapped:(id)sender;
 
 @property (nonatomic, retain) UITableView *alarmTableView;
 @property (nonatomic, retain) NSArray *tableDataSource;
-@property (nonatomic, retain) NSDate *existingAlarmDate;
+
+@property (nonatomic, retain) Alarm *existingAlarm;
+
 
 @property (nonatomic, retain) NSString *alarmSound;
 @property (nonatomic, retain) NSString *alarmName;
@@ -45,5 +34,8 @@
 @property (nonatomic, retain)  UILabel* valueLabel;
 
 @property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
+
+
+@property (nonatomic,strong) NSMutableArray *existingDayNames;
 
 @end

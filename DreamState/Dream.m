@@ -1,21 +1,19 @@
 //
-//  Alarm.m
+//  Dream.m
 //  DreamState
 //
 //  Created by Michal Thompson on 8/10/12.
 //  Copyright (c) 2012 NA. All rights reserved.
 //
 
-#import "Alarm.h"
-#import "Day.h"
+#import "Dream.h"
 
 
-@implementation Alarm
+@implementation Dream
 
 @dynamic name;
-@dynamic sound;
-@dynamic time;
-@dynamic enabled;
-@dynamic day;
+@dynamic date;
+@dynamic fileUrl;
+@dynamic mediaType;
 
 @end

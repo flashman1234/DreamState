@@ -11,10 +11,11 @@
 #import "AVFoundation/AVAudioPlayer.h"
 #import <CoreAudio/CoreAudioTypes.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import "Dream.h"
 
 @interface SelectedDreamViewController : UIViewController<AVAudioPlayerDelegate>
 {
-    NSString *soundFile;
+    IBOutlet UILabel *labelDreamName ;
 }
 
 -(IBAction)playButtonTapped:(id)sender;
@@ -23,6 +24,17 @@
 @property (nonatomic,strong) NSString *soundFile;
 
 @property (nonatomic, retain) MPMoviePlayerController *mediaPlayer;
-@property (nonatomic, retain) IBOutlet UIView *display;
+//@property (nonatomic, retain) IBOutlet UIView *display;
+
+@property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
+
+@property (nonatomic, retain) Dream *existingDream;
+
+@property ( nonatomic , retain ) IBOutlet UILabel *labelDreamName ;
+
+@property(nonatomic, retain)IBOutlet UIButton *nameButton;
+
+
+-(IBAction)nameDream;
 
 @end
