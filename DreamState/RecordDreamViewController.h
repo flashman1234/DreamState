@@ -20,6 +20,8 @@
     UIButton *deleteButton;
     UIButton *nameButton;
     
+    UIToolbar *bottomBar;
+    
     BOOL autoRecord;
     BOOL showPreview;
 }
@@ -31,6 +33,8 @@
 @property(nonatomic, retain)IBOutlet UIButton *stopButton;
 @property(nonatomic, retain)IBOutlet UIButton *deleteButton;
 @property(nonatomic, retain)IBOutlet UIButton *nameButton;
+
+@property(nonatomic, retain)IBOutlet UIToolbar *bottomBar;
 
 @property (nonatomic, retain) DIYCam *cam;
 @property (nonatomic, retain) MPMoviePlayerController *mediaPlayer;

@@ -24,11 +24,7 @@
 @synthesize alarmTableView;
 @synthesize tableDataSource;
 
-
-//@synthesize existingAlarmDate;
 @synthesize existingAlarm;
-
-
 
 @synthesize alarmSound;
 @synthesize alarmName;
@@ -42,6 +38,10 @@
 
 @synthesize existingDayNames;
 
+
+-(void)cancelAlarm:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 -(void)saveAlarm:(id)sender{
     [self storeAlarmInStore:dateTimePicker.date];
@@ -315,7 +315,12 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
                                              initWithBarButtonSystemItem:UIBarButtonSystemItemSave 
                                               target:self action:@selector(saveAlarm:)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
+                                              initWithBarButtonSystemItem:UIBarButtonSystemItemCancel 
+                                              target:self action:@selector(cancelAlarm:)];
 }
+
+
 
 
 

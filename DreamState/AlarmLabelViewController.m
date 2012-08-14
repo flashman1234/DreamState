@@ -29,6 +29,12 @@
     
 }
 
+-(void)cancelAlarmLabel:(id)sender{
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     
@@ -60,6 +66,10 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
                                               initWithBarButtonSystemItem:UIBarButtonSystemItemSave 
                                               target:self action:@selector(saveAlarmLabel:)];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
+                                             initWithBarButtonSystemItem:UIBarButtonSystemItemCancel 
+                                             target:self action:@selector(cancelAlarmLabel:)];
     
     if (existingName) {
         labelTextField.text = existingName;

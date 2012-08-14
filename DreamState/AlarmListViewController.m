@@ -117,7 +117,6 @@
     
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        //cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
         cell = [self getCellContentView:CellIdentifier];
     }
     
@@ -130,13 +129,21 @@
     
     NSArray *existingDays = [alarm.day allObjects];
     NSMutableArray *existingDayNames = [[NSMutableArray alloc] init];
-       
+      
     for (Day *day in existingDays) {
         [existingDayNames addObject:day.day];
     }
 
     Alarmhelper *helper = [[Alarmhelper alloc] init];  
-    lblDays.text = [helper tidyDaysFromArray:existingDayNames];
+    
+    if (existingDayNames.count > 0) {
+        lblDays.text = [helper tidyDaysFromArray:existingDayNames];
+    }
+    else {
+        lblDays.text = @"Everyday";
+    }
+    
+    
     lblTime.text = alarm.time;
     lblName.text = alarm.name;
 

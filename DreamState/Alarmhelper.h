@@ -12,7 +12,7 @@
 
 -(NSString *)tidyDaysFromArray:(NSArray *)array;
 
-- (NSComparisonResult)weekdayCompare:(NSString*)otherDay;
+//- (NSComparisonResult)weekdayCompare:(NSString*)otherDay;
 @property (nonatomic, retain) NSArray *weekDays;
 
 @end

@@ -34,6 +34,12 @@
     
 }
 
+-(void)cancelDreamNameLabel:(id)sender{
+       
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event 
 {
@@ -70,6 +76,10 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
                                               initWithBarButtonSystemItem:UIBarButtonSystemItemSave 
                                               target:self action:@selector(saveDreamNameLabel:)];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
+                                             initWithBarButtonSystemItem:UIBarButtonSystemItemCancel 
+                                             target:self action:@selector(cancelDreamNameLabel:)];
 }
 
 - (void)viewWillAppear:(BOOL)flag {

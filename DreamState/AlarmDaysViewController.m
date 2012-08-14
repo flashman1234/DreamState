@@ -33,10 +33,13 @@
     AlarmViewController *parentViewController = (AlarmViewController*)[self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count - 2];
     
     parentViewController.alarmRepeatDays = selectedDayArray;
-    
-    
     [self.navigationController popViewControllerAnimated:YES];
     
+}
+
+-(void)cancelAlarmDays:(id)sender{
+
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidLoad
@@ -48,6 +51,10 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
                                               initWithBarButtonSystemItem:UIBarButtonSystemItemSave 
                                               target:self action:@selector(saveAlarmDays:)];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
+                                             initWithBarButtonSystemItem:UIBarButtonSystemItemCancel 
+                                             target:self action:@selector(cancelAlarmDays:)];
 
     NSMutableArray *dayArrayTemp = [[NSMutableArray alloc] init];
     NSMutableArray *selectedDayArrayTemp = [[NSMutableArray alloc] init];
@@ -62,14 +69,12 @@
     self.alarmDayTableView =   temp; 
     
     dayArray = dayArrayTemp;
+
     
-    [dayArray addObject:@"Monday"];
-    [dayArray addObject:@"Tuesday"];
-    [dayArray addObject:@"Wednesday"];
-    [dayArray addObject:@"Thursday"];
-    [dayArray addObject:@"Friday"];
-    [dayArray addObject:@"Saturday"];
-    [dayArray addObject:@"Sunday"];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    dayArray = [[dateFormatter weekdaySymbols] mutableCopy]; 
+    
 }
 
 - (void)viewDidUnload

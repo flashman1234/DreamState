@@ -49,7 +49,7 @@
 @synthesize managedObjectContext;
 @synthesize dream;
 @synthesize nameButton;
-
+@synthesize bottomBar;
 
 #pragma mark - Play and Record
 
@@ -168,8 +168,11 @@
 }
 
 
+
 -(void)recordVideo
 {
+    bottomBar.hidden = TRUE;
+    
     stopButton.hidden = NO;
     deleteButton.hidden = YES;
     recButton.hidden = YES;
@@ -193,6 +196,23 @@
         cam.preview.position    = CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
         cam.preview.zPosition = -1;
     }
+    
+    UITapGestureRecognizer *doubleTap = 
+    [[UITapGestureRecognizer alloc]
+     initWithTarget:self 
+     action:@selector(tapStopVideo:)];
+    doubleTap.numberOfTapsRequired = 2;
+    [self.view addGestureRecognizer:doubleTap];
+    
+    UILabel *stopRecordingLabel = [[UILabel alloc]init];
+    stopRecordingLabel.text = @"Double tap screen to stop recording";
+    stopRecordingLabel.frame = CGRectMake(0,380,  320, 20);
+    
+    stopRecordingLabel.opaque = NO;
+    stopRecordingLabel.highlighted = YES;
+    
+    [self.view insertSubview:stopRecordingLabel atIndex:100];
+    
     
     
     NSString *videoFile = [self createFileName:@"mov"];
@@ -223,8 +243,13 @@
     if (![context save:&error]) {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
+}
 
-
+-(void)tapStopVideo:(id)sender{
+    if (bottomBar.hidden) {
+        bottomBar.hidden = FALSE;
+        [self stopRecordingVideo];
+    }  
 }
 
 -(void)stopRecordingVideo
