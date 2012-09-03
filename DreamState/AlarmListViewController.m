@@ -10,27 +10,19 @@
 #import "AlarmViewController.h"
 #import "Alarm.h"
 #import "Day.h"
-
 #import "NotificationLoader.h"
-
 #import "Alarmhelper.h"
 
 #define TAG_OFFSET 100
 
-@interface AlarmListViewController ()
-
-@end
+#define RGBA(r, g, b, a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
 
 @implementation AlarmListViewController
 
 @synthesize noAlarmsLabel;
-
-//@synthesize notificationsArray;
 @synthesize tableView;
 @synthesize alarmArray;
-
 @synthesize managedObjectContext;
-
 @synthesize enabledSwitch;
 
 
@@ -38,8 +30,21 @@
 
     AlarmViewController *alarmViewControllerControllerTemp = [[AlarmViewController alloc] init];
     alarmViewControllerControllerTemp.managedObjectContext = [self managedObjectContext];
+    alarmViewControllerControllerTemp.hidesBottomBarWhenPushed = YES;
               
     [self.navigationController pushViewController:alarmViewControllerControllerTemp animated:YES]; 
+}
+
+- (void)loadAlarmArray
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"Alarm" inManagedObjectContext:managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSError *error;
+    NSArray *fetchedObjects = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    self.alarmArray = fetchedObjects;
 }
 
 
@@ -53,15 +58,14 @@
     Alarm *existingAlarm = [self.alarmArray objectAtIndex:indexPath.row];
     selectedAlarmViewController.existingAlarm = existingAlarm;
     
+    selectedAlarmViewController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:selectedAlarmViewController animated:YES];
-    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     return 100;
 }
-
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -85,8 +89,9 @@
     CGRect labelDaysFrame = CGRectMake(10, 56, 290, 25);
     UILabel *lblTemp;
     
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithFrame:CellFrame];
     
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithFrame:CellFrame];
+        
     //Initialize Label with tag 1.
     lblTemp = [[UILabel alloc] initWithFrame:labelTimeFrame];
     lblTemp.tag = 1;
@@ -95,8 +100,7 @@
     //Initialize Label with tag 2.
     lblTemp = [[UILabel alloc] initWithFrame:labelNameFrame];
     lblTemp.tag = 2;
-    lblTemp.font = [UIFont boldSystemFontOfSize:12];
-    lblTemp.textColor = [UIColor lightGrayColor];
+    
     [cell.contentView addSubview:lblTemp];
     
     //Initialize Label with tag 3.
@@ -106,11 +110,6 @@
     
     return cell;
 }
-
-
-
-
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
@@ -143,9 +142,22 @@
         lblDays.text = @"Everyday";
     }
     
+    lblDays.backgroundColor = [UIColor clearColor];
+    lblDays.font = [UIFont boldSystemFontOfSize:12];
+    lblDays.textColor = [UIColor whiteColor];
     
     lblTime.text = alarm.time;
+    
+    lblTime.backgroundColor = [UIColor clearColor];
+    lblTime.font = [UIFont boldSystemFontOfSize:18];
+    lblTime.textColor = [UIColor whiteColor];
+    
     lblName.text = alarm.name;
+    
+    lblName.backgroundColor = [UIColor clearColor];
+    lblName.font = [UIFont boldSystemFontOfSize:12];
+    lblName.textColor = [UIColor whiteColor];
+
 
     enabledSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
 
@@ -182,6 +194,8 @@
 }
 
 
+
+
 #pragma mark - View methods
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -189,27 +203,6 @@
     [self loadAlarmArray];
     [self.tableView reloadData];
    
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)loadAlarmArray
-{
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:@"Alarm" inManagedObjectContext:managedObjectContext];
-    [fetchRequest setEntity:entity];
-    NSError *error;
-    NSArray *fetchedObjects = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    
-    self.alarmArray = fetchedObjects;
 }
 
 - (void)viewDidLoad
@@ -220,8 +213,11 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
                                               initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
                                               target:self action:@selector(addAlarmButtonTapped:)];
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+
     
     [self loadAlarmArray];
+    tableView.backgroundColor = RGBA(0,0,0,5);
 
 }
 

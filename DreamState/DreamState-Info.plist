@@ -41,5 +41,17 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIStatusBarHidden</key>
+	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>DS-DIGI.TFF</string>
+		<string>DS-Digital.ttf</string>
+		<string>Electrorocket.ttf</string>
+		<string>nineteen.ttf</string>
+		<string>Solari.ttf</string>
+	</array>
+	<key>UIApplicationExitsOnSuspend</key>
+	<true/>
 </dict>
 </plist>

@@ -9,6 +9,7 @@
 #import "SelectedDreamViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "DreamNameViewController.h"
+#import "SineWaveView.h"
 
 @interface SelectedDreamViewController ()
 {
@@ -20,62 +21,88 @@
 
 @synthesize soundFile;
 @synthesize mediaPlayer;
-//@synthesize display;
 @synthesize managedObjectContext;
 @synthesize existingDream;
 @synthesize labelDreamName;
 @synthesize nameButton;
-
-
-#pragma mark - IBActions
-
--(IBAction)playButtonTapped:(id)sender
-{
-    [self playDream];
-}
-
--(IBAction)deleteButtonTapped:(id)sender
-{
-    //[self deleteDream:soundFile];
-    [self deleteDream];
-}
-
--(IBAction)nameDream{
-    DreamNameViewController *dreamNameViewController = [[DreamNameViewController alloc] init];
-    dreamNameViewController.managedObjectContext = [self managedObjectContext];
-    dreamNameViewController.existingDream = existingDream;
-    [self.navigationController pushViewController:dreamNameViewController animated:YES];
-}
-
+@synthesize audioPlayer;
+@synthesize sineWaveView;
+@synthesize lowPassResults;
+@synthesize levelTimer;
+@synthesize sineWaveImageView;
+@synthesize highPassResults;
 
 
 -(void)playDream{
     
-    NSURL *fileURL = [NSURL fileURLWithPath:[existingDream fileUrl]];
-    
-    self.mediaPlayer = [[MPMoviePlayerController alloc] initWithContentURL: fileURL];
-    
-    NSString *fileType = [[existingDream fileUrl] substringFromIndex:[[existingDream fileUrl] length] - 3];
-    if ([fileType isEqualToString:@"mov"]) {
-        [mediaPlayer.view setTransform:CGAffineTransformMakeRotation(-M_PI_2)];
-    }
-    
-    //Use MPMovieControlStyleNone if you want to add my own buttons
-    self.mediaPlayer.controlStyle = MPMovieControlStyleNone;
-    
-    //CGRect bounds           = CGRectMake(0, -46, self.view.bounds.size.width, self.view.bounds.size.height +92);
-    [mediaPlayer.view setFrame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 30)]; 
-    
+        NSURL *fileURL = [NSURL fileURLWithPath:[existingDream fileUrl]];
+        
+        self.mediaPlayer = [[MPMoviePlayerController alloc] initWithContentURL: fileURL];
+        
+        NSString *fileType = [[existingDream fileUrl] substringFromIndex:[[existingDream fileUrl] length] - 3];
+        if ([fileType isEqualToString:@"mov"]) {
+            [mediaPlayer.view setTransform:CGAffineTransformMakeRotation(-M_PI_2)];
+        }
 
-    
-    [self.view addSubview:mediaPlayer.view];
-    mediaPlayer.view.layer.zPosition = -1;
-    
-    [mediaPlayer prepareToPlay];
-
-    [mediaPlayer play];
-    
+        //self.mediaPlayer.controlStyle = MPMovieControlStyleNone;
+        [mediaPlayer.view setFrame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height  - 30)]; 
+        
+        [self.view addSubview:mediaPlayer.view];
+        mediaPlayer.view.layer.zPosition = -1;
+        
+        mediaPlayer.shouldAutoplay = NO;
+        [mediaPlayer prepareToPlay];
+        
 }
+
+#pragma mark - view methods
+
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
+
+    [self playDream];
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    
+    [super viewDidDisappear:(BOOL)animated];
+    [mediaPlayer stop];
+    [mediaPlayer.view removeFromSuperview];
+    [self.audioPlayer stop];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+	self.title = existingDream.name;
+}
+
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [super viewWillDisappear:animated];
+}
+
+
 
 -(void)deleteDream{
     NSError *error;
@@ -97,56 +124,18 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)deleteDream:(NSString *)dreamFileName{
-    
-    NSArray *dirPaths;
-    NSString *docsDir;
-    
-    dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    docsDir = [dirPaths objectAtIndex:0];
-    
-    NSString *soundFilePath = [docsDir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@", dreamFileName]];
-    
-    NSLog(@"soundFilePath : %@", soundFilePath);
-    [[NSFileManager defaultManager] removeItemAtPath: soundFilePath error: nil];
-    [mediaPlayer stop];
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
-
-
-#pragma mark - view methods
-
-
-- (void)viewDidLoad
+-(IBAction)deleteButtonTapped:(id)sender
 {
-    [super viewDidLoad];
-    
+    //[self deleteDream:soundFile];
+    [self deleteDream];
 }
 
--(void)viewDidDisappear:(BOOL)animated{
-    
-    [super viewDidDisappear:(BOOL)animated];
-    [mediaPlayer stop];
-    [mediaPlayer.view removeFromSuperview];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-	labelDreamName.text = existingDream.name;
-}
-
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
+-(IBAction)nameDream{
+    DreamNameViewController *dreamNameViewController = [[DreamNameViewController alloc] init];
+    dreamNameViewController.managedObjectContext = [self managedObjectContext];
+    dreamNameViewController.existingDream = existingDream;
+    [self.navigationController pushViewController:dreamNameViewController animated:YES];
 }
 
 @end

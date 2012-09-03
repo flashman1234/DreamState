@@ -40,7 +40,14 @@
 
 
 -(void)cancelAlarm:(id)sender{
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    CATransition* transition = [CATransition animation];
+    transition.duration = 0.5;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionFade;
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+    
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 -(void)saveAlarm:(id)sender{
@@ -142,10 +149,10 @@
         if([Children count] != 0) {
           
             AlarmSoundViewController *alarmSoundViewController = [[AlarmSoundViewController alloc] init];
-        
+            alarmSoundViewController.soundArray = Children;
             [self.navigationController pushViewController:alarmSoundViewController animated:YES];
         
-            alarmSoundViewController.tableDataSource = Children;
+            
         }
         
     }
@@ -188,11 +195,13 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         
+        cell.backgroundColor = [UIColor darkGrayColor];
+        
         nameLabel = [[UILabel alloc] initWithFrame:CGRectMake( 7.0, 0.0, 140.0, 44.0 )];
         
-        nameLabel.font = [UIFont systemFontOfSize: 12.0];
+        nameLabel.font = [UIFont systemFontOfSize: 14.0];
         nameLabel.textAlignment = UITextAlignmentLeft;
-        nameLabel.textColor = [UIColor darkGrayColor];
+        nameLabel.textColor = [UIColor whiteColor];
         nameLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
         nameLabel.backgroundColor = [UIColor clearColor];
         //add tag to make label accessible when the view is reloaded.
@@ -202,9 +211,9 @@
         
         valueLabel = [[UILabel alloc] initWithFrame: CGRectMake( 165.0, 0.0,120, 44.0 )];
         
-        valueLabel.font = [UIFont systemFontOfSize: 11];
+        valueLabel.font = [UIFont systemFontOfSize: 14];
         valueLabel.textAlignment = UITextAlignmentRight;
-        valueLabel.textColor = [UIColor blueColor];
+        valueLabel.textColor = [UIColor whiteColor];
         valueLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
         valueLabel.backgroundColor = [UIColor clearColor];
         //add tag to make label accessible when the view is reloaded.
@@ -247,6 +256,7 @@
     }
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
     
     return cell;
 }
@@ -268,6 +278,10 @@
         NSError *saveError = nil;
         [managedObjectContext save:&saveError];
     }
+    
+    NotificationLoader *notificationLoader = [[NotificationLoader alloc] init];
+    notificationLoader.managedObjectContext = [self managedObjectContext];
+    [notificationLoader loadNotifications];
 
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -312,12 +326,17 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.tableDataSource = [appDelegate.alarmClockData objectForKey:@"Rows"];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
                                              initWithBarButtonSystemItem:UIBarButtonSystemItemSave 
                                               target:self action:@selector(saveAlarm:)];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
                                               initWithBarButtonSystemItem:UIBarButtonSystemItemCancel 
                                               target:self action:@selector(cancelAlarm:)];
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    
+    alarmTableView.backgroundColor = [UIColor clearColor];
+    alarmTableView.opaque = NO;
+    alarmTableView.backgroundView = nil;
 }
 
 

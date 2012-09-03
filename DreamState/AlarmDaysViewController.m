@@ -9,9 +9,7 @@
 #import "AlarmDaysViewController.h"
 #import "AlarmViewController.h"
 
-@interface AlarmDaysViewController ()
-
-@end
+#define RGBA(r, g, b, a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
 
 @implementation AlarmDaysViewController
 
@@ -19,14 +17,7 @@
 @synthesize alarmDayTableView;
 @synthesize selectedDayArray;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+
 
 -(void)saveAlarmDays:(id)sender{
 
@@ -64,9 +55,13 @@
     }
     
     
-    UITableView *temp =  [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
-
-    self.alarmDayTableView =   temp; 
+    alarmDayTableView.backgroundColor = RGBA(0,0,0,5);
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    
+    
+//    UITableView *temp =  [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+//
+//    self.alarmDayTableView =   temp; 
     
     dayArray = dayArrayTemp;
 
@@ -111,12 +106,14 @@
     }
     
     cell.textLabel.text = [self.dayArray objectAtIndex:indexPath.row];
+    cell.textLabel.textColor = [UIColor whiteColor];
     
     for (NSString *day in selectedDayArray) 
     {
         if ([day isEqualToString:[self.dayArray objectAtIndex:indexPath.row]]) {
             
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
+           
             break;
         }
     }

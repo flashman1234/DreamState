@@ -15,5 +15,6 @@
 @dynamic date;
 @dynamic fileUrl;
 @dynamic mediaType;
+@dynamic dateCreated;
 
 @end

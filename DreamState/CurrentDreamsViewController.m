@@ -7,47 +7,35 @@
 //
 
 #import "CurrentDreamsViewController.h"
-#import "DreamTableViewcell.h"
 #import "SelectedDreamViewController.h"
 #import "Dream.h"
+#import "AppDelegate.h"
 
-@interface CurrentDreamsViewController ()
 
-@end
+#define RGBA(r, g, b, a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
 
 @implementation CurrentDreamsViewController
 
 @synthesize dreamTableView;
 @synthesize dreamArray;
-//@synthesize tableViewArray;
-
+@synthesize selectedCellIndexPath;
 @synthesize managedObjectContext;
 
-//-(NSArray *)listFileAtPath:(NSString *)path
-//{
-//    
-//    NSError* error = nil;
-//    NSMutableArray  *myArray = (NSMutableArray*)[[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:&error];
-//    
-//    [myArray sortUsingSelector:@selector(compare:)];
-//
-//    NSSortDescriptor* sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:nil ascending:NO selector:@selector(localizedCompare:)];        
-//    NSArray* sortedArray = [myArray sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
-//    
-//    return sortedArray;
-//    
-//}
 
 #pragma mark - table view methods
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 60.0;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1; 
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    //return [tableViewArray count]; 
     return [self.dreamArray count]; 
 }
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -58,81 +46,89 @@
         cell = [[UITableViewCell alloc] 
                 initWithStyle:UITableViewCellStyleDefault 
                 reuseIdentifier:CellIdentifier];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
     }
+    else {
+        UILabel *name = (UILabel *)[cell.contentView viewWithTag:1];
+        if ([name superview]) {
+            [name removeFromSuperview];
+        }
 
+    }
+    
     Dream *dream = [self.dreamArray objectAtIndex:indexPath.row];
     
-    [[cell textLabel] setText:dream.name];
+    UILabel *dreamLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 12, 290, 25)];
+    dreamLabel.tag = 1;        
+    dreamLabel.font = [UIFont fontWithName:@"Georgia-Bold" size:20.0];
+    dreamLabel.textColor = [UIColor whiteColor];
+    dreamLabel.backgroundColor = [UIColor clearColor];
+    dreamLabel.text = dream.name;
+    [cell.contentView addSubview:dreamLabel];
     
-//    
-//    
-//    NSString *fileName = [tableViewArray objectAtIndex:indexPath.row];
-//    NSString *fileNameDate = [fileName substringToIndex:[fileName length] - 4];
-//    
-//    NSDateFormatter *format = [[NSDateFormatter alloc] init];
-//    [format setDateFormat:@"dd-MM-yyyy HH:mm:ss"];
-//    
-//    NSDate *date = [format dateFromString:fileNameDate];
-//
-//    NSDateFormatter *f2 = [[NSDateFormatter alloc] init];
-//    [f2 setDateFormat:@"d MMM YYYY"];
-//
-//    NSString *s = [f2 stringFromDate:date];    
-//       
-//    cell.textLabel.text = s;
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-     
     return cell;
+
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     SelectedDreamViewController *selectedDreamViewController = [[SelectedDreamViewController alloc] init];
     selectedDreamViewController.managedObjectContext = [self managedObjectContext];
     
     Dream *existingDream = [self.dreamArray objectAtIndex:indexPath.row];
     selectedDreamViewController.existingDream = existingDream;
-
     
-   // selectedDreamViewController.soundFile = [tableViewArray objectAtIndex:indexPath.row];
-    
-    
-    [self.navigationController pushViewController:selectedDreamViewController animated:YES];
-    
+    selectedDreamViewController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:selectedDreamViewController animated:YES]; 
 }
 
 
 - (void)loadDreamArray
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"dateCreated" ascending:NO];
+   
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor1, nil];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
     NSEntityDescription *entity = [NSEntityDescription
                                    entityForName:@"Dream" inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
     NSError *error;
     NSArray *fetchedObjects = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
     
-    self.dreamArray = fetchedObjects;
+    self.dreamArray = [fetchedObjects mutableCopy];
 }
-
 
 #pragma mark - View methods
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+-(id)initWithManagedObjectContext:(NSManagedObjectContext *)moc{
+    
+    if (self = [super init])
+    {
+        self.managedObjectContext = moc;
+        UITabBarItem *tbi = [self tabBarItem];
+        [tbi setTitle:@"Play"];
+        UIImage *i = [UIImage imageNamed:@"play@1x.png"];
+        [tbi setImage:i];
     }
+    
     return self;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Recorded Dreams";
+    
+   if (managedObjectContext == nil) 
+        { managedObjectContext = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; }    
+    
     [self loadDreamArray];
+    
+    dreamTableView.backgroundColor = RGBA(0,0,0,5);
 }
 
 - (void)viewDidUnload
@@ -147,18 +143,16 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {  
-    
-//    NSArray *dirPaths;
-//    NSString *docsDir;
-//    
-//    dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    docsDir = [dirPaths objectAtIndex:0];
-//    
-//    tableViewArray = [self listFileAtPath:docsDir];
-    
     [self loadDreamArray];
     
     [self.dreamTableView reloadData];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [super viewWillDisappear:animated];
 }
 
 @end

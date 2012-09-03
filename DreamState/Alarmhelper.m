@@ -11,26 +11,9 @@
 @implementation Alarmhelper
 
 @synthesize weekDays;
-
-//- (NSComparisonResult)weekdayCompare:(NSString*)otherDay {
-//
-//    NSArray *weekDays2 = [NSArray arrayWithObjects:@"Sunday", @"Monday", @"Tuesday", @"Wednesday", @"Thursday",  @"Friday",@"Saturday", nil];
-//    
-//    NSUInteger selfIndex = [weekDays2 indexOfObject:self];
-//    NSUInteger otherDayIndex = [weekDays2 indexOfObject:otherDay];
-//    
-//    if (selfIndex < otherDayIndex) {
-//        return NSOrderedAscending;
-//    }
-//    else if (selfIndex > otherDayIndex) {
-//        return NSOrderedDescending;
-//    } else {
-//        return NSOrderedSame;
-//    }
-//}
+@synthesize managedObjectContext;
 
 -(NSString *)tidyDaysFromArray:(NSArray *)array{
-NSLog(@"array : %@", array);
     
     array = [array sortedArrayUsingComparator:^(id obj1, id obj2){
         if ([obj1 isKindOfClass:[NSString class]] && [obj2 isKindOfClass:[NSString class]]) {
@@ -39,10 +22,7 @@ NSLog(@"array : %@", array);
             
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
             
-             NSArray *weekDays2 = [dateFormatter weekdaySymbols]; 
-            
-            
-           // NSArray *weekDays2 = [NSArray arrayWithObjects:@"Sunday", @"Monday", @"Tuesday", @"Wednesday", @"Thursday",  @"Friday",@"Saturday", nil];
+            NSArray *weekDays2 = [dateFormatter weekdaySymbols]; 
             
             NSUInteger selfIndex = [weekDays2 indexOfObject:s1];
             NSUInteger otherDayIndex = [weekDays2 indexOfObject:s2];

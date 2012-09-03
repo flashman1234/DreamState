@@ -63,7 +63,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Dream State";
+   // self.title = @"Dream State";
     
     if (managedObjectContext == nil) {
         managedObjectContext = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
@@ -78,6 +78,61 @@
    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localAction) name:localReceived object:nil];
+    
+    [self setSwipes];
+
+}
+
+-(void)setSwipes{
+    
+    UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedScreen:)];
+    swipeUp.numberOfTouchesRequired = 1;
+    swipeUp.delaysTouchesEnded = YES;
+    //swipeUp.direction = (UISwipeGestureRecognizerDirectionUp);
+    [self.view addGestureRecognizer:swipeUp];
+    
+//    UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedScreenDown:)];
+//    swipeDown.numberOfTouchesRequired = 1;
+//    swipeDown.direction = (UISwipeGestureRecognizerDirectionDown);
+//    [self.view addGestureRecognizer:swipeDown];
+
+}
+
+- (void) swipedScreen:(UISwipeGestureRecognizer*)swipeGesture {
+    
+    if ([swipeGesture direction] == UISwipeGestureRecognizerDirectionUp) {
+        InAppSettingsViewController *settings = [[InAppSettingsViewController alloc] init];
+        
+        CATransition* transition = [CATransition animation];
+        transition.duration = 0.5;
+        transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        transition.type = kCATransitionMoveIn; //kCATransitionMoveIn; //, kCATransitionPush, kCATransitionReveal, kCATransitionFade
+        transition.subtype = kCATransitionFromTop; //kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
+        [self.navigationController.view.layer addAnimation:transition forKey:nil];
+        [[self navigationController] pushViewController:settings animated:NO];
+    }
+    
+    
+    
+    
+    
+//    CATransition *transition = [CATransition animation];
+//    transition.duration = 0.75;
+//    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//    transition.type = kCATransitionPush;
+//    transition.subtype =kCATransitionFromLeft;
+//    transition.delegate = self;
+//    [self.view.layer addAnimation:transition forKey:nil];
+
+//    [UIView animateWithDuration:0.75
+//                     animations:^{
+//                         [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+//                         [self.navigationController pushViewController:settings animated:NO];
+//                         [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:self.navigationController.view cache:NO];
+//                     }];
+    
+    
+    //[self.navigationController pushViewController:settings animated:YES];
 
 }
 
@@ -100,5 +155,19 @@
 {
     return UIInterfaceOrientationIsPortrait(interfaceOrientation);
 }
+
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [super viewWillAppear:animated];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [super viewWillDisappear:animated];
+}
+
 
 @end

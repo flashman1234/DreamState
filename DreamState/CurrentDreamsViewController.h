@@ -10,17 +10,17 @@
 
 @interface CurrentDreamsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 {
-    //
-    
     IBOutlet UITableView  *dreamTableView;
 }
+
+-(id)initWithManagedObjectContext:(NSManagedObjectContext *)moc;
 
 @property (nonatomic, retain) UITableView *dreamTableView;
 
 @property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
 
-@property (nonatomic, retain) NSArray *dreamArray;
+@property (nonatomic, retain) NSMutableArray *dreamArray;
 
-//@property (nonatomic, retain) NSArray *tableViewArray;
+@property (nonatomic, retain) NSIndexPath *selectedCellIndexPath;
 
 @end

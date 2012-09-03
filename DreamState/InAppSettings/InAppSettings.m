@@ -8,6 +8,7 @@
 
 #import "InAppSettings.h"
 #import "InAppSettingsPSMultiValueSpecifierTable.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation InAppSettings
 
@@ -53,6 +54,9 @@ static InAppSettings *sharedInstance = nil;
 @implementation InAppSettingsModalViewController
 
 - (id)init{
+    
+    
+    
     InAppSettingsViewController *settings = [[InAppSettingsViewController alloc] init];
     self = (InAppSettingsModalViewController *)[[UINavigationController alloc] initWithRootViewController:settings];
     [settings addDoneButton];
@@ -86,21 +90,65 @@ static InAppSettings *sharedInstance = nil;
 
 #pragma mark setup view
 
+-(id)init{
+    UITabBarItem *tbi = [self tabBarItem];
+    [tbi setTitle:@"Settings"];
+    UIImage *i = [UIImage imageNamed:@"InAppSettings.png"];
+    [tbi setImage:i];
+    return self;
+}
+
+
 - (id)initWithFile:(NSString *)inputFile{
     self = [super init];
     if (self != nil){
         self.file = inputFile;
-    }
+        
+   }
     return self;
 }
 
+
+
+
+#pragma mark - screenswipes
+- (void) swipedScreenUp:(UISwipeGestureRecognizer*)swipeGesture {
+    
+    CATransition* transition = [CATransition animation];
+    transition.duration = 0.5;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionMoveIn; //kCATransitionMoveIn; //, kCATransitionPush, kCATransitionReveal, kCATransitionFade
+    transition.subtype = kCATransitionFromTop; //kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+    [[self navigationController] popViewControllerAnimated:NO];
+    
+    
+}
+
+
 - (void)viewDidLoad{
     //setup the table
-    self.settingsTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    //self.settingsTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    self.settingsTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.layer.bounds.size.width, self.view.layer.bounds.size.height) style:UITableViewStyleGrouped];
+    
+    self.settingsTableView.backgroundColor = [UIColor blackColor];
     self.settingsTableView.autoresizingMask = (UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight);
     self.settingsTableView.delegate = self;
     self.settingsTableView.dataSource = self;
+    self.settingsTableView.scrollEnabled = NO;
     [self.view addSubview:self.settingsTableView];
+    
+//    UILabel *backToMenu = [[UILabel alloc]init];
+//    backToMenu.text = @"Menu";
+//    backToMenu.frame = CGRectMake((self.view.layer.bounds.size.width / 2) - 50 , self.view.layer.bounds.size.height - 30, 100, 30);
+//    backToMenu.textAlignment = UITextAlignmentCenter;
+//    [self.view addSubview:backToMenu];
+    
+//    UIImage *settingsButton = [UIImage imageNamed: @"button18024651.png"];
+//    UIImageView *settingsButtonView = [[UIImageView alloc] initWithImage:settingsButton];
+//    settingsButtonView.frame = CGRectMake(100, self.view.layer.bounds.size.height - 30, 120, 30);
+//    [self.view insertSubview:settingsButtonView atIndex:100];
+    
     
     //if the title is nil set it to Settings
     if(!self.title){
@@ -117,7 +165,17 @@ static InAppSettings *sharedInstance = nil;
     //setup keyboard notification
     self.firstResponder = nil;
     [self registerForKeyboardNotifications];
+    
+    
+//    UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedScreenUp:)];
+//    swipeGesture.numberOfTouchesRequired = 1;
+//    swipeGesture.direction = (UISwipeGestureRecognizerDirectionUp);
+//    [self.view addGestureRecognizer:swipeGesture];
+    
+    
 }
+
+
 
 - (void)viewWillAppear:(BOOL)animated {
     self.firstResponder = nil;
@@ -126,11 +184,13 @@ static InAppSettings *sharedInstance = nil;
     self.settingsTableView.scrollIndicatorInsets = UIEdgeInsetsZero;
     
     [self.settingsTableView reloadData];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     self.firstResponder = nil;
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
     [super viewWillDisappear:animated];
 }
 
@@ -217,6 +277,7 @@ static InAppSettings *sharedInstance = nil;
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     return [self.settingsReader.headers objectAtIndex:section];
+    //return @"ww";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -230,6 +291,22 @@ static InAppSettings *sharedInstance = nil;
     return 0.0f;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *headerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 30)] autorelease];
+
+    UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(10, 3, tableView.bounds.size.width - 10, 18)] autorelease];
+    label.text = [self tableView:tableView titleForHeaderInSection:section];
+
+    label.textColor = [UIColor whiteColor];
+    label.backgroundColor = [UIColor clearColor];
+    [headerView addSubview:label];
+
+    return headerView;
+
+
+}
+
+
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     if(InAppSettingsDisplayPowered && [self.file isEqualToString:InAppSettingsRootFile] && section == (NSInteger)[self.settingsReader.headers count]-1){
         UIView *powerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, InAppSettingsScreenWidth, InAppSettingsPowerFooterHeight)];
@@ -239,10 +316,10 @@ static InAppSettings *sharedInstance = nil;
         CGPoint InAppSettingsPos = CGPointMake((CGFloat)round((InAppSettingsScreenWidth*0.5f)-(InAppSettingsSize.width*0.5f)), 
                                                (CGFloat)round((InAppSettingsPowerFooterHeight*0.5f)-(InAppSettingsSize.height*0.5f))-1);
         UILabel *InAppLabel = [[UILabel alloc] initWithFrame:CGRectMake(InAppSettingsPos.x, InAppSettingsPos.y, InAppSettingsSize.width, InAppSettingsSize.height)];
-        InAppLabel.text = InAppSettingsProjectName;
+        InAppLabel.text = InAppSettingsProjectName; //michal
         InAppLabel.font = InAppSettingsFooterFont;
         InAppLabel.backgroundColor = [UIColor clearColor];
-        InAppLabel.textColor = InAppSettingsFooterBlue;
+        InAppLabel.textColor = [UIColor whiteColor]; //InAppSettingsFooterBlue;
         InAppLabel.shadowColor = [UIColor whiteColor];
         InAppLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
         [powerView addSubview:InAppLabel];

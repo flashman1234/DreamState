@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AlarmDaysViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource>
+@interface AlarmDaysViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 {
     IBOutlet UITableView *alarmDayTableView;
 }

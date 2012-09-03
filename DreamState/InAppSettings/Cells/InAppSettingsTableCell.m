@@ -134,21 +134,24 @@
 }
 
 - (void)setupCell{
+    
+    self.backgroundColor = [UIColor darkGrayColor];
+    
     //setup title label
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.titleLabel.font = InAppSettingsBoldFont;
     self.titleLabel.highlightedTextColor = [UIColor whiteColor];
     self.titleLabel.backgroundColor = [UIColor clearColor];
-//    self.titleLabel.backgroundColor = [UIColor greenColor];
+    self.titleLabel.textColor = [UIColor whiteColor];
     [self.contentView addSubview:self.titleLabel];
     
     //setup value label
     self.valueLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.valueLabel.font = InAppSettingsNormalFont;
-    self.valueLabel.textColor = InAppSettingsBlue;
+    //self.valueLabel.textColor = InAppSettingsBlue;
     self.valueLabel.highlightedTextColor = [UIColor whiteColor];
     self.valueLabel.backgroundColor = [UIColor clearColor];
-//    self.valueLabel.backgroundColor = [UIColor redColor];
+    self.valueLabel.textColor = [UIColor whiteColor];
     [self.contentView addSubview:self.valueLabel];
 }
 

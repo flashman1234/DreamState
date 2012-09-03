@@ -71,6 +71,8 @@
                                              initWithBarButtonSystemItem:UIBarButtonSystemItemCancel 
                                              target:self action:@selector(cancelAlarmLabel:)];
     
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    
     if (existingName) {
         labelTextField.text = existingName;
     }

@@ -40,15 +40,19 @@
     
 }
 
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event 
-{
-    [labelTextField resignFirstResponder];
-}
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     
-    [labelTextField resignFirstResponder];
+    
+    existingDream.name = labelTextField.text;
+    NSManagedObjectContext *context = [self managedObjectContext];
+    NSError *saveError = nil;
+    [context save:&saveError];
+    if (saveError) {
+        NSLog(@"saveError : %@", saveError);
+    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
     return YES;
 }
 
@@ -84,7 +88,13 @@
 
 - (void)viewWillAppear:(BOOL)flag {
     [super viewWillAppear:flag];
+    [self.navigationController setNavigationBarHidden:YES animated:flag];
     [labelTextField becomeFirstResponder];
+}
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [super viewWillDisappear:animated];
 }
 
 - (void)viewDidUnload
@@ -98,5 +108,9 @@
 {
     return UIInterfaceOrientationIsPortrait(interfaceOrientation);
 }
+
+
+
+
 
 @end

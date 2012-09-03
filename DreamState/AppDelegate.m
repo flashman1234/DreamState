@@ -8,10 +8,11 @@
 
 #import "AppDelegate.h"
 #import <AVFoundation/AVFoundation.h>
-#import "MenuViewController.h"
+//#import "MenuViewController.h"
+#import "HomeViewController.h"
 #import "RecordDreamViewController.h"
 #import "InAppSettings.h"
-
+#import "CurrentDreamsViewController.h"
 #import "Alarm.h"
 #import "Day.h"
 
@@ -23,6 +24,10 @@
 NSString *localReceived = @"localReceived";
 
 @implementation AppDelegate
+
+
+@synthesize tabBarController;
+
 
 @synthesize window = _window;
 @synthesize viewController = _viewController;
@@ -192,18 +197,79 @@ NSString *localReceived = @"localReceived";
     [self setAudioSession];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        self.viewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController_iPhone" bundle:nil];
-//    } else {
-//        self.viewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController_iPad" bundle:nil];
-//    }
+
     
+    UITabBarController *tbc = [[UITabBarController alloc] init];
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    HomeViewController *homeViewController = [[HomeViewController alloc] init];
+    RecordDreamViewController *recordDreamViewController = [[RecordDreamViewController alloc] initWithManagedObjectContext:__managedObjectContext];
+    CurrentDreamsViewController *currentDreamsViewController  = [[CurrentDreamsViewController alloc] initWithManagedObjectContext:__managedObjectContext];
+    InAppSettingsViewController *inAppSettingsViewController = [[InAppSettingsViewController alloc] init];
+
+    
+    NSMutableArray *tabBarViewControllers = [[NSMutableArray alloc] initWithCapacity:4];
+    
+    UINavigationController *navigationController = nil;
+    navigationController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
+    [tabBarViewControllers addObject:navigationController];
+    navigationController = nil;
+    
+    navigationController = [[UINavigationController alloc] initWithRootViewController:recordDreamViewController];
+    [tabBarViewControllers addObject:navigationController];
+    navigationController = nil;
+    
+    navigationController = [[UINavigationController alloc] initWithRootViewController:currentDreamsViewController];
+    [tabBarViewControllers addObject:navigationController];
+    navigationController = nil;
+    
+    navigationController = [[UINavigationController alloc] initWithRootViewController:inAppSettingsViewController];
+    [tabBarViewControllers addObject:navigationController];
+    navigationController = nil;
+    
+    
+    
+    [tbc setViewControllers:tabBarViewControllers];
+    
+//     [tbc setViewControllers:[NSArray arrayWithObjects:homeViewController, 
+//                              recordDreamViewController, 
+//                              currentDreamsViewController, 
+//                              inAppSettingsViewController, 
+//                              nil]];
+
+   // tabBarController = tabBarViewControllers;
+    
+    
+    
+    
+    
+    self.window.rootViewController = tbc;
+     [self.window makeKeyAndVisible];
+    
+    
+    /*
+    tabBarController = [[UITabBarController alloc] init];
+    tabBarController.delegate=self;
+   
+    
+    self.viewController = [[HomeViewController alloc] init];
     UINavigationController *navigationViewController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
     
     self.window.rootViewController = navigationViewController;
-    
+
+    [self.window addSubview: tabBarController.view];
     [self.window makeKeyAndVisible];
+    */
+    
+    
     return YES;
 }
 
@@ -338,4 +404,9 @@ NSString *localReceived = @"localReceived";
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+
+
+
 @end
+
+

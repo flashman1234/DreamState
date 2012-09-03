@@ -13,6 +13,7 @@
     </entity>
     <entity name="Dream" representedClassName="Dream" syncable="YES">
         <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="fileUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mediaType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -20,6 +21,6 @@
     <elements>
         <element name="Alarm" positionX="-164" positionY="-30" width="128" height="120"/>
         <element name="Day" positionX="97" positionY="213" width="128" height="75"/>
-        <element name="Dream" positionX="-405" positionY="144" width="128" height="105"/>
+        <element name="Dream" positionX="-405" positionY="144" width="128" height="120"/>
     </elements>
 </model>

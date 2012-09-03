@@ -16,5 +16,6 @@
 @property (nonatomic, retain) NSString * date;
 @property (nonatomic, retain) NSString * fileUrl;
 @property (nonatomic, retain) NSString * mediaType;
+@property (nonatomic, retain) NSDate * dateCreated;
 
 @end

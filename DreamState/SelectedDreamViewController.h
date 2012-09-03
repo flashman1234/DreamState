@@ -12,19 +12,21 @@
 #import <CoreAudio/CoreAudioTypes.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import "Dream.h"
+#import "SineWaveView.h"
 
 @interface SelectedDreamViewController : UIViewController<AVAudioPlayerDelegate>
 {
     IBOutlet UILabel *labelDreamName ;
 }
 
--(IBAction)playButtonTapped:(id)sender;
+//-(IBAction)playButtonTapped:(id)sender;
 -(IBAction)deleteButtonTapped:(id)sender;
 
 @property (nonatomic,strong) NSString *soundFile;
 
 @property (nonatomic, retain) MPMoviePlayerController *mediaPlayer;
-//@property (nonatomic, retain) IBOutlet UIView *display;
+@property (nonatomic, retain) AVAudioPlayer *audioPlayer;
+
 
 @property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
 
@@ -34,6 +36,14 @@
 
 @property(nonatomic, retain)IBOutlet UIButton *nameButton;
 
+
+
+@property (nonatomic, retain) NSTimer *levelTimer;
+//- (void)levelTimerCallback:(NSTimer *)timer;
+@property double lowPassResults;
+@property double highPassResults;
+@property (nonatomic, retain) SineWaveView *sineWaveView;
+@property (nonatomic, retain) UIImageView *sineWaveImageView;
 
 -(IBAction)nameDream;
 

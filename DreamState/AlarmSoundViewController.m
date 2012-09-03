@@ -2,48 +2,24 @@
 //  AlarmSoundViewController.m
 //  DreamState
 //
-//  Created by Michal Thompson on 8/7/12.
+//  Created by Michal Thompson on 8/24/12.
 //  Copyright (c) 2012 NA. All rights reserved.
 //
 
 #import "AlarmSoundViewController.h"
 #import "AlarmViewController.h"
 
-@interface AlarmSoundViewController ()
+#define RGBA(r, g, b, a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
 
-@end
 
 @implementation AlarmSoundViewController
 
 @synthesize alarmSoundTableView;
-@synthesize tableDataSource;
+@synthesize soundArray;
 
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 60.0;
 }
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
-}
-
-#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -52,7 +28,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.tableDataSource count];
+    return [self.soundArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -61,26 +37,61 @@
     
     UITableViewCell *cell = [self.alarmSoundTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.text = [self.tableDataSource objectAtIndex:indexPath.row];
+    UILabel *dreamLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 12, 290, 25)];
+    dreamLabel.tag = 1;        
+    dreamLabel.font = [UIFont fontWithName:@"Georgia-Bold" size:20.0];
+    dreamLabel.textColor = [UIColor whiteColor];
+    dreamLabel.backgroundColor = [UIColor clearColor];
+    dreamLabel.text = [self.soundArray objectAtIndex:indexPath.row];
+    [cell.contentView addSubview:dreamLabel];
+    
+//    cell.textLabel.text = [self.soundArray objectAtIndex:indexPath.row];
+//    cell.textLabel.textColor = [UIColor greenColor];
+//    cell.textLabel.backgroundColor = [UIColor clearColor];
+//    cell.contentView.backgroundColor = [UIColor blackColor];
     
     return cell;
-
+    
 }
-
-
-#pragma mark - Table view delegate
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AlarmViewController *parentViewController = (AlarmViewController*)[self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count - 2];
     
-    parentViewController.alarmSound = [self.tableDataSource objectAtIndex:indexPath.row];
-
+    parentViewController.alarmSound = [self.soundArray objectAtIndex:indexPath.row];
+    
     [self.navigationController popViewControllerAnimated:YES];
     
+}
+
+
+
+#pragma mark - view methods
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    alarmSoundTableView.backgroundColor = RGBA(0,0,0,5);
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{  
+    //[self.alarmSoundTableView reloadData];
 }
 
 @end

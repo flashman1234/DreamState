@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DreamTableViewcell : UITableViewCell
+@interface DreamTableViewcell : UITableViewCell{
+    UIView *upperLine;
+    UIView *lowerLine;
+}
 
-@property (nonatomic, strong) IBOutlet UILabel *dreamLabel;
+//@property (nonatomic, strong) UILabel *dreamLabel;
+
+@property (nonatomic ,retain) UIView *upperLine;
+@property (nonatomic ,retain) UIView *lowerLine;
+
 
 @end

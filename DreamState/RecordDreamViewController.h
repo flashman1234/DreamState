@@ -8,56 +8,57 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVfoundation.h>
-#import <CoreAudio/CoreAudioTypes.h>
 #import "DIYCam.h"
-#import <MediaPlayer/MediaPlayer.h>
 #import "Dream.h"
+#import <MediaPlayer/MediaPlayer.h>
+#import "SineWaveView.h"
+#import "OnOffViewController.h"
 
 @interface RecordDreamViewController : UIViewController <AVAudioRecorderDelegate,DIYCamDelegate>
 {
-    UIButton *recButton;
-    UIButton *stopButton;
-    UIButton *deleteButton;
-    UIButton *nameButton;
-    
-    UIToolbar *bottomBar;
-    
     BOOL autoRecord;
-    BOOL showPreview;
+    BOOL showVideoPreview;
+    BOOL isRecording;
+    BOOL loadedFromAlarm;
 }
 
-@property (nonatomic, retain) IBOutlet UIView *display;
-@property(nonatomic, retain)IBOutlet UIImageView *currentlyRecordingIcon;
-@property(nonatomic, retain)IBOutlet UILabel *recordingAudioLabel;
-@property(nonatomic, retain)IBOutlet UIButton *recButton;
-@property(nonatomic, retain)IBOutlet UIButton *stopButton;
-@property(nonatomic, retain)IBOutlet UIButton *deleteButton;
+-(id)initWithManagedObjectContext:(NSManagedObjectContext *)moc;
+-(void)levelTimerCallback:(NSTimer *)timer;
+
+-(IBAction)recordButtonTapped:(id)sender;
+-(IBAction)nameDreamButtonTapped;
+
+@property(nonatomic, retain)IBOutlet UIButton *recordButton;
 @property(nonatomic, retain)IBOutlet UIButton *nameButton;
 
-@property(nonatomic, retain)IBOutlet UIToolbar *bottomBar;
-
-@property (nonatomic, retain) DIYCam *cam;
-@property (nonatomic, retain) MPMoviePlayerController *mediaPlayer;
-@property (nonatomic, retain) AVAudioRecorder *recorder;
-
-@property (nonatomic, retain) NSDictionary *recordSettings;
-
-@property (nonatomic, retain) NSURL *soundFileURL;
-@property (nonatomic, retain) NSURL  *fileURL;
-@property (nonatomic, retain) NSString  *fileURLAsString;
-@property (nonatomic, retain) NSURL  *videoURL;
-
-@property (nonatomic, retain) NSUserDefaults *defaults;
+@property (nonatomic, strong) NSManagedObjectContext* managedObjectContext;
+@property (nonatomic, retain) NSUserDefaults *userDefaults;
 @property (nonatomic, retain) NSString *audioOrVideo;
+@property (nonatomic, retain) NSDictionary *recordSettings;
+@property (nonatomic, retain) Dream *dream;
+@property (nonatomic, retain) AVAudioRecorder *aVAudioRecorder;
+@property (nonatomic, retain) NSURL  *fileURL;
 
-@property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
 
-@property ( nonatomic , retain ) Dream *dream;
+@property (nonatomic, retain) MPMoviePlayerController *mediaPlayer;
+@property (nonatomic, retain) UIView *overlayView;
 
 
--(IBAction)recordDream;
--(IBAction)deleteDream;
--(IBAction)stopRecording;
--(IBAction)nameDream;
+
+@property (nonatomic, retain) DIYCam *diyCam;
+@property BOOL loadedFromAlarm;
+@property (nonatomic, retain) UIImage *isRecordingImage;
+@property (nonatomic, retain) UIImageView *isRecordingImageView;
+@property (nonatomic, retain) SineWaveView *sineWaveView;
+@property (nonatomic, retain) UIImageView *sineWaveImageView;
+@property (nonatomic, retain) NSTimer *levelTimer;
+@property double lowPassResults;
+
+
+@property (nonatomic, retain) OnOffViewController *onOffViewController;
+
+@property (nonatomic, retain) UISwipeGestureRecognizer *mySwipeUp;
+@property (nonatomic, retain) UISwipeGestureRecognizer *mySwipeDown;
+
 
 @end

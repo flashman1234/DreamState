@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface Alarmhelper : NSObject
 
 -(NSString *)tidyDaysFromArray:(NSArray *)array;
 
-//- (NSComparisonResult)weekdayCompare:(NSString*)otherDay;
+
 @property (nonatomic, retain) NSArray *weekDays;
+@property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
 
 @end
