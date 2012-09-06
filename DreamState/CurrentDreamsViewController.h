@@ -16,11 +16,8 @@
 -(id)initWithManagedObjectContext:(NSManagedObjectContext *)moc;
 
 @property (nonatomic, retain) UITableView *dreamTableView;
-
 @property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
-
 @property (nonatomic, retain) NSMutableArray *dreamArray;
-
 @property (nonatomic, retain) NSIndexPath *selectedCellIndexPath;
 
 @end

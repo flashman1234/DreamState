@@ -12,9 +12,8 @@
 #import "Dream.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "SineWaveView.h"
-#import "OnOffViewController.h"
 
-@interface RecordDreamViewController : UIViewController <AVAudioRecorderDelegate,DIYCamDelegate>
+@interface RecordDreamViewController : UIViewController <AVAudioRecorderDelegate, UITextFieldDelegate>
 {
     BOOL autoRecord;
     BOOL showVideoPreview;
@@ -25,12 +24,6 @@
 -(id)initWithManagedObjectContext:(NSManagedObjectContext *)moc;
 -(void)levelTimerCallback:(NSTimer *)timer;
 
--(IBAction)recordButtonTapped:(id)sender;
--(IBAction)nameDreamButtonTapped;
-
-@property(nonatomic, retain)IBOutlet UIButton *recordButton;
-@property(nonatomic, retain)IBOutlet UIButton *nameButton;
-
 @property (nonatomic, strong) NSManagedObjectContext* managedObjectContext;
 @property (nonatomic, retain) NSUserDefaults *userDefaults;
 @property (nonatomic, retain) NSString *audioOrVideo;
@@ -39,11 +32,9 @@
 @property (nonatomic, retain) AVAudioRecorder *aVAudioRecorder;
 @property (nonatomic, retain) NSURL  *fileURL;
 
-
 @property (nonatomic, retain) MPMoviePlayerController *mediaPlayer;
+@property (nonatomic, retain) AVAudioPlayer *audioPlayer;
 @property (nonatomic, retain) UIView *overlayView;
-
-
 
 @property (nonatomic, retain) DIYCam *diyCam;
 @property BOOL loadedFromAlarm;
@@ -55,10 +46,8 @@
 @property double lowPassResults;
 
 
-@property (nonatomic, retain) OnOffViewController *onOffViewController;
-
-@property (nonatomic, retain) UISwipeGestureRecognizer *mySwipeUp;
-@property (nonatomic, retain) UISwipeGestureRecognizer *mySwipeDown;
+@property (nonatomic, retain) UISegmentedControl *segmentedControl;
+@property (nonatomic, retain) UITextField *dreamNameTextField;
 
 
 @end

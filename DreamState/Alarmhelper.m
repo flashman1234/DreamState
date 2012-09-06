@@ -47,7 +47,7 @@
         NSString *shortDay = [myArrayElement substringToIndex:3];
         
         tidyDay = [tidyDay stringByAppendingString:shortDay];
-        tidyDay = [tidyDay stringByAppendingString:@", "];
+        tidyDay = [tidyDay stringByAppendingString:@","];
         
     }
     if ([tidyDay length] > 0) {

@@ -13,7 +13,6 @@
 
 -(NSString *)tidyDaysFromArray:(NSArray *)array;
 
-
 @property (nonatomic, retain) NSArray *weekDays;
 @property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
 

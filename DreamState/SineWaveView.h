@@ -11,5 +11,6 @@
 @interface SineWaveView : UIView
 
 @property CGFloat passedInValue;
+@property (nonatomic, retain) UIImage *myImage;
 
 @end

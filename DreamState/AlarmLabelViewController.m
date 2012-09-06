@@ -9,15 +9,10 @@
 #import "AlarmLabelViewController.h"
 #import "AlarmViewController.h"
 
-@interface AlarmLabelViewController ()
-
-@end
-
 @implementation AlarmLabelViewController
 
 @synthesize labelTextField;
 @synthesize existingName;
-
 
 -(void)saveAlarmLabel:(id)sender{
     
@@ -32,9 +27,7 @@
 -(void)cancelAlarmLabel:(id)sender{
     
     [self.navigationController popViewControllerAnimated:YES];
-    
 }
-
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     
@@ -47,27 +40,17 @@
     [labelTextField resignFirstResponder];
 }
 
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.title = @"Alarm label";
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
                                               initWithBarButtonSystemItem:UIBarButtonSystemItemSave 
                                               target:self action:@selector(saveAlarmLabel:)];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
                                              initWithBarButtonSystemItem:UIBarButtonSystemItemCancel 
                                              target:self action:@selector(cancelAlarmLabel:)];
     
@@ -77,6 +60,26 @@
         labelTextField.text = existingName;
     }
     
+    labelTextField.backgroundColor = [UIColor blackColor];
+    [labelTextField setFont:[UIFont fontWithName:@"Solari" size:20]];
+    labelTextField.textColor = [UIColor whiteColor];
+    labelTextField.borderStyle = UITextBorderStyleBezel;
+    
+    CGFloat myWidth = 26.0f;
+    CGFloat myHeight = 30.0f;
+    UIButton *myButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, myWidth, myHeight)];
+    [myButton setImage:[UIImage imageNamed:@"whitex.png"] forState:UIControlStateNormal];
+    [myButton setImage:[UIImage imageNamed:@"whitex.png"] forState:UIControlStateHighlighted];
+    
+    [myButton addTarget:self action:@selector(doClear:) forControlEvents:UIControlEventTouchUpInside];
+    
+    labelTextField.rightView = myButton;
+    labelTextField.rightViewMode = UITextFieldViewModeAlways;
+    
+}
+
+-(void) doClear:(id)sender{
+    labelTextField.text = @"";
 }
 
 - (void)viewWillAppear:(BOOL)flag {
@@ -88,8 +91,6 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

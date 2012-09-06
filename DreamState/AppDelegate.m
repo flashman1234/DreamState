@@ -8,41 +8,30 @@
 
 #import "AppDelegate.h"
 #import <AVFoundation/AVFoundation.h>
-//#import "MenuViewController.h"
 #import "HomeViewController.h"
 #import "RecordDreamViewController.h"
 #import "InAppSettings.h"
 #import "CurrentDreamsViewController.h"
 #import "Alarm.h"
 #import "Day.h"
-
 #import "Dream.h"
-
-
 #import "NotificationLoader.h"
 
 NSString *localReceived = @"localReceived";
 
 @implementation AppDelegate
 
-
-@synthesize tabBarController;
-
-
+@synthesize navigationController;
+@synthesize appOpensFromAlarm;
 @synthesize window = _window;
 @synthesize viewController = _viewController;
 @synthesize tdController = _tdController;
 @synthesize defaults = _defaults;
 @synthesize alarmClockData;
-
-
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
-
-
 @synthesize alarmSound;
-
 @synthesize fileURL;
 
 + (void)initialize{
@@ -51,19 +40,25 @@ NSString *localReceived = @"localReceived";
     }
 }
 
-
-
-
-
+#pragma mark - notifications
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    [self stopAlarmSound];
+    
+    switch (buttonIndex) {
+        case 1: 
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:localReceived object:self];
+        }
+            break;
+    }
+}
 
 -(void)playAlarmSound:(NSString *)sound{
     
-    NSString *fileName = sound;// [sound substringToIndex:[sound length] - 4];
-    
+    NSString *fileName = sound;
     NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:@"caf"];
-    
     NSURL *tempfileURL = [NSURL fileURLWithPath:path];
-
     fileURL = tempfileURL;
     
     NSError *error;
@@ -72,17 +67,13 @@ NSString *localReceived = @"localReceived";
     alarmSound = theAudio;
     
     if (error) {
-        NSLog(@"error : %@", error);
+        NSLog(@"playAlarmSound error : %@", error);
     }
     
     alarmSound.volume = 1.0;
-    
     alarmSound.delegate = self;
-    
     [alarmSound prepareToPlay];
-    
     [alarmSound play];
-    
 }
 
 -(void)stopAlarmSound{
@@ -90,28 +81,14 @@ NSString *localReceived = @"localReceived";
 }
 
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    
-    [self stopAlarmSound];
-    
-    switch (buttonIndex) {
-    case 1: 
-        {
-            [[NSNotificationCenter defaultCenter] postNotificationName:localReceived object:self];
-        }
-            break;
-    }
-}
-
-
-
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
-    
+   
+    appOpensFromAlarm = YES;
     NSDictionary *notDict = notification.userInfo;
-    
     NSString *alarmSoundName = [notDict valueForKey:@"AlarmSound"];
 
     if (application.applicationState == UIApplicationStateInactive ) {
+       
         [[NSNotificationCenter defaultCenter] postNotificationName:localReceived object:self];
     }
     
@@ -121,10 +98,6 @@ NSString *localReceived = @"localReceived";
         [dateFormat setDateFormat: @"yyyy-MM-dd HH:mm:ss zzz"]; 
         
         NSString *stringFromDate = [dateFormat stringFromDate:notification.fireDate];
-        
-        
-        //notification.alertBody = stringFromDate;// @"Would you like to record a dream?";
-
         
         [self playAlarmSound:alarmSoundName];
         UIAlertView *alert = [[UIAlertView alloc]
@@ -137,18 +110,18 @@ NSString *localReceived = @"localReceived";
     }
 }
 
+
+#pragma mark plist and defaults
 -(void)setAlarmClockPlist{
     NSString *Path = [[NSBundle mainBundle] bundlePath];
     NSString *DataPath = [Path stringByAppendingPathComponent:@"AlarmClock.plist"];
-    
     NSDictionary *tempDict = [[NSDictionary alloc] initWithContentsOfFile:DataPath];
     self.alarmClockData = tempDict;
 }
 
 -(void)setUserDefaultsAndSync{
-    NSUserDefaults *defaults2 = [NSUserDefaults standardUserDefaults];
-    self.defaults = defaults2;
     
+    self.defaults = [NSUserDefaults standardUserDefaults];
     
     NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:@"Audio",@"Recording",
                                  @"AutoRecord", [NSNumber numberWithBool:YES],
@@ -158,14 +131,14 @@ NSString *localReceived = @"localReceived";
     [self.defaults synchronize];
 }
 
+#pragma audio session
 -(void)setAudioSession{
     NSError *error;
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
     
     if (error) {
-        
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Dream State error" 
-                                                        message:@"Error is setting up the audo session record category" 
+                                                        message:@"Error setting up the audo session record category" 
                                                        delegate:self cancelButtonTitle:@"Ok" 
                                               otherButtonTitles:nil];
         [alert show];
@@ -175,40 +148,33 @@ NSString *localReceived = @"localReceived";
     [[AVAudioSession sharedInstance] setActive:YES error:&error2];
     if (error2) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Dream State error" 
-                                                        message:@"Error is setting the audo session to active" 
+                                                        message:@"Error setting the audo session to active" 
                                                        delegate:self cancelButtonTitle:@"Ok" 
                                               otherButtonTitles:nil];
         [alert show];
     }
 }
 
+- (void)applicationDidBecomeActive:(UIApplication *)application{
+
+    if (!appOpensFromAlarm) {
+        ((UITabBarController *)self.window.rootViewController).selectedIndex = 0;
+    }
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //reload notifications
     NotificationLoader *notificationLoader = [[NotificationLoader alloc] init];
     notificationLoader.managedObjectContext = [self managedObjectContext];
     [notificationLoader loadNotifications];
     
     [self setAlarmClockPlist];
-    
     [self setUserDefaultsAndSync];
-    
     [self setAudioSession];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    
     UITabBarController *tbc = [[UITabBarController alloc] init];
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     HomeViewController *homeViewController = [[HomeViewController alloc] init];
     RecordDreamViewController *recordDreamViewController = [[RecordDreamViewController alloc] initWithManagedObjectContext:__managedObjectContext];
@@ -218,7 +184,7 @@ NSString *localReceived = @"localReceived";
     
     NSMutableArray *tabBarViewControllers = [[NSMutableArray alloc] initWithCapacity:4];
     
-    UINavigationController *navigationController = nil;
+    navigationController = nil;
     navigationController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
     [tabBarViewControllers addObject:navigationController];
     navigationController = nil;
@@ -236,42 +202,17 @@ NSString *localReceived = @"localReceived";
     navigationController = nil;
     
     
-    
     [tbc setViewControllers:tabBarViewControllers];
     
-//     [tbc setViewControllers:[NSArray arrayWithObjects:homeViewController, 
-//                              recordDreamViewController, 
-//                              currentDreamsViewController, 
-//                              inAppSettingsViewController, 
-//                              nil]];
-
-   // tabBarController = tabBarViewControllers;
-    
-    
-    
-    
+    tbc.delegate = self;
     
     self.window.rootViewController = tbc;
-     [self.window makeKeyAndVisible];
-    
-    
-    /*
-    tabBarController = [[UITabBarController alloc] init];
-    tabBarController.delegate=self;
-   
-    
-    self.viewController = [[HomeViewController alloc] init];
-    UINavigationController *navigationViewController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
-    
-    self.window.rootViewController = navigationViewController;
-
-    [self.window addSubview: tabBarController.view];
     [self.window makeKeyAndVisible];
-    */
-    
     
     return YES;
 }
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -289,11 +230,11 @@ NSString *localReceived = @"localReceived";
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
-
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
+//
+//- (void)applicationDidBecomeActive:(UIApplication *)application
+//{
+//    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+//}
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
@@ -316,6 +257,11 @@ NSString *localReceived = @"localReceived";
     }
 }
 
+- (BOOL)tabBarController:(UITabBarController *)theTabBarController shouldSelectViewController:(UIViewController *)viewController
+{
+    [(UINavigationController *)viewController popToRootViewControllerAnimated:NO];
+    return YES;
+}
 
 #pragma mark - Core Data stack
 

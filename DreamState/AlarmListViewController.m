@@ -15,8 +15,6 @@
 
 #define TAG_OFFSET 100
 
-#define RGBA(r, g, b, a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
-
 @implementation AlarmListViewController
 
 @synthesize noAlarmsLabel;
@@ -26,17 +24,41 @@
 @synthesize enabledSwitch;
 
 
-- (void)addAlarmButtonTapped:(id)sender {
+#pragma mark - table editing
 
+- (void)tableView:(UITableView *)aTableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle 
+forRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) 
+	{
+        Alarm *existingAlarm = [self.alarmArray objectAtIndex:indexPath.row];
+        
+        if (existingAlarm) {
+            
+            [[self managedObjectContext] deleteObject:existingAlarm];
+            NSError *saveError = nil;
+            [managedObjectContext save:&saveError];
+            if (saveError) {
+                NSLog(@"Alarm List saveError : %@", saveError.localizedDescription);
+            }
+        }
+
+        [self loadAlarmArray];
+        
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                              withRowAnimation:UITableViewRowAnimationFade];
+        
+        [self updateNotifications];
+    } 
+}
+
+- (void)addAlarmButtonTapped:(id)sender {
     AlarmViewController *alarmViewControllerControllerTemp = [[AlarmViewController alloc] init];
-    alarmViewControllerControllerTemp.managedObjectContext = [self managedObjectContext];
-    alarmViewControllerControllerTemp.hidesBottomBarWhenPushed = YES;
-              
+    alarmViewControllerControllerTemp.managedObjectContext = [self managedObjectContext];              
     [self.navigationController pushViewController:alarmViewControllerControllerTemp animated:YES]; 
 }
 
-- (void)loadAlarmArray
-{
+- (void)loadAlarmArray{
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription
                                    entityForName:@"Alarm" inManagedObjectContext:managedObjectContext];
@@ -58,12 +80,11 @@
     Alarm *existingAlarm = [self.alarmArray objectAtIndex:indexPath.row];
     selectedAlarmViewController.existingAlarm = existingAlarm;
     
-    selectedAlarmViewController.hidesBottomBarWhenPushed = YES;
+    //selectedAlarmViewController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:selectedAlarmViewController animated:YES];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     return 100;
 }
 
@@ -123,7 +144,6 @@
     UILabel *lblName = (UILabel *)[cell viewWithTag:2];
     UILabel *lblDays = (UILabel *)[cell viewWithTag:3];
     
-    
     Alarm *alarm = [self.alarmArray objectAtIndex:indexPath.row];
     
     NSArray *existingDays = [alarm.day allObjects];
@@ -143,31 +163,31 @@
     }
     
     lblDays.backgroundColor = [UIColor clearColor];
-    lblDays.font = [UIFont boldSystemFontOfSize:12];
+    //lblDays.font = [UIFont boldSystemFontOfSize:12];
+    [lblDays setFont:[UIFont fontWithName:@"Solari" size:12]];
     lblDays.textColor = [UIColor whiteColor];
     
     lblTime.text = alarm.time;
     
     lblTime.backgroundColor = [UIColor clearColor];
-    lblTime.font = [UIFont boldSystemFontOfSize:18];
+    //lblTime.font = [UIFont boldSystemFontOfSize:18];
+    [lblTime setFont:[UIFont fontWithName:@"Solari" size:18]];
     lblTime.textColor = [UIColor whiteColor];
     
     lblName.text = alarm.name;
     
     lblName.backgroundColor = [UIColor clearColor];
-    lblName.font = [UIFont boldSystemFontOfSize:12];
+    //lblName.font = [UIFont boldSystemFontOfSize:12];
+    [lblName setFont:[UIFont fontWithName:@"Solari" size:12]];
     lblName.textColor = [UIColor whiteColor];
 
-
     enabledSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
-
     enabledSwitch.on = [alarm.enabled boolValue];
-    
     enabledSwitch.tag = TAG_OFFSET + indexPath.row;
     [enabledSwitch addTarget:self action:@selector(updateSwitchAtIndexPath:) forControlEvents:UIControlEventTouchUpInside];
     
     cell.accessoryView = enabledSwitch;
-    
+    cell.editingAccessoryView = enabledSwitch;
     [cell.contentView addSubview: enabledSwitch];    
     
     return cell;
@@ -180,20 +200,19 @@
     int x = switchControl.tag;
 
     Alarm *alarm = [self.alarmArray objectAtIndex:x - TAG_OFFSET];
-   
     [alarm setValue:[NSNumber numberWithBool:switchControl.on] forKey:@"enabled"];
      
     NSError *saveError = nil;
     [managedObjectContext save:&saveError];
     
-    //update notifications
+    [self updateNotifications];
+}
+
+-(void)updateNotifications{
     NotificationLoader *notificationLoader = [[NotificationLoader alloc] init];
     notificationLoader.managedObjectContext = [self managedObjectContext];
     [notificationLoader loadNotifications];
-    
 }
-
-
 
 
 #pragma mark - View methods
@@ -205,6 +224,15 @@
    
 }
 
+
+- (void)dealloc {
+   
+    self.tableView.delegate = nil;
+    self.tableView.dataSource = nil;
+}
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -215,10 +243,12 @@
                                               target:self action:@selector(addAlarmButtonTapped:)];
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
 
-    
+    [self updateNotifications];
     [self loadAlarmArray];
-    tableView.backgroundColor = RGBA(0,0,0,5);
-
+    tableView.backgroundColor = [UIColor blackColor];
+    
+    [tableView setEditing:YES];
+    tableView.allowsSelectionDuringEditing = YES;
 }
 
 - (void)viewDidUnload

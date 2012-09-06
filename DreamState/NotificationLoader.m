@@ -32,20 +32,12 @@
     
     //now loop through Alarm, and set the notifications for each particular day.
     for (Alarm *alarm in self.alarms) {
-        
         if ([alarm.enabled boolValue]) {
             [self createNotificationForAlarm:alarm];
         }
-        
     }
     
     self.notificationArray = [[UIApplication sharedApplication] scheduledLocalNotifications];
-    
-//    for (UILocalNotification *exn in self.notificationArray) {
-//        NSLog(@"fireDate : %@", exn.fireDate);
-//    }
-//    
-//    NSLog(@"---------------------");
     
 }
 
@@ -146,18 +138,6 @@
     }
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 @end

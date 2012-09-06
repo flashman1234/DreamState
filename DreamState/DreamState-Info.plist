@@ -51,7 +51,5 @@
 		<string>nineteen.ttf</string>
 		<string>Solari.ttf</string>
 	</array>
-	<key>UIApplicationExitsOnSuspend</key>
-	<true/>
 </dict>
 </plist>

@@ -292,11 +292,11 @@ static InAppSettings *sharedInstance = nil;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *headerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 30)] autorelease];
+    UIView *headerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 5, tableView.bounds.size.width, 30)] autorelease];
 
-    UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(10, 3, tableView.bounds.size.width - 10, 18)] autorelease];
+    UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(10, 10, tableView.bounds.size.width - 10, 24)] autorelease];
     label.text = [self tableView:tableView titleForHeaderInSection:section];
-
+[label setFont:[UIFont fontWithName:@"Solari" size:20]];
     label.textColor = [UIColor whiteColor];
     label.backgroundColor = [UIColor clearColor];
     [headerView addSubview:label];

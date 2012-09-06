@@ -8,8 +8,7 @@
 
 #import "AlarmDaysViewController.h"
 #import "AlarmViewController.h"
-
-#define RGBA(r, g, b, a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
+#import <QuartzCore/QuartzCore.h>
 
 @implementation AlarmDaysViewController
 
@@ -17,33 +16,35 @@
 @synthesize alarmDayTableView;
 @synthesize selectedDayArray;
 
-
-
 -(void)saveAlarmDays:(id)sender{
 
     AlarmViewController *parentViewController = (AlarmViewController*)[self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count - 2];
     
     parentViewController.alarmRepeatDays = selectedDayArray;
     [self.navigationController popViewControllerAnimated:YES];
-    
 }
 
 -(void)cancelAlarmDays:(id)sender{
 
-    [self.navigationController popViewControllerAnimated:YES];
+    CATransition* transition = [CATransition animation];
+    transition.duration = 0.5;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionFade;
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.title = @"Repeat";
+    self.title = @"Days";
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
                                               initWithBarButtonSystemItem:UIBarButtonSystemItemSave 
                                               target:self action:@selector(saveAlarmDays:)];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
                                              initWithBarButtonSystemItem:UIBarButtonSystemItemCancel 
                                              target:self action:@selector(cancelAlarmDays:)];
 
@@ -55,19 +56,11 @@
     }
     
     
-    alarmDayTableView.backgroundColor = RGBA(0,0,0,5);
+    alarmDayTableView.backgroundColor = [UIColor blackColor];
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     
-    
-//    UITableView *temp =  [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
-//
-//    self.alarmDayTableView =   temp; 
-    
     dayArray = dayArrayTemp;
-
-    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    
     dayArray = [[dateFormatter weekdaySymbols] mutableCopy]; 
     
 }
@@ -86,13 +79,11 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
     return [self.dayArray count];
 }
 
@@ -107,6 +98,7 @@
     
     cell.textLabel.text = [self.dayArray objectAtIndex:indexPath.row];
     cell.textLabel.textColor = [UIColor whiteColor];
+    [cell.textLabel setFont:[UIFont fontWithName:@"Solari" size:24]];
     
     for (NSString *day in selectedDayArray) 
     {
@@ -121,44 +113,6 @@
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
@@ -176,7 +130,6 @@
         
         [selectedDayArray removeObject:thisCell.textLabel.text];
     }
-
 }
 
 @end

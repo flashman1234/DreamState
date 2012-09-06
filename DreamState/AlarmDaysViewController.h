@@ -15,7 +15,6 @@
 
 @property(nonatomic, retain) NSMutableArray *dayArray;
 @property (nonatomic, retain) UITableView *alarmDayTableView;
-
 @property (nonatomic, retain) NSMutableArray *selectedDayArray;
 
 @end

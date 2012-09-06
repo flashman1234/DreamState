@@ -8,37 +8,64 @@
 
 #import "AlarmViewController.h"
 #import "AppDelegate.h"
-
 #import "AlarmSoundViewController.h"
 #import "AlarmLabelViewController.h"
 #import "AlarmDaysViewController.h"
-
+#import "HomeViewController.h"
 #import "Alarm.h"
 #import "Day.h"
-
 #import "NotificationLoader.h"
-
 #import "Alarmhelper.h"
 
 @implementation AlarmViewController
+
 @synthesize alarmTableView;
 @synthesize tableDataSource;
-
 @synthesize existingAlarm;
-
 @synthesize alarmSound;
 @synthesize alarmName;
 @synthesize alarmRepeatDays;
 @synthesize tidyDay;
-
 @synthesize nameLabel;
 @synthesize valueLabel;
-
 @synthesize managedObjectContext;
-
 @synthesize existingDayNames;
 
 
+#pragma mark - picker view
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 2;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    switch (component)
+    {
+        case 0: return 24;
+        case 1: return 60;
+        default: return -1;
+    }
+}
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+    
+    UILabel *label= [[UILabel alloc] initWithFrame:CGRectMake(30.0, 0.0, 50.0, 50.0)];
+    [label setTextAlignment:UITextAlignmentCenter];
+    [label setFont:[UIFont fontWithName:@"Solari" size:30]];
+    label.textColor = [UIColor whiteColor];
+    label.backgroundColor = [UIColor blackColor];
+    label.alpha = 1.0;
+    if (row < 10) {
+        [label setText:[NSString stringWithFormat:@"0%d",row]];
+    }
+    else {
+        [label setText:[NSString stringWithFormat:@"%d",row]];
+    }
+    
+    return label;
+}
+
+
+#pragma mark - alarm store
 -(void)cancelAlarm:(id)sender{
     
     CATransition* transition = [CATransition animation];
@@ -51,7 +78,13 @@
 }
 
 -(void)saveAlarm:(id)sender{
-    [self storeAlarmInStore:dateTimePicker.date];
+
+    NSDateComponents* compoNents = [[NSDateComponents alloc] init];    
+    compoNents.hour = [timePicker selectedRowInComponent:0];
+    compoNents.minute = [timePicker selectedRowInComponent:1];
+    NSDate *pickerDate = [[NSCalendar currentCalendar] dateFromComponents:compoNents];
+    
+    [self storeAlarmInStore:pickerDate];
     
     NotificationLoader *notificationLoader = [[NotificationLoader alloc] init];
     notificationLoader.managedObjectContext = [self managedObjectContext];
@@ -80,13 +113,11 @@
     [alarm setValue:alarmSound forKey:@"sound"];
     [alarm setValue:[NSNumber numberWithBool:YES] forKey:@"enabled"];
     
-    
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
     [outputFormatter setDateFormat:@"HH:mm"]; //24hr time format
-    NSString *timeString = [outputFormatter stringFromDate:dateTimePicker.date];
+    NSString *timeString = [outputFormatter stringFromDate:fireDate];
     
     [alarm setValue:timeString forKey:@"time"];
-    
     
     for (NSManagedObject *aDay in alarm.day) {
         [context deleteObject:aDay];
@@ -113,27 +144,6 @@
     
 }
 
-//-(NSString *)tidyDaysFromArray:(NSArray *)array{
-//
-//    NSString *tidyDayTemp = [[NSString alloc]init];
-//    tidyDay = tidyDayTemp;
-//    
-//    for (NSString *myArrayElement in array) {
-//        NSString *shortDay = [myArrayElement substringToIndex:3];
-//        
-//        tidyDay = [tidyDay stringByAppendingString:shortDay];
-//        tidyDay = [tidyDay stringByAppendingString:@", "];
-//        
-//    }
-//    if ([tidyDay length] > 0) {
-//        tidyDay = [tidyDay substringToIndex:[tidyDay length] - 2];
-//        return tidyDay;
-//    }
-//    return @"";    
-//}
-
-
-
 
 #pragma mark - Table view
 
@@ -150,11 +160,9 @@
           
             AlarmSoundViewController *alarmSoundViewController = [[AlarmSoundViewController alloc] init];
             alarmSoundViewController.soundArray = Children;
+            alarmSoundViewController.existingSound = self.alarmSound;
             [self.navigationController pushViewController:alarmSoundViewController animated:YES];
-        
-            
         }
-        
     }
 
     if (indexPath.row == 1) {
@@ -183,7 +191,6 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    //return [self.tableDataSource count];
     return 3;
 }
 
@@ -195,11 +202,11 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         
-        cell.backgroundColor = [UIColor darkGrayColor];
+        cell.backgroundColor = [UIColor blackColor];
         
-        nameLabel = [[UILabel alloc] initWithFrame:CGRectMake( 7.0, 0.0, 140.0, 44.0 )];
+        nameLabel = [[UILabel alloc] initWithFrame:CGRectMake( 7.0, 0.0, 100.0, 44.0 )];
         
-        nameLabel.font = [UIFont systemFontOfSize: 14.0];
+        [nameLabel setFont:[UIFont fontWithName:@"Solari" size:14]];
         nameLabel.textAlignment = UITextAlignmentLeft;
         nameLabel.textColor = [UIColor whiteColor];
         nameLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
@@ -209,9 +216,8 @@
         
         [cell.contentView addSubview: nameLabel];
         
-        valueLabel = [[UILabel alloc] initWithFrame: CGRectMake( 165.0, 0.0,120, 44.0 )];
-        
-        valueLabel.font = [UIFont systemFontOfSize: 14];
+        valueLabel = [[UILabel alloc] initWithFrame: CGRectMake( 105.0, 0.0,180, 44.0 )];
+        [valueLabel setFont:[UIFont fontWithName:@"Solari" size:14]];
         valueLabel.textAlignment = UITextAlignmentRight;
         valueLabel.textColor = [UIColor whiteColor];
         valueLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
@@ -231,8 +237,6 @@
         
         UILabel *vLabel = (UILabel *)[cell viewWithTag:2];
         vLabel.text = self.alarmSound;
-        
-
     }
     else if([[dictionary objectForKey:@"Title"] isEqualToString:@"Label"])
     {
@@ -242,49 +246,26 @@
         UILabel *vLabel = (UILabel *)[cell viewWithTag:2];
         vLabel.text = self.alarmName;
     }
-    
     else if([[dictionary objectForKey:@"Title"] isEqualToString:@"Repeat"])
     {
         UILabel *nLabel = (UILabel *)[cell viewWithTag:1];
-        nLabel.text = @"Repeat";
+        nLabel.text = @"Days";
         
         UILabel *vLabel = (UILabel *)[cell viewWithTag:2];
-        //vLabel.text = [self tidyDaysFromArray:self.alarmRepeatDays];
         Alarmhelper *helper = [[Alarmhelper alloc] init];
-        
         vLabel.text = [helper tidyDaysFromArray:self.alarmRepeatDays];
     }
     
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    UIImage *newDreamButton = [UIImage imageNamed: @"AccDisclosure.png"];
+    UIImageView *newDreamButtonView = [[UIImageView alloc] initWithImage:newDreamButton];
+    newDreamButtonView.frame = CGRectMake(280, 5, 30, 30);
+    [cell insertSubview:newDreamButtonView atIndex:100];
 
     
     return cell;
 }
 
 
-
-
-
-#pragma mark - IBActions
-
--(IBAction)alarmCancelButtonTapped:(id)sender
-{
-    if (existingAlarm) {
-        
-        //DELETE THE DAYS ASSOCIATED WITH IT AS WELL - CASCADE IN MODEL?
-        
-        [[self managedObjectContext] deleteObject:existingAlarm];
-        
-        NSError *saveError = nil;
-        [managedObjectContext save:&saveError];
-    }
-    
-    NotificationLoader *notificationLoader = [[NotificationLoader alloc] init];
-    notificationLoader.managedObjectContext = [self managedObjectContext];
-    [notificationLoader loadNotifications];
-
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 #pragma mark - View methods
 
@@ -295,12 +276,6 @@
     self.title = @"Alarm clock";
     
     if (existingAlarm) {
-        
-        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"HH:mm"];
-        NSDate *date = [dateFormat dateFromString:existingAlarm.time];  
-        
-        dateTimePicker.date = date;
         
         self.alarmSound = existingAlarm.sound;
         self.alarmName = existingAlarm.name;
@@ -317,12 +292,10 @@
  
     }
     else {
-        dateTimePicker.date = [NSDate date];
         self.alarmSound = @"alarm 1";
         self.alarmName = @"Alarm";
     }
 
-    
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.tableDataSource = [appDelegate.alarmClockData objectForKey:@"Rows"];
     
@@ -337,6 +310,24 @@
     alarmTableView.backgroundColor = [UIColor clearColor];
     alarmTableView.opaque = NO;
     alarmTableView.backgroundView = nil;
+    
+    NSDate *dateNow = [NSDate date];
+    
+    if (existingAlarm) {
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"HH:mm"];
+        dateNow = [dateFormat dateFromString:existingAlarm.time]; 
+    }
+    
+    NSCalendar* calendar = [NSCalendar currentCalendar];
+    NSDateComponents* compoNents = [calendar components:NSHourCalendarUnit|NSMinuteCalendarUnit fromDate:dateNow]; // 
+    
+    //cut out hours and minutes from the alarm time
+    NSInteger currentHour = compoNents.hour;
+    NSInteger currentMinutes = compoNents.minute;
+    
+    [timePicker selectRow:currentHour inComponent:0 animated:YES];
+    [timePicker selectRow:currentMinutes inComponent:1 animated:YES];
 }
 
 
@@ -347,7 +338,6 @@
 {
     [self.alarmTableView reloadData];
 }
-
 
 - (void)viewDidUnload
 {

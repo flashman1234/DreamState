@@ -11,9 +11,6 @@
 #import "Dream.h"
 #import "AppDelegate.h"
 
-
-#define RGBA(r, g, b, a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
-
 @implementation CurrentDreamsViewController
 
 @synthesize dreamTableView;
@@ -60,7 +57,7 @@
     
     UILabel *dreamLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 12, 290, 25)];
     dreamLabel.tag = 1;        
-    dreamLabel.font = [UIFont fontWithName:@"Georgia-Bold" size:20.0];
+    [dreamLabel setFont:[UIFont fontWithName:@"Solari" size:20]];
     dreamLabel.textColor = [UIColor whiteColor];
     dreamLabel.backgroundColor = [UIColor clearColor];
     dreamLabel.text = dream.name;
@@ -79,11 +76,39 @@
     
     Dream *existingDream = [self.dreamArray objectAtIndex:indexPath.row];
     selectedDreamViewController.existingDream = existingDream;
-    
-    selectedDreamViewController.hidesBottomBarWhenPushed = YES;
+
     [self.navigationController pushViewController:selectedDreamViewController animated:YES]; 
 }
 
+- (void)tableView:(UITableView *)aTableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle 
+forRowAtIndexPath:(NSIndexPath *)indexPath 
+{    Dream *dreamToDelete = [self.dreamArray objectAtIndex:indexPath.row];
+    [self deleteDream:dreamToDelete];
+    
+    [self loadDreamArray];
+    
+    [self.dreamTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                               withRowAnimation:UITableViewRowAnimationFade];
+    
+}
+
+
+-(void)deleteDream:(Dream *)dreamToDelete{
+    
+    NSError *error;
+    [[NSFileManager defaultManager] removeItemAtPath: [dreamToDelete fileUrl] error: &error];
+    if (error) {
+        NSLog(@"removeItemAtPath dream delete error : %@", error.localizedDescription);
+    }
+    
+    [[self managedObjectContext] deleteObject:dreamToDelete];
+    
+    NSError *saveError = nil;
+    [managedObjectContext save:&saveError];
+    if (saveError) {
+        NSLog(@"deleteDream error : %@", saveError.localizedDescription);
+    } 
+}
 
 - (void)loadDreamArray
 {
@@ -111,7 +136,7 @@
     {
         self.managedObjectContext = moc;
         UITabBarItem *tbi = [self tabBarItem];
-        [tbi setTitle:@"Play"];
+        [tbi setTitle:@"Archive"];
         UIImage *i = [UIImage imageNamed:@"play@1x.png"];
         [tbi setImage:i];
     }
@@ -128,7 +153,9 @@
     
     [self loadDreamArray];
     
-    dreamTableView.backgroundColor = RGBA(0,0,0,5);
+    dreamTableView.backgroundColor = [UIColor blackColor];
+    [dreamTableView setEditing:YES];
+    dreamTableView.allowsSelectionDuringEditing = YES;
 }
 
 - (void)viewDidUnload

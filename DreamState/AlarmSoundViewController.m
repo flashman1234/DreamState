@@ -8,14 +8,13 @@
 
 #import "AlarmSoundViewController.h"
 #import "AlarmViewController.h"
-
-#define RGBA(r, g, b, a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
-
+#import <QuartzCore/QuartzCore.h>
 
 @implementation AlarmSoundViewController
 
 @synthesize alarmSoundTableView;
 @synthesize soundArray;
+@synthesize existingSound;
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 60.0;
@@ -42,30 +41,67 @@
     
     UILabel *dreamLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 12, 290, 25)];
     dreamLabel.tag = 1;        
-    dreamLabel.font = [UIFont fontWithName:@"Georgia-Bold" size:20.0];
+    [dreamLabel setFont:[UIFont fontWithName:@"Solari" size:20]];
     dreamLabel.textColor = [UIColor whiteColor];
     dreamLabel.backgroundColor = [UIColor clearColor];
     dreamLabel.text = [self.soundArray objectAtIndex:indexPath.row];
+
     [cell.contentView addSubview:dreamLabel];
-    
-//    cell.textLabel.text = [self.soundArray objectAtIndex:indexPath.row];
-//    cell.textLabel.textColor = [UIColor greenColor];
-//    cell.textLabel.backgroundColor = [UIColor clearColor];
-//    cell.contentView.backgroundColor = [UIColor blackColor];
+
+    cell.accessoryType = UITableViewCellAccessoryNone;
+   
+    if ([existingSound isEqualToString:[self.soundArray objectAtIndex:indexPath.row]]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
     
     return cell;
-    
-}
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    AlarmViewController *parentViewController = (AlarmViewController*)[self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count - 2];
-    
-    parentViewController.alarmSound = [self.soundArray objectAtIndex:indexPath.row];
-    
-    [self.navigationController popViewControllerAnimated:YES];
-    
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    for (NSIndexPath *algoPath in [tableView indexPathsForVisibleRows]){
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:algoPath];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        if(algoPath.row == indexPath.row){
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+    }
+    
+    [self playSound:[self.soundArray objectAtIndex:indexPath.row]];
+}
+
+-(void)playSound:(NSString *)alarmSound{
+    NSLog(@"alarmSound : %@", alarmSound);
+    NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@.caf", [[NSBundle mainBundle] resourcePath], alarmSound]];
+	
+	NSError *error;
+	audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+	audioPlayer.numberOfLoops = -1;
+	
+	if (audioPlayer == nil)
+        NSLog(@"error.localizedDescription : %@", error.localizedDescription);
+	else 
+		[audioPlayer play];
+}
+
+-(void)cancelAlarmSound:(id)sender{
+    
+    CATransition* transition = [CATransition animation];
+    transition.duration = 0.5;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionFade;
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+    
+    [self.navigationController popViewControllerAnimated:NO];
+}
+
+-(void)saveAlarmSound:(id)sender{
+    AlarmViewController *parentViewController = (AlarmViewController*)[self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count - 2];
+        NSIndexPath *selectedIndexPath = [alarmSoundTableView indexPathForSelectedRow];
+    parentViewController.alarmSound = [self.soundArray  objectAtIndex:selectedIndexPath.row];
+        
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 #pragma mark - view methods
@@ -73,15 +109,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    alarmSoundTableView.backgroundColor = RGBA(0,0,0,5);
+    alarmSoundTableView.backgroundColor = [UIColor blackColor];
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
+                                              initWithBarButtonSystemItem:UIBarButtonSystemItemCancel 
+                                              target:self action:@selector(cancelAlarmSound:)];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
+                                              initWithBarButtonSystemItem:UIBarButtonSystemItemSave 
+                                              target:self action:@selector(saveAlarmSound:)];
+    
+    self.navigationItem.hidesBackButton = YES;
+    self.title = @"Alarm sounds";
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -89,9 +134,12 @@
     return UIInterfaceOrientationIsPortrait(interfaceOrientation);
 }
 
--(void)viewWillAppear:(BOOL)animated
+
+-(void)viewWillDisappear:(BOOL)animated
 {  
-    //[self.alarmSoundTableView reloadData];
+    [audioPlayer stop];
 }
+
+
 
 @end

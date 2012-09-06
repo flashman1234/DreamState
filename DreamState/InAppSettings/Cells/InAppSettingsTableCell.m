@@ -139,7 +139,8 @@
     
     //setup title label
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.titleLabel.font = InAppSettingsBoldFont;
+    [self.titleLabel setFont:[UIFont fontWithName:@"Solari" size:14]];
+    //self.titleLabel.font = InAppSettingsBoldFont;
     self.titleLabel.highlightedTextColor = [UIColor whiteColor];
     self.titleLabel.backgroundColor = [UIColor clearColor];
     self.titleLabel.textColor = [UIColor whiteColor];
@@ -147,7 +148,8 @@
     
     //setup value label
     self.valueLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.valueLabel.font = InAppSettingsNormalFont;
+    //self.valueLabel.font = InAppSettingsNormalFont;
+    [self.valueLabel setFont:[UIFont fontWithName:@"Solari" size:14]];
     //self.valueLabel.textColor = InAppSettingsBlue;
     self.valueLabel.highlightedTextColor = [UIColor whiteColor];
     self.valueLabel.backgroundColor = [UIColor clearColor];
