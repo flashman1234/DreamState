@@ -8,6 +8,7 @@
 
 #import "AlarmLabelViewController.h"
 #import "AlarmViewController.h"
+#import "UITextFieldNoMenu.h"
 
 @implementation AlarmLabelViewController
 
@@ -75,7 +76,14 @@
     
     labelTextField.rightView = myButton;
     labelTextField.rightViewMode = UITextFieldViewModeAlways;
+//    [labelTextField setHighlighted:YES];
+    //[labelTextField selectAll:labelTextField];
     
+}
+
+
+-(void)textFieldDidBeginEditing:(UITextField *)iTextField {
+[iTextField selectAll:self];
 }
 
 -(void) doClear:(id)sender{

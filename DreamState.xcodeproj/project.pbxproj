@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		051F646415F4E5FB00CFF594 /* whitex.png in Resources */ = {isa = PBXBuildFile; fileRef = 051F646315F4E5FB00CFF594 /* whitex.png */; };
-		05209CD115BD564F001C66CF /* alarm 1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 05209CD015BD564F001C66CF /* alarm 1.caf */; };
 		05209CF115BF3B10001C66CF /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05209CF015BF3B10001C66CF /* CoreMedia.framework */; };
 		05209CFC15BF3D69001C66CF /* DIYCam.m in Sources */ = {isa = PBXBuildFile; fileRef = 05209CF815BF3D69001C66CF /* DIYCam.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		05209CFD15BF3D69001C66CF /* DIYCamUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 05209CFB15BF3D69001C66CF /* DIYCamUtilities.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -21,7 +20,33 @@
 		052FEDBB15F8918E0014DC37 /* dslogocropped.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 052FEDBA15F8918E0014DC37 /* dslogocropped.jpg */; };
 		052FEDBD15F8963E0014DC37 /* dslogocroppedtransparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 052FEDBC15F8963D0014DC37 /* dslogocroppedtransparent.png */; };
 		052FEDC615F8CDDE0014DC37 /* AccDisclosure.png in Resources */ = {isa = PBXBuildFile; fileRef = 052FEDC515F8CDDE0014DC37 /* AccDisclosure.png */; };
-		0551259515F6815B008F2BA0 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0551259415F6815B008F2BA0 /* icon.png */; };
+		052FEDC815F8EA3F0014DC37 /* information.png in Resources */ = {isa = PBXBuildFile; fileRef = 052FEDC715F8EA3E0014DC37 /* information.png */; };
+		052FEDCC15F8F4CA0014DC37 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 052FEDCA15F8F4CA0014DC37 /* libTestFlight.a */; };
+		052FEDCE15F8F5BE0014DC37 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 052FEDCD15F8F5BC0014DC37 /* libz.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
+		052FEDD915FB7E290014DC37 /* UITextFieldNoMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 052FEDD815FB7E270014DC37 /* UITextFieldNoMenu.m */; };
+		052FEDEC15FE17AB0014DC37 /* dreamstaterecordimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 052FEDEB15FE17AA0014DC37 /* dreamstaterecordimage.png */; };
+		052FEDEE15FE321B0014DC37 /* dshome.png in Resources */ = {isa = PBXBuildFile; fileRef = 052FEDED15FE321B0014DC37 /* dshome.png */; };
+		056C69731602132D00B3D06D /* Antique.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056C696E1602132D00B3D06D /* Antique.m4a */; };
+		056C69741602132D00B3D06D /* Bells.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056C696F1602132D00B3D06D /* Bells.m4a */; };
+		056C69751602132D00B3D06D /* Birds.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056C69701602132D00B3D06D /* Birds.m4a */; };
+		056C69761602132D00B3D06D /* Candy.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056C69711602132D00B3D06D /* Candy.m4a */; };
+		056C6979160213AA00B3D06D /* Piano beat.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056C6978160213AA00B3D06D /* Piano beat.m4a */; };
+		056C699216021D1500B3D06D /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 056C698C16021C2B00B3D06D /* icon.png */; };
+		056C699416021D1C00B3D06D /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 056C699316021D1C00B3D06D /* icon@2x.png */; };
+		056C699916032DD800B3D06D /* A Mind of Its Own.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056C699516032DD700B3D06D /* A Mind of Its Own.m4a */; };
+		056C699A16032DD800B3D06D /* Blurred Atmospheres.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056C699616032DD700B3D06D /* Blurred Atmospheres.m4a */; };
+		056C699B16032DD800B3D06D /* Hard as Nails.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056C699716032DD800B3D06D /* Hard as Nails.m4a */; };
+		056C699C16032DD800B3D06D /* High Action.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056C699816032DD800B3D06D /* High Action.m4a */; };
+		056C699F1603362600B3D06D /* Alarm bell 2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056C699D1603362600B3D06D /* Alarm bell 2.m4a */; };
+		056C69A01603362600B3D06D /* Alarm bell 1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056C699E1603362600B3D06D /* Alarm bell 1.m4a */; };
+		056C69A516049FD500B3D06D /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056C69A316049FD200B3D06D /* AboutViewController.m */; };
+		056C69A616049FD500B3D06D /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 056C69A416049FD400B3D06D /* AboutViewController.xib */; };
+		056C69AB1604A10500B3D06D /* TOCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056C69A91604A10500B3D06D /* TOCViewController.m */; };
+		056C69AC1604A10500B3D06D /* TOCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 056C69AA1604A10500B3D06D /* TOCViewController.xib */; };
+		056C69B01604A11F00B3D06D /* HowToViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056C69AE1604A11F00B3D06D /* HowToViewController.m */; };
+		056C69B11604A11F00B3D06D /* HowToViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 056C69AF1604A11F00B3D06D /* HowToViewController.xib */; };
+		056C69B51604A63100B3D06D /* LegalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056C69B31604A63100B3D06D /* LegalViewController.m */; };
+		056C69B61604A63100B3D06D /* LegalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 056C69B41604A63100B3D06D /* LegalViewController.xib */; };
 		0589FC0815EF5F1C00121B9C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0589FC0715EF5F1B00121B9C /* AudioToolbox.framework */; };
 		058FCCD815DB9FA50030A4D9 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 058FCCD615DB9FA50030A4D9 /* HomeViewController.m */; };
 		058FCCD915DB9FA50030A4D9 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 058FCCD715DB9FA50030A4D9 /* HomeViewController.xib */; };
@@ -49,7 +74,6 @@
 		05A5CF5F15C94B060097DB1C /* InAppSettingsPSMultiValueSpecifierTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF5015C94B060097DB1C /* InAppSettingsPSMultiValueSpecifierTable.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		05A5CF6015C94B060097DB1C /* InAppSettingsReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF5215C94B060097DB1C /* InAppSettingsReader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		05A5CF6115C94B060097DB1C /* InAppSettingsSpecifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF5415C94B060097DB1C /* InAppSettingsSpecifier.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		05A5CF6F15D1469B0097DB1C /* alarm 2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 05A5CF6E15D1469A0097DB1C /* alarm 2.caf */; };
 		05D9323315B9AEFB00983693 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9323215B9AEFB00983693 /* UIKit.framework */; };
 		05D9323515B9AEFB00983693 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9323415B9AEFB00983693 /* Foundation.framework */; };
 		05D9323715B9AEFB00983693 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9323615B9AEFB00983693 /* CoreGraphics.framework */; };
@@ -81,7 +105,6 @@
 		05E5AA7715D3C4A6004684E0 /* AlarmDaysViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05E5AA7515D3C4A2004684E0 /* AlarmDaysViewController.xib */; };
 		05E5AA7C15D40D8F004684E0 /* NotificationLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E5AA7B15D40D8F004684E0 /* NotificationLoader.m */; };
 		05E5AA8815D56C90004684E0 /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E5AA8715D56C90004684E0 /* Alarm.m */; };
-		05E5AA8B15D56CD1004684E0 /* Dream.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E5AA8A15D56CD0004684E0 /* Dream.m */; };
 		05E5AA8F15D8F09F004684E0 /* Alarmhelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E5AA8E15D8F09E004684E0 /* Alarmhelper.m */; };
 		05E8CE1115E54462007EDF8F /* 11-clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 05E8CE1015E54462007EDF8F /* 11-clock.png */; };
 		05E8CE1915E5454D007EDF8F /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 05E8CE1815E5454D007EDF8F /* play@2x.png */; };
@@ -103,7 +126,6 @@
 
 /* Begin PBXFileReference section */
 		051F646315F4E5FB00CFF594 /* whitex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whitex.png; sourceTree = "<group>"; };
-		05209CD015BD564F001C66CF /* alarm 1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "alarm 1.caf"; sourceTree = "<group>"; };
 		05209CF015BF3B10001C66CF /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		05209CF715BF3D69001C66CF /* DIYCam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIYCam.h; sourceTree = "<group>"; };
 		05209CF815BF3D69001C66CF /* DIYCam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIYCam.m; sourceTree = "<group>"; };
@@ -121,7 +143,42 @@
 		052FEDBA15F8918E0014DC37 /* dslogocropped.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dslogocropped.jpg; sourceTree = "<group>"; };
 		052FEDBC15F8963D0014DC37 /* dslogocroppedtransparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dslogocroppedtransparent.png; sourceTree = "<group>"; };
 		052FEDC515F8CDDE0014DC37 /* AccDisclosure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AccDisclosure.png; sourceTree = "<group>"; };
-		0551259415F6815B008F2BA0 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		052FEDC715F8EA3E0014DC37 /* information.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = information.png; sourceTree = "<group>"; };
+		052FEDCA15F8F4CA0014DC37 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		052FEDCB15F8F4CA0014DC37 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		052FEDCD15F8F5BC0014DC37 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		052FEDD715FB7E240014DC37 /* UITextFieldNoMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITextFieldNoMenu.h; sourceTree = "<group>"; };
+		052FEDD815FB7E270014DC37 /* UITextFieldNoMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITextFieldNoMenu.m; sourceTree = "<group>"; };
+		052FEDEB15FE17AA0014DC37 /* dreamstaterecordimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dreamstaterecordimage.png; sourceTree = "<group>"; };
+		052FEDED15FE321B0014DC37 /* dshome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dshome.png; sourceTree = "<group>"; };
+		052FEDF31600C72B0014DC37 /* DreamState 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DreamState 3.xcdatamodel"; sourceTree = "<group>"; };
+		052FEDF71600C87E0014DC37 /* Dream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dream.h; sourceTree = "<group>"; };
+		052FEDF81600C8800014DC37 /* Dream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dream.m; sourceTree = "<group>"; };
+		056C696E1602132D00B3D06D /* Antique.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Antique.m4a; sourceTree = "<group>"; };
+		056C696F1602132D00B3D06D /* Bells.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bells.m4a; sourceTree = "<group>"; };
+		056C69701602132D00B3D06D /* Birds.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Birds.m4a; sourceTree = "<group>"; };
+		056C69711602132D00B3D06D /* Candy.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Candy.m4a; sourceTree = "<group>"; };
+		056C6978160213AA00B3D06D /* Piano beat.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Piano beat.m4a"; sourceTree = "<group>"; };
+		056C698C16021C2B00B3D06D /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
+		056C699316021D1C00B3D06D /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "../icon@2x.png"; sourceTree = "<group>"; };
+		056C699516032DD700B3D06D /* A Mind of Its Own.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "A Mind of Its Own.m4a"; sourceTree = "<group>"; };
+		056C699616032DD700B3D06D /* Blurred Atmospheres.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Blurred Atmospheres.m4a"; sourceTree = "<group>"; };
+		056C699716032DD800B3D06D /* Hard as Nails.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hard as Nails.m4a"; sourceTree = "<group>"; };
+		056C699816032DD800B3D06D /* High Action.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "High Action.m4a"; sourceTree = "<group>"; };
+		056C699D1603362600B3D06D /* Alarm bell 2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Alarm bell 2.m4a"; sourceTree = "<group>"; };
+		056C699E1603362600B3D06D /* Alarm bell 1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Alarm bell 1.m4a"; sourceTree = "<group>"; };
+		056C69A216049FD100B3D06D /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		056C69A316049FD200B3D06D /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		056C69A416049FD400B3D06D /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		056C69A81604A10500B3D06D /* TOCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOCViewController.h; sourceTree = "<group>"; };
+		056C69A91604A10500B3D06D /* TOCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOCViewController.m; sourceTree = "<group>"; };
+		056C69AA1604A10500B3D06D /* TOCViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TOCViewController.xib; sourceTree = "<group>"; };
+		056C69AD1604A11F00B3D06D /* HowToViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HowToViewController.h; sourceTree = "<group>"; };
+		056C69AE1604A11F00B3D06D /* HowToViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HowToViewController.m; sourceTree = "<group>"; };
+		056C69AF1604A11F00B3D06D /* HowToViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HowToViewController.xib; sourceTree = "<group>"; };
+		056C69B21604A63100B3D06D /* LegalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegalViewController.h; sourceTree = "<group>"; };
+		056C69B31604A63100B3D06D /* LegalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegalViewController.m; sourceTree = "<group>"; };
+		056C69B41604A63100B3D06D /* LegalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LegalViewController.xib; sourceTree = "<group>"; };
 		0589FC0715EF5F1B00121B9C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		058FCCD515DB9FA50030A4D9 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		058FCCD615DB9FA50030A4D9 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
@@ -164,7 +221,6 @@
 		05A5CF5215C94B060097DB1C /* InAppSettingsReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppSettingsReader.m; sourceTree = "<group>"; };
 		05A5CF5315C94B060097DB1C /* InAppSettingsSpecifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppSettingsSpecifier.h; sourceTree = "<group>"; };
 		05A5CF5415C94B060097DB1C /* InAppSettingsSpecifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppSettingsSpecifier.m; sourceTree = "<group>"; };
-		05A5CF6E15D1469A0097DB1C /* alarm 2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "alarm 2.caf"; sourceTree = "<group>"; };
 		05D9322E15B9AEFB00983693 /* DreamState.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamState.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05D9323215B9AEFB00983693 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		05D9323415B9AEFB00983693 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -229,6 +285,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				052FEDCE15F8F5BE0014DC37 /* libz.dylib in Frameworks */,
 				0589FC0815EF5F1C00121B9C /* AudioToolbox.framework in Frameworks */,
 				05E5AA0A15D2C666004684E0 /* CoreData.framework in Frameworks */,
 				05A5CE8F15C939600097DB1C /* MessageUI.framework in Frameworks */,
@@ -241,6 +298,7 @@
 				05D9323315B9AEFB00983693 /* UIKit.framework in Frameworks */,
 				05D9323515B9AEFB00983693 /* Foundation.framework in Frameworks */,
 				05D9323715B9AEFB00983693 /* CoreGraphics.framework in Frameworks */,
+				052FEDCC15F8F4CA0014DC37 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,8 +334,17 @@
 		052FEDC315F8CD240014DC37 /* Alarm Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				05209CD015BD564F001C66CF /* alarm 1.caf */,
-				05A5CF6E15D1469A0097DB1C /* alarm 2.caf */,
+				056C699D1603362600B3D06D /* Alarm bell 2.m4a */,
+				056C699E1603362600B3D06D /* Alarm bell 1.m4a */,
+				056C699516032DD700B3D06D /* A Mind of Its Own.m4a */,
+				056C699616032DD700B3D06D /* Blurred Atmospheres.m4a */,
+				056C699716032DD800B3D06D /* Hard as Nails.m4a */,
+				056C699816032DD800B3D06D /* High Action.m4a */,
+				056C6978160213AA00B3D06D /* Piano beat.m4a */,
+				056C696E1602132D00B3D06D /* Antique.m4a */,
+				056C696F1602132D00B3D06D /* Bells.m4a */,
+				056C69701602132D00B3D06D /* Birds.m4a */,
+				056C69711602132D00B3D06D /* Candy.m4a */,
 			);
 			name = "Alarm Sounds";
 			sourceTree = "<group>";
@@ -292,6 +359,34 @@
 				059A9C1015EB6DD40054F114 /* DS-Digital.ttf */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		052FEDC915F8F4B90014DC37 /* TestFlight */ = {
+			isa = PBXGroup;
+			children = (
+				052FEDCA15F8F4CA0014DC37 /* libTestFlight.a */,
+				052FEDCB15F8F4CA0014DC37 /* TestFlight.h */,
+			);
+			name = TestFlight;
+			sourceTree = "<group>";
+		};
+		056C69A71604A0D400B3D06D /* About */ = {
+			isa = PBXGroup;
+			children = (
+				056C69A216049FD100B3D06D /* AboutViewController.h */,
+				056C69A316049FD200B3D06D /* AboutViewController.m */,
+				056C69A416049FD400B3D06D /* AboutViewController.xib */,
+				056C69A81604A10500B3D06D /* TOCViewController.h */,
+				056C69A91604A10500B3D06D /* TOCViewController.m */,
+				056C69AA1604A10500B3D06D /* TOCViewController.xib */,
+				056C69AD1604A11F00B3D06D /* HowToViewController.h */,
+				056C69AE1604A11F00B3D06D /* HowToViewController.m */,
+				056C69AF1604A11F00B3D06D /* HowToViewController.xib */,
+				056C69B21604A63100B3D06D /* LegalViewController.h */,
+				056C69B31604A63100B3D06D /* LegalViewController.m */,
+				056C69B41604A63100B3D06D /* LegalViewController.xib */,
+			);
+			name = About;
 			sourceTree = "<group>";
 		};
 		05A5CE1A15C8281A0097DB1C /* AlarmClock */ = {
@@ -362,6 +457,7 @@
 		05D9322315B9AEFB00983693 = {
 			isa = PBXGroup;
 			children = (
+				052FEDCD15F8F5BC0014DC37 /* libz.dylib */,
 				0589FC0715EF5F1B00121B9C /* AudioToolbox.framework */,
 				05E0E31515C022C8005BAEF0 /* Settings.bundle */,
 				05A5CE8E15C9395F0097DB1C /* MessageUI.framework */,
@@ -402,6 +498,8 @@
 		05D9323815B9AEFB00983693 /* DreamState */ = {
 			isa = PBXGroup;
 			children = (
+				056C69A71604A0D400B3D06D /* About */,
+				052FEDC915F8F4B90014DC37 /* TestFlight */,
 				05E5AA7915D40D65004684E0 /* Notification */,
 				05E5AA7815D403F1004684E0 /* Recording */,
 				05E5AA6D15D3BC6A004684E0 /* Entities */,
@@ -414,6 +512,8 @@
 				058FCCD615DB9FA50030A4D9 /* HomeViewController.m */,
 				058FCCD715DB9FA50030A4D9 /* HomeViewController.xib */,
 				05D9323915B9AEFB00983693 /* Supporting Files */,
+				052FEDD715FB7E240014DC37 /* UITextFieldNoMenu.h */,
+				052FEDD815FB7E270014DC37 /* UITextFieldNoMenu.m */,
 			);
 			path = DreamState;
 			sourceTree = "<group>";
@@ -421,12 +521,14 @@
 		05D9323915B9AEFB00983693 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				056C699316021D1C00B3D06D /* icon@2x.png */,
+				056C698C16021C2B00B3D06D /* icon.png */,
+				052FEDEB15FE17AA0014DC37 /* dreamstaterecordimage.png */,
 				052FEDC515F8CDDE0014DC37 /* AccDisclosure.png */,
 				052FEDC415F8CD880014DC37 /* Fonts */,
 				052FEDC315F8CD240014DC37 /* Alarm Sounds */,
 				052FEDBC15F8963D0014DC37 /* dslogocroppedtransparent.png */,
 				052FEDBA15F8918E0014DC37 /* dslogocropped.jpg */,
-				0551259415F6815B008F2BA0 /* icon.png */,
 				051F646315F4E5FB00CFF594 /* whitex.png */,
 				059A9C1E15ECF9A80054F114 /* blackalarmbell.png */,
 				05E8CDF815E4DB0C007EDF8F /* NavBarIcons */,
@@ -434,6 +536,8 @@
 				05D9323B15B9AEFB00983693 /* InfoPlist.strings */,
 				05D9323E15B9AEFB00983693 /* main.m */,
 				05D9324015B9AEFB00983693 /* DreamState-Prefix.pch */,
+				052FEDF71600C87E0014DC37 /* Dream.h */,
+				052FEDF81600C8800014DC37 /* Dream.m */,
 				05E5AA0E15D2D4E5004684E0 /* DreamState.xcdatamodeld */,
 			);
 			name = "Supporting Files";
@@ -501,6 +605,8 @@
 		05E8CDF815E4DB0C007EDF8F /* NavBarIcons */ = {
 			isa = PBXGroup;
 			children = (
+				052FEDED15FE321B0014DC37 /* dshome.png */,
+				052FEDC715F8EA3E0014DC37 /* information.png */,
 				052FEDB815F7AB120014DC37 /* iconnav2.png */,
 				05E8CE1E15E546B9007EDF8F /* play@1x.png */,
 				05E8CE1A15E54556007EDF8F /* record@2x.png */,
@@ -517,6 +623,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 05D9326415B9AEFB00983693 /* Build configuration list for PBXNativeTarget "DreamState" */;
 			buildPhases = (
+				056C69A116033D5600B3D06D /* ShellScript */,
 				05D9322A15B9AEFB00983693 /* Sources */,
 				05D9322B15B9AEFB00983693 /* Frameworks */,
 				05D9322C15B9AEFB00983693 /* Resources */,
@@ -586,13 +693,11 @@
 				05D9327815B9B96400983693 /* CurrentDreamsViewController.xib in Resources */,
 				05D9327D15B9B97A00983693 /* RecordDreamViewController.xib in Resources */,
 				05D9328A15B9C82900983693 /* SelectedDreamViewController.xib in Resources */,
-				05209CD115BD564F001C66CF /* alarm 1.caf in Resources */,
 				05E0E31615C022C8005BAEF0 /* Settings.bundle in Resources */,
 				05A5CE1715C80AA70097DB1C /* AlarmListViewController.xib in Resources */,
 				05A5CE1915C824A70097DB1C /* AlarmClock.plist in Resources */,
 				05A5CF5D15C94B060097DB1C /* InAppSettings.png in Resources */,
 				05A5CF5E15C94B060097DB1C /* InAppSettings@2x.png in Resources */,
-				05A5CF6F15D1469B0097DB1C /* alarm 2.caf in Resources */,
 				05E5AA0815D27290004684E0 /* AlarmLabelViewController.xib in Resources */,
 				05E5AA7715D3C4A6004684E0 /* AlarmDaysViewController.xib in Resources */,
 				058FCCD915DB9FA50030A4D9 /* HomeViewController.xib in Resources */,
@@ -608,11 +713,30 @@
 				059A9C1B15EB93580054F114 /* Solari.ttf in Resources */,
 				059A9C1F15ECF9A80054F114 /* blackalarmbell.png in Resources */,
 				051F646415F4E5FB00CFF594 /* whitex.png in Resources */,
-				0551259515F6815B008F2BA0 /* icon.png in Resources */,
 				052FEDB915F7AB120014DC37 /* iconnav2.png in Resources */,
 				052FEDBB15F8918E0014DC37 /* dslogocropped.jpg in Resources */,
 				052FEDBD15F8963E0014DC37 /* dslogocroppedtransparent.png in Resources */,
 				052FEDC615F8CDDE0014DC37 /* AccDisclosure.png in Resources */,
+				052FEDC815F8EA3F0014DC37 /* information.png in Resources */,
+				052FEDEC15FE17AB0014DC37 /* dreamstaterecordimage.png in Resources */,
+				052FEDEE15FE321B0014DC37 /* dshome.png in Resources */,
+				056C69731602132D00B3D06D /* Antique.m4a in Resources */,
+				056C69741602132D00B3D06D /* Bells.m4a in Resources */,
+				056C69751602132D00B3D06D /* Birds.m4a in Resources */,
+				056C69761602132D00B3D06D /* Candy.m4a in Resources */,
+				056C6979160213AA00B3D06D /* Piano beat.m4a in Resources */,
+				056C699216021D1500B3D06D /* icon.png in Resources */,
+				056C699416021D1C00B3D06D /* icon@2x.png in Resources */,
+				056C699916032DD800B3D06D /* A Mind of Its Own.m4a in Resources */,
+				056C699A16032DD800B3D06D /* Blurred Atmospheres.m4a in Resources */,
+				056C699B16032DD800B3D06D /* Hard as Nails.m4a in Resources */,
+				056C699C16032DD800B3D06D /* High Action.m4a in Resources */,
+				056C699F1603362600B3D06D /* Alarm bell 2.m4a in Resources */,
+				056C69A01603362600B3D06D /* Alarm bell 1.m4a in Resources */,
+				056C69A616049FD500B3D06D /* AboutViewController.xib in Resources */,
+				056C69AC1604A10500B3D06D /* TOCViewController.xib in Resources */,
+				056C69B11604A11F00B3D06D /* HowToViewController.xib in Resources */,
+				056C69B61604A63100B3D06D /* LegalViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,6 +751,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		056C69A116033D5600B3D06D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ $CONFIGURATION == Release ]; then\necho \"Bumping build number...\"\nplist=${PROJECT_DIR}/${INFOPLIST_FILE}\n\n# increment the build number (ie 115 to 116)\nbuildnum=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${plist}\")\nif [[ \"${buildnum}\" == \"\" ]]; then\necho \"No build number in $plist\"\nexit 2\nfi\n\nbuildnum=$(expr $buildnum + 1)\n/usr/libexec/Plistbuddy -c \"Set CFBundleVersion $buildnum\" \"${plist}\"\necho \"Bumped build number to $buildnum\"\n\nelse\necho $CONFIGURATION \" build - Not bumping build number.\"\nfi";
+		};
 		05D9325015B9AEFB00983693 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -675,11 +812,15 @@
 				05E5AA7615D3C4A6004684E0 /* AlarmDaysViewController.m in Sources */,
 				05E5AA7C15D40D8F004684E0 /* NotificationLoader.m in Sources */,
 				05E5AA8815D56C90004684E0 /* Alarm.m in Sources */,
-				05E5AA8B15D56CD1004684E0 /* Dream.m in Sources */,
 				05E5AA8F15D8F09F004684E0 /* Alarmhelper.m in Sources */,
 				058FCCD815DB9FA50030A4D9 /* HomeViewController.m in Sources */,
 				058FCCEE15DD31C20030A4D9 /* SineWaveView.m in Sources */,
 				05E8CE2815E7CD4E007EDF8F /* AlarmSoundViewController.m in Sources */,
+				052FEDD915FB7E290014DC37 /* UITextFieldNoMenu.m in Sources */,
+				056C69A516049FD500B3D06D /* AboutViewController.m in Sources */,
+				056C69AB1604A10500B3D06D /* TOCViewController.m in Sources */,
+				056C69B01604A11F00B3D06D /* HowToViewController.m in Sources */,
+				056C69B51604A63100B3D06D /* LegalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -741,7 +882,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv6 armv7";
@@ -761,7 +902,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -773,13 +914,20 @@
 		05D9326515B9AEFB00983693 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = armv6;
+				ARCHS = (
+					"$(ARCHS_STANDARD_32_BIT)",
+					armv6,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DreamState/DreamState-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "DreamState/DreamState-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/DreamState\"",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -792,7 +940,10 @@
 		05D9326615B9AEFB00983693 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = armv6;
+				ARCHS = (
+					"$(ARCHS_STANDARD_32_BIT)",
+					armv6,
+				);
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -800,7 +951,11 @@
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "DreamState/DreamState-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/DreamState\"",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -881,10 +1036,11 @@
 		05E5AA0E15D2D4E5004684E0 /* DreamState.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				052FEDF31600C72B0014DC37 /* DreamState 3.xcdatamodel */,
 				05E5AA8C15D56D9D004684E0 /* DreamState 2.xcdatamodel */,
 				05E5AA0F15D2D4E5004684E0 /* DreamState.xcdatamodel */,
 			);
-			currentVersion = 05E5AA8C15D56D9D004684E0 /* DreamState 2.xcdatamodel */;
+			currentVersion = 052FEDF31600C72B0014DC37 /* DreamState 3.xcdatamodel */;
 			path = DreamState.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

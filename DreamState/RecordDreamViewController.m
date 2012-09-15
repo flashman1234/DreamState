@@ -10,6 +10,7 @@
 #import "Dream.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "SineWaveView.h"
+#import "UITextFieldNoMenu.h"
 
 @implementation RecordDreamViewController
 
@@ -38,7 +39,7 @@
 #pragma mark - textfield
 
 -(void)addTextField{
-    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(10, 170, 300, 30)];
+    UITextFieldNoMenu *textField = [[UITextFieldNoMenu alloc] initWithFrame:CGRectMake(10, 170, 300, 30)];
     dreamNameTextField = textField;
     
     dreamNameTextField.backgroundColor = [UIColor blackColor];
@@ -46,6 +47,7 @@
     dreamNameTextField.textColor = [UIColor whiteColor];
     dreamNameTextField.borderStyle = UITextBorderStyleBezel;
     dreamNameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+    dreamNameTextField.returnKeyType = UIReturnKeyDone;
     
     CGFloat myWidth = 26.0f;
     CGFloat myHeight = 30.0f;
@@ -65,6 +67,12 @@
     
 }
 
+-(void)textFieldDidBeginEditing:(UITextField *)iTextField {
+    [iTextField selectAll:self];
+}
+
+
+
 -(void)doClear:(id)sender{
     dreamNameTextField.text = @"";
 }
@@ -80,6 +88,9 @@
     }
     
     [theTextField resignFirstResponder];
+    
+    [self.tabBarController setSelectedIndex:2];
+    
     return YES;
 }
 
@@ -109,8 +120,6 @@
     
 }
 
-
-
 - (void)levelTimerCallback:(NSTimer *)timer {
     if (isRecording) {
         [self.aVAudioRecorder updateMeters];
@@ -122,8 +131,6 @@
         [sineWaveView setNeedsDisplay];
     }
 }
-
-
 
 -(void)startRecordingAudio
 {
@@ -174,12 +181,17 @@
         
         NSString *dreamDateAsString = [dreamDateFormatter stringFromDate:[NSDate date]];
         
+        NSDateFormatter *dreamTimeFormatter = [[NSDateFormatter alloc] init];
+        [dreamTimeFormatter setDateFormat: @"HH:mm"];
+        
+        NSString *dreamTimeAsString = [dreamTimeFormatter stringFromDate:[NSDate date]];
+        
         dream.name = [dreamDateAsString stringByAppendingString:@""];
         dream.fileUrl = [fileURL path];
         dream.date = dreamDateAsString;
         dream.mediaType = @"Audio";
         dream.dateCreated = [NSDate date];
-        
+        dream.time = dreamTimeAsString;
         NSError *error;
         if (![context save:&error]) {
             NSLog(@"Couldn't save audio dream: %@", [error localizedDescription]);
@@ -241,8 +253,10 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    if (!loadedFromAlarm) {
-        segmentedControl.selectedSegmentIndex = -1;
+    //if (!loadedFromAlarm) {
+    if (autoRecord) {
+        segmentedControl.selectedSegmentIndex = 0;
+        [self startRecordingAudio];
     }
 
 }
@@ -264,7 +278,6 @@
     }
         
     UIView *b = (UIView *)[self.view viewWithTag:100];
-    NSLog(@" : %@", b);
     [b removeFromSuperview];
     b = nil;
     
@@ -308,12 +321,6 @@
     [segmentedControl addTarget:self action:@selector(segmentValueChanged:) forControlEvents: UIControlEventValueChanged];
     [self.view addSubview:segmentedControl];
     
-    if (autoRecord) {
-        if (loadedFromAlarm) {
-            segmentedControl.selectedSegmentIndex = 0;
-            [self startRecordingAudio];
-        }
-    }
 }
 
 
@@ -321,6 +328,7 @@
 {
     [self getUserDefaults];
     [self.navigationController setNavigationBarHidden:YES animated:animated];
+    segmentedControl.selectedSegmentIndex = -1;
     [super viewWillAppear:animated];
 }
 

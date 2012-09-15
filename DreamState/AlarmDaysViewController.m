@@ -102,7 +102,11 @@
     
     for (NSString *day in selectedDayArray) 
     {
-        if ([day isEqualToString:[self.dayArray objectAtIndex:indexPath.row]]) {
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        NSString *stringFromDay = [[df weekdaySymbols] objectAtIndex:[day intValue]];
+       
+        //if ([day isEqualToString:[self.dayArray objectAtIndex:indexPath.row]]) {
+        if ([stringFromDay isEqualToString:[self.dayArray objectAtIndex:indexPath.row]]) {
             
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
            
@@ -120,15 +124,22 @@
 {
     UITableViewCell *thisCell = [tableView cellForRowAtIndexPath:indexPath];
 
+    NSString *dayAsString = thisCell.textLabel.text;
+
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    NSString *stringFromDay = [NSString stringWithFormat:@"%d", [[df weekdaySymbols] indexOfObject:dayAsString]];
     
     if (thisCell.accessoryType == UITableViewCellAccessoryNone) {
         thisCell.accessoryType = UITableViewCellAccessoryCheckmark;
-        [selectedDayArray addObject:thisCell.textLabel.text];
+        
+        //[selectedDayArray addObject:thisCell.textLabel.text];
+        [selectedDayArray addObject:stringFromDay];
         
     }else{
         thisCell.accessoryType = UITableViewCellAccessoryNone;
         
-        [selectedDayArray removeObject:thisCell.textLabel.text];
+        //[selectedDayArray removeObject:thisCell.textLabel.text];
+        [selectedDayArray removeObject:stringFromDay];
     }
 }
 

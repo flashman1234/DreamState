@@ -10,6 +10,8 @@
 #import "AlarmViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
+#define encUrl(x) [NSURL URLWithString:[x stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]]
+
 @implementation AlarmSoundViewController
 
 @synthesize alarmSoundTableView;
@@ -37,6 +39,12 @@
     UITableViewCell *cell = [self.alarmSoundTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    else {
+        UILabel *text = (UILabel *)[cell.contentView viewWithTag:1];
+        if ([text superview]) {
+            [text removeFromSuperview];
+        }
     }
     
     UILabel *dreamLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 12, 290, 25)];
@@ -71,9 +79,13 @@
 }
 
 -(void)playSound:(NSString *)alarmSound{
-    NSLog(@"alarmSound : %@", alarmSound);
-    NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@.caf", [[NSBundle mainBundle] resourcePath], alarmSound]];
-	
+    //NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@.m4a", [[NSBundle mainBundle] resourcePath], alarmSound]];
+    
+    NSString *c = [NSString stringWithFormat:@"%@/%@.m4a", [[NSBundle mainBundle] resourcePath], alarmSound];
+    
+    NSString *path = [c stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]; 
+    NSURL *url = [NSURL URLWithString:path];
+
 	NSError *error;
 	audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
 	audioPlayer.numberOfLoops = -1;

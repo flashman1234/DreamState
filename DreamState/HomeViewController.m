@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "AlarmViewController.h"
 #import "AlarmListViewController.h"
+#import "TestFlight.h"
 
 
 @implementation HomeViewController
@@ -19,13 +20,18 @@
 @synthesize nextAlarmTimeLabel;
 @synthesize bellView;
 
+
+-(IBAction)launchFeedback{
+    [TestFlight openFeedbackView];
+}
+
 -(IBAction)pressAlarmButton{
     
     CATransition* transition = [CATransition animation];
     transition.duration = 0.5;
     transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    transition.type = kCATransitionFade; //kCATransitionMoveIn; //, kCATransitionPush, kCATransitionReveal, kCATransitionFade
-    //transition.subtype = kCATransitionFromTop; //kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
+    transition.type = kCATransitionMoveIn; //kCATransitionMoveIn; //, kCATransitionPush, kCATransitionReveal, kCATransitionFade
+    transition.subtype = kCATransitionFromRight; //kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
     [self.navigationController.view.layer addAnimation:transition forKey:nil];
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -68,8 +74,12 @@
         NSDate *todayDate = [NSDate date];
         NSString *today = [dateFormat  stringFromDate:todayDate];
         
+        
+        
+        
         if ([today isEqualToString:dayText]) {
             dayText = @"Today";
+            //dayText = [@"Today-" stringByAppendingString:today];
         }
                 
         NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -94,7 +104,12 @@
         
         if ([tomorrow isEqualToString:dayText]) {
             dayText = @"Tomorrow";
+            //dayText = [@"Tomorrow-" stringByAppendingString:tomorrow];
         }
+        
+        
+        
+        
         
         nextAlarmDayLabel.text = dayText;
         [nextAlarmTimeLabel setFont:[UIFont fontWithName:@"Solari" size:60]];
@@ -110,9 +125,19 @@
         [nextAlarmTimeLabel setFont:[UIFont fontWithName:@"Solari" size:40]];
         nextAlarmTimeLabel.text = @"Add alarm";
         nextAlarmDayLabel.text = @"";
-        UIImageView *theBellView = (UIImageView *)[self.view viewWithTag:99];
-        [theBellView removeFromSuperview];
-        theBellView = nil;
+
+        
+        for (UIView *v in nextAlarmView.subviews) {
+            if ([v isKindOfClass:[UIImageView class]]) {
+                [v removeFromSuperview];
+            }
+        }
+        
+//        UIImageView *theBellView = (UIImageView *)[self.view viewWithTag:99];
+//        
+//        [theBellView removeFromSuperview];
+//        theBellView = nil;
+
     }
 }
 
@@ -136,7 +161,7 @@
   
     UITabBarItem *tbi = [self tabBarItem];
     [tbi setTitle:@"Home"];
-    UIImage *i = [UIImage imageNamed:@"iconnav2.png"];
+    UIImage *i = [UIImage imageNamed:@"dshome.png"];
     [tbi setImage:i];
     
     return self;
@@ -157,7 +182,7 @@
     nextAlarmTimeLabel.backgroundColor = [UIColor clearColor];
     
     nextAlarmDayLabel = [[UILabel alloc] init];
-    nextAlarmDayLabel.frame = CGRectMake(180,100, 150, 50);
+    nextAlarmDayLabel.frame = CGRectMake(120,100, 300, 50);
     [nextAlarmDayLabel setFont:[UIFont fontWithName:@"Solari" size:20]];
     nextAlarmDayLabel.textColor = [UIColor whiteColor];
     nextAlarmDayLabel.backgroundColor = [UIColor clearColor];
@@ -174,7 +199,7 @@
     
     [self.view addSubview:title];
 
-    [self setAlarmDetails];
+    //[self setAlarmDetails];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localAction) name:localReceived object:nil];
 }
@@ -191,9 +216,9 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     [self setAlarmDetails];
-    [super viewWillAppear:animated];
 }
 
 - (void) viewWillDisappear:(BOOL)animated

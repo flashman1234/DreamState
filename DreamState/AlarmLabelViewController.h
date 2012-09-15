@@ -7,14 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UITextFieldNoMenu.h"
 
 @interface AlarmLabelViewController : UIViewController<UITextFieldDelegate>{
     
-    IBOutlet UITextField *labelTextField ;
+    IBOutlet UITextFieldNoMenu *labelTextField ;
     NSString *existingName;
 }
 
-@property ( nonatomic , retain ) IBOutlet UITextField *labelTextField ;
+@property ( nonatomic , retain ) IBOutlet UITextFieldNoMenu *labelTextField ;
 @property ( nonatomic , retain ) NSString *existingName;
 
 @end

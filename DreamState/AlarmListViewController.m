@@ -243,12 +243,16 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
                                               target:self action:@selector(addAlarmButtonTapped:)];
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
 
-    [self updateNotifications];
+    
     [self loadAlarmArray];
     tableView.backgroundColor = [UIColor blackColor];
     
     [tableView setEditing:YES];
     tableView.allowsSelectionDuringEditing = YES;
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [self updateNotifications];
 }
 
 - (void)viewDidUnload

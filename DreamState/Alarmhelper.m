@@ -17,8 +17,15 @@
     
     array = [array sortedArrayUsingComparator:^(id obj1, id obj2){
         if ([obj1 isKindOfClass:[NSString class]] && [obj2 isKindOfClass:[NSString class]]) {
-            NSString *s1 = obj1;
-            NSString *s2 = obj2;
+
+            
+            NSDateFormatter *df = [[NSDateFormatter alloc] init];
+            
+            int dayNumber = [obj1 intValue];   
+            NSString *s1 = [[df weekdaySymbols] objectAtIndex:(dayNumber)];
+            
+            dayNumber = [obj2 intValue];
+            NSString *s2 = [[df weekdaySymbols] objectAtIndex:(dayNumber)];
             
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
             
@@ -37,21 +44,25 @@
             }
         }
 
-        // TODO: default is the same?
         return (NSComparisonResult)NSOrderedSame;
     }];
     
     NSString *tidyDay = [[NSString alloc]init];
    
     for (NSString *myArrayElement in array) {
-        NSString *shortDay = [myArrayElement substringToIndex:3];
+        
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        
+        NSString *stringFromDay = [[df weekdaySymbols] objectAtIndex:[myArrayElement intValue]];
+        
+        NSString *shortDay = [stringFromDay substringToIndex:3];
         
         tidyDay = [tidyDay stringByAppendingString:shortDay];
         tidyDay = [tidyDay stringByAppendingString:@","];
         
     }
     if ([tidyDay length] > 0) {
-        tidyDay = [tidyDay substringToIndex:[tidyDay length] - 2];
+        tidyDay = [tidyDay substringToIndex:[tidyDay length] - 1];
         return tidyDay;
     }
     return @"";    

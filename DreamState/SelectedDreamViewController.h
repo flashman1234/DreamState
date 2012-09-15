@@ -13,6 +13,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "Dream.h"
 #import "SineWaveView.h"
+#import "UITextFieldNoMenu.h"
 
 @interface SelectedDreamViewController : UIViewController<AVAudioPlayerDelegate, UITextFieldDelegate>
 
@@ -27,6 +28,6 @@
 @property double highPassResults;
 @property (nonatomic, retain) SineWaveView *sineWaveView;
 @property (nonatomic, retain) UIImageView *sineWaveImageView;
-@property (nonatomic, retain) UITextField *dreamNameTextField;
+@property (nonatomic, retain) UITextFieldNoMenu *dreamNameTextField;
 
 @end

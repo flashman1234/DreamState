@@ -16,6 +16,8 @@
 #import "Day.h"
 #import "Dream.h"
 #import "NotificationLoader.h"
+#import "TestFlight.h"
+#import "LegalViewController.h"
 
 NSString *localReceived = @"localReceived";
 
@@ -57,7 +59,7 @@ NSString *localReceived = @"localReceived";
 -(void)playAlarmSound:(NSString *)sound{
     
     NSString *fileName = sound;
-    NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:@"caf"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:@"m4a"];
     NSURL *tempfileURL = [NSURL fileURLWithPath:path];
     fileURL = tempfileURL;
     
@@ -179,8 +181,9 @@ NSString *localReceived = @"localReceived";
     HomeViewController *homeViewController = [[HomeViewController alloc] init];
     RecordDreamViewController *recordDreamViewController = [[RecordDreamViewController alloc] initWithManagedObjectContext:__managedObjectContext];
     CurrentDreamsViewController *currentDreamsViewController  = [[CurrentDreamsViewController alloc] initWithManagedObjectContext:__managedObjectContext];
-    InAppSettingsViewController *inAppSettingsViewController = [[InAppSettingsViewController alloc] init];
+//    InAppSettingsViewController *inAppSettingsViewController = [[InAppSettingsViewController alloc] init];
 
+    LegalViewController *legalViewController = [[LegalViewController alloc] init];
     
     NSMutableArray *tabBarViewControllers = [[NSMutableArray alloc] initWithCapacity:4];
     
@@ -197,10 +200,14 @@ NSString *localReceived = @"localReceived";
     [tabBarViewControllers addObject:navigationController];
     navigationController = nil;
     
-    navigationController = [[UINavigationController alloc] initWithRootViewController:inAppSettingsViewController];
+//    navigationController = [[UINavigationController alloc] initWithRootViewController:inAppSettingsViewController];
+//    [tabBarViewControllers addObject:navigationController];
+//    navigationController = nil;
+
+    navigationController = [[UINavigationController alloc] initWithRootViewController:legalViewController];
     [tabBarViewControllers addObject:navigationController];
     navigationController = nil;
-    
+
     
     [tbc setViewControllers:tabBarViewControllers];
     
@@ -208,6 +215,14 @@ NSString *localReceived = @"localReceived";
     
     self.window.rootViewController = tbc;
     [self.window makeKeyAndVisible];
+    
+    
+    UInt32 routeVar = kAudioSessionOverrideAudioRoute_Speaker;
+    AudioSessionSetProperty(kAudioSessionProperty_OverrideAudioRoute, sizeof(routeVar), &routeVar);
+    
+    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
+
+    [TestFlight takeOff:@"83adb1d1f3551e721ff1c9fb7195d17e_MTI5Mjk0MjAxMi0wOS0wNiAxMDo0NToxMC44NzQ5MTI"];
     
     return YES;
 }
@@ -312,6 +327,10 @@ NSString *localReceived = @"localReceived";
     NSError *error = nil;
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error]) {
+        
+        [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+        
+        
         /*
          Replace this implementation with code to handle the error appropriately.
          
@@ -335,7 +354,7 @@ NSString *localReceived = @"localReceived";
          Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
          
          */
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        //NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }    
     

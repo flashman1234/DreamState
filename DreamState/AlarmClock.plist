@@ -9,8 +9,17 @@
 			<string>Sound</string>
 			<key>Children</key>
 			<array>
-				<string>alarm 1</string>
-				<string>alarm 2</string>
+				<string>Alarm bell 1</string>
+				<string>Alarm bell 2</string>
+				<string>Piano beat</string>
+				<string>Candy</string>
+				<string>Birds</string>
+				<string>Bells</string>
+				<string>Antique</string>
+				<string>A Mind of Its Own</string>
+				<string>Blurred Atmospheres</string>
+				<string>Hard as Nails</string>
+				<string>High Action</string>
 			</array>
 		</dict>
 		<dict>

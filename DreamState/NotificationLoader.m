@@ -58,14 +58,14 @@
     
     notification.userInfo = userInfoDict;
     
-    notification.soundName = [alarm.sound stringByAppendingString:@".caf"];
+    notification.soundName = [alarm.sound stringByAppendingString:@".m4a"];
     
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
 }
 
 -(void)createNotificationForAlarm:(Alarm *)alarm{
 
-    int totalNumberOfNotifications = 10;
+    int totalNumberOfNotifications = 20;
     int numberOfNotificationsPerAlarm = totalNumberOfNotifications / numberOfAlarms;
     
     //get date and convert to components
@@ -118,11 +118,15 @@
 
             NSString *possibleAlarmDay = [weekday stringFromDate:finalAlarmDate];
             
+            NSDateFormatter *df = [[NSDateFormatter alloc] init];
+            NSString *stringFromDay = [NSString stringWithFormat:@"%d", [[df weekdaySymbols] indexOfObject:possibleAlarmDay]];
+            
             NSSet *days = [alarm.day valueForKey: @"day"];
            
             bool dayIsFound = NO;
             
-            dayIsFound = [days containsObject:possibleAlarmDay];
+            //dayIsFound = [days containsObject:possibleAlarmDay];
+            dayIsFound = [days containsObject:stringFromDay];
             
             if (dayIsFound) {
                 if ([finalAlarmDate compare:curentDate] == NSOrderedDescending) {

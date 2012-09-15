@@ -32,7 +32,7 @@
 
 
 -(void)addTextField{
-    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(10, 170, 300, 30)];
+    UITextFieldNoMenu *textField = [[UITextFieldNoMenu alloc] initWithFrame:CGRectMake(10, 170, 300, 30)];
     dreamNameTextField = textField;
     
     dreamNameTextField.backgroundColor = [UIColor blackColor];

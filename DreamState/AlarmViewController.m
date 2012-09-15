@@ -90,7 +90,15 @@
     notificationLoader.managedObjectContext = [self managedObjectContext];
     [notificationLoader loadNotifications];
     
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    CATransition* transition = [CATransition animation];
+    transition.duration = 0.5;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionMoveIn; //kCATransitionMoveIn; //, kCATransitionPush, kCATransitionReveal, kCATransitionFade
+    transition.subtype = kCATransitionFromRight;
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+    
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 -(void)storeAlarmInStore:(NSDate *)fireDate{
@@ -299,12 +307,14 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.tableDataSource = [appDelegate.alarmClockData objectForKey:@"Rows"];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
                                              initWithBarButtonSystemItem:UIBarButtonSystemItemSave 
                                               target:self action:@selector(saveAlarm:)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
                                               initWithBarButtonSystemItem:UIBarButtonSystemItemCancel 
                                               target:self action:@selector(cancelAlarm:)];
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor redColor];
+    
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     
     alarmTableView.backgroundColor = [UIColor clearColor];

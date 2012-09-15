@@ -2,7 +2,7 @@
 //  Dream.m
 //  DreamState
 //
-//  Created by Michal Thompson on 8/10/12.
+//  Created by Michal Thompson on 9/12/12.
 //  Copyright (c) 2012 NA. All rights reserved.
 //
 
@@ -11,10 +11,11 @@
 
 @implementation Dream
 
-@dynamic name;
 @dynamic date;
+@dynamic dateCreated;
 @dynamic fileUrl;
 @dynamic mediaType;
-@dynamic dateCreated;
+@dynamic name;
+@dynamic time;
 
 @end

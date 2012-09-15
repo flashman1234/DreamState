@@ -9,6 +9,7 @@
 #import "InAppSettings.h"
 #import "InAppSettingsPSMultiValueSpecifierTable.h"
 #import <QuartzCore/QuartzCore.h>
+#import "LegalViewController.h"
 
 @implementation InAppSettings
 
@@ -91,10 +92,11 @@ static InAppSettings *sharedInstance = nil;
 #pragma mark setup view
 
 -(id)init{
-    UITabBarItem *tbi = [self tabBarItem];
-    [tbi setTitle:@"Settings"];
-    UIImage *i = [UIImage imageNamed:@"InAppSettings.png"];
-    [tbi setImage:i];
+//    UITabBarItem *tbi = [self tabBarItem];
+//    [tbi setTitle:@"Settings"];
+//    //UIImage *i = [UIImage imageNamed:@"InAppSettings.png"];
+//    UIImage *i = [UIImage imageNamed:@"information.png"];
+//    [tbi setImage:i];
     return self;
 }
 
@@ -109,27 +111,12 @@ static InAppSettings *sharedInstance = nil;
 }
 
 
-
-
-#pragma mark - screenswipes
-- (void) swipedScreenUp:(UISwipeGestureRecognizer*)swipeGesture {
-    
-    CATransition* transition = [CATransition animation];
-    transition.duration = 0.5;
-    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    transition.type = kCATransitionMoveIn; //kCATransitionMoveIn; //, kCATransitionPush, kCATransitionReveal, kCATransitionFade
-    transition.subtype = kCATransitionFromTop; //kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
-    [self.navigationController.view.layer addAnimation:transition forKey:nil];
-    [[self navigationController] popViewControllerAnimated:NO];
-    
-    
-}
-
-
 - (void)viewDidLoad{
     //setup the table
     //self.settingsTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-    self.settingsTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.layer.bounds.size.width, self.view.layer.bounds.size.height) style:UITableViewStyleGrouped];
+    
+    //self.settingsTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.layer.bounds.size.width, self.view.layer.bounds.size.height) style:UITableViewStyleGrouped];
+    self.settingsTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.layer.bounds.size.width, 200) style:UITableViewStyleGrouped];
     
     self.settingsTableView.backgroundColor = [UIColor blackColor];
     self.settingsTableView.autoresizingMask = (UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight);
@@ -137,6 +124,8 @@ static InAppSettings *sharedInstance = nil;
     self.settingsTableView.dataSource = self;
     self.settingsTableView.scrollEnabled = NO;
     [self.view addSubview:self.settingsTableView];
+    
+    //[self addLegalTable];
     
 //    UILabel *backToMenu = [[UILabel alloc]init];
 //    backToMenu.text = @"Menu";
@@ -272,6 +261,7 @@ static InAppSettings *sharedInstance = nil;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    
     return [self.settingsReader.headers count];
 }
 
@@ -281,6 +271,7 @@ static InAppSettings *sharedInstance = nil;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    NSLog(@"[[self.settingsReader.settings objectAtIndex:section] count] : %d", [[self.settingsReader.settings objectAtIndex:section] count]);
     return [[self.settingsReader.settings objectAtIndex:section] count];
 }
 
@@ -296,7 +287,7 @@ static InAppSettings *sharedInstance = nil;
 
     UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(10, 10, tableView.bounds.size.width - 10, 24)] autorelease];
     label.text = [self tableView:tableView titleForHeaderInSection:section];
-[label setFont:[UIFont fontWithName:@"Solari" size:20]];
+    [label setFont:[UIFont fontWithName:@"Solari" size:20]];
     label.textColor = [UIColor whiteColor];
     label.backgroundColor = [UIColor clearColor];
     [headerView addSubview:label];
@@ -369,6 +360,7 @@ static InAppSettings *sharedInstance = nil;
     cell.setting = setting;
     [cell setValueDelegate:self];
     [cell setUIValues];
+    NSLog(@"cell : %@", cell);
     
     return cell;
 }

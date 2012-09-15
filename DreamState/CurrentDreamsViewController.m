@@ -22,7 +22,7 @@
 #pragma mark - table view methods
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 60.0;
+    return 70.0;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -50,6 +50,11 @@
         if ([name superview]) {
             [name removeFromSuperview];
         }
+        
+        UILabel *time = (UILabel *)[cell.contentView viewWithTag:2];
+        if ([time superview]) {
+            [time removeFromSuperview];
+        }
 
     }
     
@@ -62,6 +67,16 @@
     dreamLabel.backgroundColor = [UIColor clearColor];
     dreamLabel.text = dream.name;
     [cell.contentView addSubview:dreamLabel];
+    
+    
+    
+    UILabel *dreamTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 40, 290, 25)];
+    dreamTimeLabel.tag = 2;        
+    [dreamTimeLabel setFont:[UIFont fontWithName:@"Solari" size:15]];
+    dreamTimeLabel.textColor = [UIColor whiteColor];
+    dreamTimeLabel.backgroundColor = [UIColor clearColor];
+    dreamTimeLabel.text = dream.time;
+    [cell.contentView addSubview:dreamTimeLabel];
     
     return cell;
 
@@ -181,5 +196,17 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     [super viewWillDisappear:animated];
 }
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSIndexPath *myIP = [NSIndexPath indexPathForRow:0 inSection:0];
+    UITableViewCell *cell = (UITableViewCell *)[dreamTableView cellForRowAtIndexPath:myIP];
+    [cell setHighlighted:YES animated:YES];
+    [cell setHighlighted:NO animated:YES];
+   
+}
+
+
+
 
 @end

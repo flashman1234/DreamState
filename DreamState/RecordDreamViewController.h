@@ -12,6 +12,7 @@
 #import "Dream.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "SineWaveView.h"
+#import "UITextFieldNoMenu.h"
 
 @interface RecordDreamViewController : UIViewController <AVAudioRecorderDelegate, UITextFieldDelegate>
 {
@@ -47,7 +48,7 @@
 
 
 @property (nonatomic, retain) UISegmentedControl *segmentedControl;
-@property (nonatomic, retain) UITextField *dreamNameTextField;
+@property (nonatomic, retain) UITextFieldNoMenu *dreamNameTextField;
 
 
 @end

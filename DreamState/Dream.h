@@ -2,7 +2,7 @@
 //  Dream.h
 //  DreamState
 //
-//  Created by Michal Thompson on 8/10/12.
+//  Created by Michal Thompson on 9/12/12.
 //  Copyright (c) 2012 NA. All rights reserved.
 //
 
@@ -12,10 +12,11 @@
 
 @interface Dream : NSManagedObject
 
-@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * date;
+@property (nonatomic, retain) NSDate * dateCreated;
 @property (nonatomic, retain) NSString * fileUrl;
 @property (nonatomic, retain) NSString * mediaType;
-@property (nonatomic, retain) NSDate * dateCreated;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * time;
 
 @end
