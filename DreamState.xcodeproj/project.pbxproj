@@ -44,9 +44,13 @@
 		056C69AB1604A10500B3D06D /* TOCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056C69A91604A10500B3D06D /* TOCViewController.m */; };
 		056C69AC1604A10500B3D06D /* TOCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 056C69AA1604A10500B3D06D /* TOCViewController.xib */; };
 		056C69B01604A11F00B3D06D /* HowToViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056C69AE1604A11F00B3D06D /* HowToViewController.m */; };
-		056C69B11604A11F00B3D06D /* HowToViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 056C69AF1604A11F00B3D06D /* HowToViewController.xib */; };
 		056C69B51604A63100B3D06D /* LegalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056C69B31604A63100B3D06D /* LegalViewController.m */; };
 		056C69B61604A63100B3D06D /* LegalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 056C69B41604A63100B3D06D /* LegalViewController.xib */; };
+		056C69BA1604D68600B3D06D /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 056C69B91604D68400B3D06D /* Settings.m */; };
+		056C69BE1604FE1600B3D06D /* Notifications2.png in Resources */ = {isa = PBXBuildFile; fileRef = 056C69BB1604FE0F00B3D06D /* Notifications2.png */; };
+		056C69BF1604FE1600B3D06D /* Notifications3.png in Resources */ = {isa = PBXBuildFile; fileRef = 056C69BC1604FE1200B3D06D /* Notifications3.png */; };
+		056C69C01604FE1600B3D06D /* Notifications.png in Resources */ = {isa = PBXBuildFile; fileRef = 056C69BD1604FE1500B3D06D /* Notifications.png */; };
+		056C69C41604FEE800B3D06D /* HowToViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 056C69C51604FEE800B3D06D /* HowToViewController.xib */; };
 		0589FC0815EF5F1C00121B9C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0589FC0715EF5F1B00121B9C /* AudioToolbox.framework */; };
 		058FCCD815DB9FA50030A4D9 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 058FCCD615DB9FA50030A4D9 /* HomeViewController.m */; };
 		058FCCD915DB9FA50030A4D9 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 058FCCD715DB9FA50030A4D9 /* HomeViewController.xib */; };
@@ -60,7 +64,6 @@
 		05A5CE1615C80AA70097DB1C /* AlarmListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CE1415C80AA50097DB1C /* AlarmListViewController.m */; };
 		05A5CE1715C80AA70097DB1C /* AlarmListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A5CE1515C80AA60097DB1C /* AlarmListViewController.xib */; };
 		05A5CE1915C824A70097DB1C /* AlarmClock.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05A5CE1815C824A70097DB1C /* AlarmClock.plist */; };
-		05A5CE8F15C939600097DB1C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A5CE8E15C9395F0097DB1C /* MessageUI.framework */; };
 		05A5CF5515C94B060097DB1C /* InAppSettingsPSChildPaneSpecifierCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF3D15C94B060097DB1C /* InAppSettingsPSChildPaneSpecifierCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		05A5CF5615C94B060097DB1C /* InAppSettingsPSMultiValueSpecifierCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF3F15C94B060097DB1C /* InAppSettingsPSMultiValueSpecifierCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		05A5CF5715C94B060097DB1C /* InAppSettingsPSSliderSpecifierCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CF4115C94B060097DB1C /* InAppSettingsPSSliderSpecifierCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -95,7 +98,6 @@
 		05D9328915B9C82900983693 /* SelectedDreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9328715B9C82900983693 /* SelectedDreamViewController.m */; };
 		05D9328A15B9C82900983693 /* SelectedDreamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05D9328815B9C82900983693 /* SelectedDreamViewController.xib */; };
 		05E0E30F15BFF92B005BAEF0 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E0E30E15BFF92B005BAEF0 /* MediaPlayer.framework */; };
-		05E0E31615C022C8005BAEF0 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 05E0E31515C022C8005BAEF0 /* Settings.bundle */; };
 		05E5AA0715D27290004684E0 /* AlarmLabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E5AA0515D27290004684E0 /* AlarmLabelViewController.m */; };
 		05E5AA0815D27290004684E0 /* AlarmLabelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05E5AA0615D27290004684E0 /* AlarmLabelViewController.xib */; };
 		05E5AA0A15D2C666004684E0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E5AA0915D2C666004684E0 /* CoreData.framework */; };
@@ -175,10 +177,16 @@
 		056C69AA1604A10500B3D06D /* TOCViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TOCViewController.xib; sourceTree = "<group>"; };
 		056C69AD1604A11F00B3D06D /* HowToViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HowToViewController.h; sourceTree = "<group>"; };
 		056C69AE1604A11F00B3D06D /* HowToViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HowToViewController.m; sourceTree = "<group>"; };
-		056C69AF1604A11F00B3D06D /* HowToViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HowToViewController.xib; sourceTree = "<group>"; };
 		056C69B21604A63100B3D06D /* LegalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegalViewController.h; sourceTree = "<group>"; };
 		056C69B31604A63100B3D06D /* LegalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegalViewController.m; sourceTree = "<group>"; };
 		056C69B41604A63100B3D06D /* LegalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LegalViewController.xib; sourceTree = "<group>"; };
+		056C69B71604D61C00B3D06D /* DreamState 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DreamState 4.xcdatamodel"; sourceTree = "<group>"; };
+		056C69B81604D68300B3D06D /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		056C69B91604D68400B3D06D /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		056C69BB1604FE0F00B3D06D /* Notifications2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Notifications2.png; sourceTree = "<group>"; };
+		056C69BC1604FE1200B3D06D /* Notifications3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Notifications3.png; sourceTree = "<group>"; };
+		056C69BD1604FE1500B3D06D /* Notifications.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Notifications.png; sourceTree = "<group>"; };
+		056C69C51604FEE800B3D06D /* HowToViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HowToViewController.xib; sourceTree = "<group>"; };
 		0589FC0715EF5F1B00121B9C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		058FCCD515DB9FA50030A4D9 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		058FCCD615DB9FA50030A4D9 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
@@ -251,7 +259,6 @@
 		05D9328715B9C82900983693 /* SelectedDreamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedDreamViewController.m; sourceTree = "<group>"; };
 		05D9328815B9C82900983693 /* SelectedDreamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectedDreamViewController.xib; sourceTree = "<group>"; };
 		05E0E30E15BFF92B005BAEF0 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		05E0E31515C022C8005BAEF0 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		05E5AA0415D2728F004684E0 /* AlarmLabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmLabelViewController.h; sourceTree = "<group>"; };
 		05E5AA0515D27290004684E0 /* AlarmLabelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmLabelViewController.m; sourceTree = "<group>"; };
 		05E5AA0615D27290004684E0 /* AlarmLabelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlarmLabelViewController.xib; sourceTree = "<group>"; };
@@ -288,7 +295,6 @@
 				052FEDCE15F8F5BE0014DC37 /* libz.dylib in Frameworks */,
 				0589FC0815EF5F1C00121B9C /* AudioToolbox.framework in Frameworks */,
 				05E5AA0A15D2C666004684E0 /* CoreData.framework in Frameworks */,
-				05A5CE8F15C939600097DB1C /* MessageUI.framework in Frameworks */,
 				05E0E30F15BFF92B005BAEF0 /* MediaPlayer.framework in Frameworks */,
 				05209D0D15BF3FA4001C66CF /* QuartzCore.framework in Frameworks */,
 				05209D0B15BF3F9D001C66CF /* MobileCoreServices.framework in Frameworks */,
@@ -381,7 +387,7 @@
 				056C69AA1604A10500B3D06D /* TOCViewController.xib */,
 				056C69AD1604A11F00B3D06D /* HowToViewController.h */,
 				056C69AE1604A11F00B3D06D /* HowToViewController.m */,
-				056C69AF1604A11F00B3D06D /* HowToViewController.xib */,
+				056C69C51604FEE800B3D06D /* HowToViewController.xib */,
 				056C69B21604A63100B3D06D /* LegalViewController.h */,
 				056C69B31604A63100B3D06D /* LegalViewController.m */,
 				056C69B41604A63100B3D06D /* LegalViewController.xib */,
@@ -459,7 +465,6 @@
 			children = (
 				052FEDCD15F8F5BC0014DC37 /* libz.dylib */,
 				0589FC0715EF5F1B00121B9C /* AudioToolbox.framework */,
-				05E0E31515C022C8005BAEF0 /* Settings.bundle */,
 				05A5CE8E15C9395F0097DB1C /* MessageUI.framework */,
 				05E0E30E15BFF92B005BAEF0 /* MediaPlayer.framework */,
 				05209D0C15BF3FA4001C66CF /* QuartzCore.framework */,
@@ -521,6 +526,9 @@
 		05D9323915B9AEFB00983693 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				056C69BB1604FE0F00B3D06D /* Notifications2.png */,
+				056C69BC1604FE1200B3D06D /* Notifications3.png */,
+				056C69BD1604FE1500B3D06D /* Notifications.png */,
 				056C699316021D1C00B3D06D /* icon@2x.png */,
 				056C698C16021C2B00B3D06D /* icon.png */,
 				052FEDEB15FE17AA0014DC37 /* dreamstaterecordimage.png */,
@@ -565,6 +573,8 @@
 		05E5AA6D15D3BC6A004684E0 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				056C69B81604D68300B3D06D /* Settings.h */,
+				056C69B91604D68400B3D06D /* Settings.m */,
 				05E5AA8615D56C90004684E0 /* Alarm.h */,
 				05E5AA8715D56C90004684E0 /* Alarm.m */,
 				05E5AA8915D56CD0004684E0 /* Dream.h */,
@@ -693,7 +703,6 @@
 				05D9327815B9B96400983693 /* CurrentDreamsViewController.xib in Resources */,
 				05D9327D15B9B97A00983693 /* RecordDreamViewController.xib in Resources */,
 				05D9328A15B9C82900983693 /* SelectedDreamViewController.xib in Resources */,
-				05E0E31615C022C8005BAEF0 /* Settings.bundle in Resources */,
 				05A5CE1715C80AA70097DB1C /* AlarmListViewController.xib in Resources */,
 				05A5CE1915C824A70097DB1C /* AlarmClock.plist in Resources */,
 				05A5CF5D15C94B060097DB1C /* InAppSettings.png in Resources */,
@@ -735,8 +744,11 @@
 				056C69A01603362600B3D06D /* Alarm bell 1.m4a in Resources */,
 				056C69A616049FD500B3D06D /* AboutViewController.xib in Resources */,
 				056C69AC1604A10500B3D06D /* TOCViewController.xib in Resources */,
-				056C69B11604A11F00B3D06D /* HowToViewController.xib in Resources */,
+				056C69C41604FEE800B3D06D /* HowToViewController.xib in Resources */,
 				056C69B61604A63100B3D06D /* LegalViewController.xib in Resources */,
+				056C69BE1604FE1600B3D06D /* Notifications2.png in Resources */,
+				056C69BF1604FE1600B3D06D /* Notifications3.png in Resources */,
+				056C69C01604FE1600B3D06D /* Notifications.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -821,6 +833,7 @@
 				056C69AB1604A10500B3D06D /* TOCViewController.m in Sources */,
 				056C69B01604A11F00B3D06D /* HowToViewController.m in Sources */,
 				056C69B51604A63100B3D06D /* LegalViewController.m in Sources */,
+				056C69BA1604D68600B3D06D /* Settings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1036,11 +1049,12 @@
 		05E5AA0E15D2D4E5004684E0 /* DreamState.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				056C69B71604D61C00B3D06D /* DreamState 4.xcdatamodel */,
 				052FEDF31600C72B0014DC37 /* DreamState 3.xcdatamodel */,
 				05E5AA8C15D56D9D004684E0 /* DreamState 2.xcdatamodel */,
 				05E5AA0F15D2D4E5004684E0 /* DreamState.xcdatamodel */,
 			);
-			currentVersion = 052FEDF31600C72B0014DC37 /* DreamState 3.xcdatamodel */;
+			currentVersion = 056C69B71604D61C00B3D06D /* DreamState 4.xcdatamodel */;
 			path = DreamState.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

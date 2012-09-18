@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AboutViewController : UIViewController
+
+@interface AboutViewController : UIViewController{
+//    IBOutlet UITextView *aboutText;
+//    IBOutlet UITextView *contactText;
+    
+    IBOutlet UILabel *aboutText;
+    IBOutlet UIButton *contactText;
+    IBOutlet UIButton *findUs;
+}
+- (IBAction)openMail:(id)sender;
+- (IBAction)openWebsite:(id)sender;
+
+
 
 @end

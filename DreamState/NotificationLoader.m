@@ -50,9 +50,9 @@
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat: @"yyyy-MM-dd HH:mm:ss zzz"]; 
     
-    NSString *stringFromDate = [dateFormat stringFromDate:notification.fireDate];
+    //NSString *stringFromDate = [dateFormat stringFromDate:notification.fireDate];
     
-    notification.alertBody = stringFromDate;// @"Would you like to record a dream?";
+    notification.alertBody = @"Would you like to record a dream?";
     
     NSDictionary *userInfoDict = [[NSDictionary alloc] initWithObjectsAndKeys:alarm.name, @"AlarmName", alarm.sound, @"AlarmSound", nil];
     

@@ -11,6 +11,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "SineWaveView.h"
 #import "UITextFieldNoMenu.h"
+#import "Settings.h"
 
 @implementation RecordDreamViewController
 
@@ -36,9 +37,11 @@
 @synthesize dreamNameTextField;
 
 
+
 #pragma mark - textfield
 
 -(void)addTextField{
+    /*
     UITextFieldNoMenu *textField = [[UITextFieldNoMenu alloc] initWithFrame:CGRectMake(10, 170, 300, 30)];
     dreamNameTextField = textField;
     
@@ -59,9 +62,11 @@
     
     dreamNameTextField.rightView = myButton;
     dreamNameTextField.rightViewMode = UITextFieldViewModeAlways;
-    
+    */
     dreamNameTextField.text = dream.name;
     dreamNameTextField.delegate = self;
+    
+    
     [self.view addSubview:dreamNameTextField];
     [dreamNameTextField becomeFirstResponder];
     
@@ -103,11 +108,11 @@
 
     self.mediaPlayer = [[MPMoviePlayerController alloc] initWithContentURL: fileURL];
     mediaPlayer.view.tag = 100;
-     
-    NSString *fileType = [[fileURL absoluteString] substringFromIndex:[[fileURL absoluteString] length] - 3];
-    if ([fileType isEqualToString:@"mov"]) {
-        [mediaPlayer.view setTransform:CGAffineTransformMakeRotation(-M_PI_2)];
-    }
+//     
+//    NSString *fileType = [[fileURL absoluteString] substringFromIndex:[[fileURL absoluteString] length] - 3];
+//    if ([fileType isEqualToString:@"mov"]) {
+//        [mediaPlayer.view setTransform:CGAffineTransformMakeRotation(-M_PI_2)];
+//    }
     
     self.mediaPlayer.controlStyle = MPMovieControlStyleEmbedded;
     [mediaPlayer.view setFrame: CGRectMake(0, 30, self.view.bounds.size.width, 50)];
@@ -115,7 +120,7 @@
     [self.view addSubview:mediaPlayer.view];    
     mediaPlayer.shouldAutoplay = NO;
     [mediaPlayer prepareToPlay];    
-    
+    //NSLog(@"55555");
     [self addTextField];
     
 }
@@ -212,12 +217,16 @@
 
 -(void)stopRecordingAudio
 {
+    NSLog(@"111");
     if (sineWaveView) {
         [sineWaveView removeFromSuperview];
     }
+    NSLog(@"222");
     isRecording = NO;
-    [aVAudioRecorder stop];   
+    [aVAudioRecorder stop];  
+    NSLog(@"333");
     [self playDream];
+    NSLog(@"444");
 
 }
 
@@ -247,7 +256,14 @@
         [self startRecordingAudio];
   
     else if(segment.selectedSegmentIndex == 1)
-        [self stopRecordingAudio];
+    {
+        if (isRecording) {
+            [self stopRecordingAudio];
+        }
+        else {
+            segment.selectedSegmentIndex = -1;
+        }
+    }   
    
 }
 
@@ -321,6 +337,33 @@
     [segmentedControl addTarget:self action:@selector(segmentValueChanged:) forControlEvents: UIControlEventValueChanged];
     [self.view addSubview:segmentedControl];
     
+    
+    
+    
+    UITextFieldNoMenu *textField = [[UITextFieldNoMenu alloc] initWithFrame:CGRectMake(10, 170, 300, 30)];
+    dreamNameTextField = textField;
+    
+    dreamNameTextField.backgroundColor = [UIColor blackColor];
+    [dreamNameTextField setFont:[UIFont fontWithName:@"Solari" size:20]];
+    dreamNameTextField.textColor = [UIColor whiteColor];
+    dreamNameTextField.borderStyle = UITextBorderStyleBezel;
+    dreamNameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+    dreamNameTextField.returnKeyType = UIReturnKeyDone;
+    
+    CGFloat myWidth = 26.0f;
+    CGFloat myHeight = 30.0f;
+    UIButton *myButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, myWidth, myHeight)];
+    [myButton setImage:[UIImage imageNamed:@"whitex.png"] forState:UIControlStateNormal];
+    [myButton setImage:[UIImage imageNamed:@"whitex.png"] forState:UIControlStateHighlighted];
+    
+    [myButton addTarget:self action:@selector(doClear:) forControlEvents:UIControlEventTouchUpInside];
+    
+    dreamNameTextField.rightView = myButton;
+    dreamNameTextField.rightViewMode = UITextFieldViewModeAlways;
+    
+    dreamNameTextField.text = dream.name;
+    dreamNameTextField.delegate = self;
+    
 }
 
 
@@ -338,8 +381,25 @@
 }
 
 -(void)getUserDefaults{
-    userDefaults = [NSUserDefaults standardUserDefaults];
-    autoRecord = [userDefaults boolForKey:@"AutoRecord"];
+//    userDefaults = [NSUserDefaults standardUserDefaults];
+//    autoRecord = [userDefaults boolForKey:@"AutoRecord"];
+
+
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"Settings" inManagedObjectContext:managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSError *error;
+    
+    
+    NSArray *settings = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    Settings *set = [settings objectAtIndex:0];
+    
+    autoRecord = set.autoRecord.boolValue;
+
+
+
 }
 
 - (void)doHighlight:(UIButton*)b {

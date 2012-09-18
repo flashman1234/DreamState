@@ -202,6 +202,11 @@
     //[self setAlarmDetails];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localAction) name:localReceived object:nil];
+    
+    
+    
+    
+    
 }
 
 - (void)viewDidUnload

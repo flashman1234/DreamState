@@ -18,10 +18,14 @@
 #import "NotificationLoader.h"
 #import "TestFlight.h"
 #import "LegalViewController.h"
+#import "Settings.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 NSString *localReceived = @"localReceived";
 
-@implementation AppDelegate
+@implementation AppDelegate{
+    SystemSoundID beepOnSoundId;
+}
 
 @synthesize navigationController;
 @synthesize appOpensFromAlarm;
@@ -38,7 +42,7 @@ NSString *localReceived = @"localReceived";
 
 + (void)initialize{
     if([self class] == [AppDelegate class]){
-        [InAppSettings registerDefaults];
+        //[InAppSettings registerDefaults];
     }
 }
 
@@ -48,9 +52,15 @@ NSString *localReceived = @"localReceived";
     [self stopAlarmSound];
     
     switch (buttonIndex) {
+        case 0:
+        {
+            AudioServicesDisposeSystemSoundID(beepOnSoundId);
+            break;
+        }
         case 1: 
         {
             [[NSNotificationCenter defaultCenter] postNotificationName:localReceived object:self];
+            break;
         }
             break;
     }
@@ -58,6 +68,20 @@ NSString *localReceived = @"localReceived";
 
 -(void)playAlarmSound:(NSString *)sound{
     
+    
+    CFURLRef soundUrl = CFBundleCopyResourceURL(
+                                                CFBundleGetMainBundle(), 
+                                                (__bridge CFStringRef)sound, 
+                                                CFSTR("m4a"), 
+                                                NULL
+                                                );
+    
+    AudioServicesCreateSystemSoundID(soundUrl, &beepOnSoundId);
+    
+    AudioServicesPlaySystemSound(beepOnSoundId);
+    
+    
+  /*  
     NSString *fileName = sound;
     NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:@"m4a"];
     NSURL *tempfileURL = [NSURL fileURLWithPath:path];
@@ -76,6 +100,8 @@ NSString *localReceived = @"localReceived";
     alarmSound.delegate = self;
     [alarmSound prepareToPlay];
     [alarmSound play];
+   
+   */
 }
 
 -(void)stopAlarmSound{
@@ -88,6 +114,8 @@ NSString *localReceived = @"localReceived";
     appOpensFromAlarm = YES;
     NSDictionary *notDict = notification.userInfo;
     NSString *alarmSoundName = [notDict valueForKey:@"AlarmSound"];
+    
+    NSString *alarmName = [notification.userInfo valueForKey:@"AlarmName"];
 
     if (application.applicationState == UIApplicationStateInactive ) {
        
@@ -99,12 +127,12 @@ NSString *localReceived = @"localReceived";
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat: @"yyyy-MM-dd HH:mm:ss zzz"]; 
         
-        NSString *stringFromDate = [dateFormat stringFromDate:notification.fireDate];
+        //NSString *stringFromDate = [dateFormat stringFromDate:notification.fireDate];
         
         [self playAlarmSound:alarmSoundName];
         UIAlertView *alert = [[UIAlertView alloc]
-                              initWithTitle: NSLocalizedString(@"Dream alarm clock",nil)
-                              message: stringFromDate // NSLocalizedString(@"Would you like to record a dream?",nil)
+                              initWithTitle: NSLocalizedString(alarmName, nil)
+                              message: NSLocalizedString(@"Would you like to record a dream?",nil)
                               delegate: self
                               cancelButtonTitle: NSLocalizedString(@"No",nil)
                               otherButtonTitles: NSLocalizedString(@"Yes",nil), nil];
@@ -164,6 +192,36 @@ NSString *localReceived = @"localReceived";
     }
 }
 
+-(void)checkSettings{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"Settings" inManagedObjectContext:__managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSError *error;
+    
+    
+    NSArray *settings = [__managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+//    for (Settings *set in settings) {
+//        NSLog(@"set : %@", set.autoRecord);
+//    }
+    
+    if (settings.count == 0) {
+        Settings *settings = [NSEntityDescription
+                 insertNewObjectForEntityForName:@"Settings"
+                 inManagedObjectContext:__managedObjectContext];
+        settings.autoRecord = [NSNumber numberWithBool:YES];
+        
+        NSError *saveError = nil;
+        [__managedObjectContext save:&saveError];
+        
+        if (saveError) {
+            NSLog(@"saveError : %@", saveError.localizedDescription);
+        }
+        
+    }
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NotificationLoader *notificationLoader = [[NotificationLoader alloc] init];
@@ -171,7 +229,7 @@ NSString *localReceived = @"localReceived";
     [notificationLoader loadNotifications];
     
     [self setAlarmClockPlist];
-    [self setUserDefaultsAndSync];
+    //[self setUserDefaultsAndSync];
     [self setAudioSession];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -183,7 +241,7 @@ NSString *localReceived = @"localReceived";
     CurrentDreamsViewController *currentDreamsViewController  = [[CurrentDreamsViewController alloc] initWithManagedObjectContext:__managedObjectContext];
 //    InAppSettingsViewController *inAppSettingsViewController = [[InAppSettingsViewController alloc] init];
 
-    LegalViewController *legalViewController = [[LegalViewController alloc] init];
+    LegalViewController *legalViewController = [[LegalViewController alloc] initWithManagedObjectContext:__managedObjectContext];
     
     NSMutableArray *tabBarViewControllers = [[NSMutableArray alloc] initWithCapacity:4];
     
@@ -219,6 +277,8 @@ NSString *localReceived = @"localReceived";
     
     UInt32 routeVar = kAudioSessionOverrideAudioRoute_Speaker;
     AudioSessionSetProperty(kAudioSessionProperty_OverrideAudioRoute, sizeof(routeVar), &routeVar);
+    
+    [self checkSettings];
     
     [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
 

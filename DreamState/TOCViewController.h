@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TOCViewController : UIViewController
+@interface TOCViewController : UIViewController{
+    IBOutlet UITextView *tosText;
+}
 
 @end

@@ -13,6 +13,11 @@
 {
     IBOutlet UITableView  *legalTableView;
 }
+
+-(id)initWithManagedObjectContext:(NSManagedObjectContext *)moc;
+
 @property (nonatomic, retain) UITableView *legalTableView;
 @property (nonatomic, retain) InAppSettingsViewController *inAppSettings;
+@property (nonatomic, retain) UISwitch *enabledSwitch;
+@property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
 @end
