@@ -47,11 +47,11 @@
     
     self.title = @"Alarm label";
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
                                               initWithBarButtonSystemItem:UIBarButtonSystemItemSave 
                                               target:self action:@selector(saveAlarmLabel:)];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
                                              initWithBarButtonSystemItem:UIBarButtonSystemItemCancel 
                                              target:self action:@selector(cancelAlarmLabel:)];
     

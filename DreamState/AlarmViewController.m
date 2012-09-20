@@ -262,6 +262,12 @@
         UILabel *vLabel = (UILabel *)[cell viewWithTag:2];
         Alarmhelper *helper = [[Alarmhelper alloc] init];
         vLabel.text = [helper tidyDaysFromArray:self.alarmRepeatDays];
+       
+        if (self.alarmRepeatDays.count == 0) {
+            vLabel.text = @"Everyday";
+        }
+       
+        
     }
     
     UIImage *newDreamButton = [UIImage imageNamed: @"AccDisclosure.png"];
@@ -300,7 +306,7 @@
  
     }
     else {
-        self.alarmSound = @"alarm 1";
+        self.alarmSound = @"Alarm bell 1";
         self.alarmName = @"Alarm";
     }
 

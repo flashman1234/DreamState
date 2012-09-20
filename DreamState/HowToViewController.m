@@ -14,7 +14,7 @@
 
 
 -(void)loadScrollView{
-    [scrollView setContentSize:CGSizeMake(self.view.frame.size.width, 1000)];
+    [scrollView setContentSize:CGSizeMake(self.view.frame.size.width, 1200)];
     
     NSString *s = @"We suggest you change your notification types for Dream State in your device settings:";
     

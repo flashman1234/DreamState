@@ -21,9 +21,10 @@
 @synthesize bellView;
 
 
--(IBAction)launchFeedback{
-    [TestFlight openFeedbackView];
-}
+
+//-(IBAction)launchFeedback{
+//    [TestFlight openFeedbackView];
+//}
 
 -(IBAction)pressAlarmButton{
     

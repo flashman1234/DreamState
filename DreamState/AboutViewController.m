@@ -22,7 +22,7 @@
 - (IBAction)openMail:(id)sender 
 {
     
-    [self sendEmailTo:@"flashman1234@gmail.com" withSubject:@"DreamState" withBody:@"hey"];
+    [self sendEmailTo:@"admin@dreamstate.squareknife.com" withSubject:@"DreamState" withBody:@""];
 
     
 }
@@ -46,17 +46,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    aboutText.text = @"Dream State was created by Michal Thompson and Hannes Niepold";
-    aboutText.font = [UIFont fontWithName:@"Solari" size:20];
+
+    [scrollView setContentSize:CGSizeMake(self.view.frame.size.width, 1000)];
+    NSString *s = @"Half of our lives we spend in dream state, and its not necessarily the less interesting part.\n\nMost of us forget their dreams immediately after waking up, and most of us are too lazy to write or operate some recording-tool while still struggling to cope with their new waking state surroundings. \n\nThats a pity, as many great inventions, narratives, songs, or just thoughts were born there but never made it cross the state-line.\n\nAnd thats why we created this App here.\n\nIt's an alarm clock which can automatically start recording audio, allowing you to record and archive your dreams while they are still vivid.\n\nDream State was created by Michal Thompson and Hannes Niepold\n\n Thanks to 8th Mode Music for supplying the 'A Mind of its Own', 'Blurred Atmospheres', 'Hard as Nails', and 'High Action' alarm sounds.";
+    
+    CGSize textSize = [s 
+                       sizeWithFont:[UIFont fontWithName:@"Solari" size:15] 
+                       constrainedToSize:CGSizeMake(self.view.frame.size.width, 2000)
+                       lineBreakMode:UILineBreakModeWordWrap];
+    aboutText.frame = CGRectMake(0,200, textSize.width, textSize.height);
+    
+    aboutText.text = s;
+    aboutText.font = [UIFont fontWithName:@"Solari" size:15];
     aboutText.numberOfLines = 0;
     [aboutText setLineBreakMode:UILineBreakModeWordWrap];
     
-    contactText.titleLabel.font = [UIFont fontWithName:@"Solari" size:14];
+    contactText.titleLabel.font = [UIFont fontWithName:@"Solari" size:15];
     [contactText setTitle:@"Contact us" forState:UIControlStateNormal];
     contactText.titleLabel.textColor = [UIColor whiteColor];
     
-    findUs.titleLabel.font = [UIFont fontWithName:@"Solari" size:14];
+    findUs.titleLabel.font = [UIFont fontWithName:@"Solari" size:15];
     [findUs setTitle:@"Find us" forState:UIControlStateNormal];
     findUs.titleLabel.textColor = [UIColor whiteColor];
 

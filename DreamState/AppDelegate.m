@@ -16,7 +16,7 @@
 #import "Day.h"
 #import "Dream.h"
 #import "NotificationLoader.h"
-#import "TestFlight.h"
+//#import "TestFlight.h"
 #import "LegalViewController.h"
 #import "Settings.h"
 #import <AudioToolbox/AudioToolbox.h>
@@ -30,8 +30,6 @@ NSString *localReceived = @"localReceived";
 @synthesize navigationController;
 @synthesize appOpensFromAlarm;
 @synthesize window = _window;
-@synthesize viewController = _viewController;
-@synthesize tdController = _tdController;
 @synthesize defaults = _defaults;
 @synthesize alarmClockData;
 @synthesize managedObjectContext = __managedObjectContext;
@@ -59,6 +57,7 @@ NSString *localReceived = @"localReceived";
         }
         case 1: 
         {
+            AudioServicesDisposeSystemSoundID(beepOnSoundId);
             [[NSNotificationCenter defaultCenter] postNotificationName:localReceived object:self];
             break;
         }
@@ -67,7 +66,6 @@ NSString *localReceived = @"localReceived";
 }
 
 -(void)playAlarmSound:(NSString *)sound{
-    
     
     CFURLRef soundUrl = CFBundleCopyResourceURL(
                                                 CFBundleGetMainBundle(), 
@@ -168,7 +166,7 @@ NSString *localReceived = @"localReceived";
     
     if (error) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Dream State error" 
-                                                        message:@"Error setting up the audo session record category" 
+                                                        message:@"Device cannot record audio" 
                                                        delegate:self cancelButtonTitle:@"Ok" 
                                               otherButtonTitles:nil];
         [alert show];
@@ -201,10 +199,7 @@ NSString *localReceived = @"localReceived";
     
     
     NSArray *settings = [__managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    
-//    for (Settings *set in settings) {
-//        NSLog(@"set : %@", set.autoRecord);
-//    }
+
     
     if (settings.count == 0) {
         Settings *settings = [NSEntityDescription
@@ -239,8 +234,6 @@ NSString *localReceived = @"localReceived";
     HomeViewController *homeViewController = [[HomeViewController alloc] init];
     RecordDreamViewController *recordDreamViewController = [[RecordDreamViewController alloc] initWithManagedObjectContext:__managedObjectContext];
     CurrentDreamsViewController *currentDreamsViewController  = [[CurrentDreamsViewController alloc] initWithManagedObjectContext:__managedObjectContext];
-//    InAppSettingsViewController *inAppSettingsViewController = [[InAppSettingsViewController alloc] init];
-
     LegalViewController *legalViewController = [[LegalViewController alloc] initWithManagedObjectContext:__managedObjectContext];
     
     NSMutableArray *tabBarViewControllers = [[NSMutableArray alloc] initWithCapacity:4];
@@ -257,10 +250,6 @@ NSString *localReceived = @"localReceived";
     navigationController = [[UINavigationController alloc] initWithRootViewController:currentDreamsViewController];
     [tabBarViewControllers addObject:navigationController];
     navigationController = nil;
-    
-//    navigationController = [[UINavigationController alloc] initWithRootViewController:inAppSettingsViewController];
-//    [tabBarViewControllers addObject:navigationController];
-//    navigationController = nil;
 
     navigationController = [[UINavigationController alloc] initWithRootViewController:legalViewController];
     [tabBarViewControllers addObject:navigationController];
@@ -280,10 +269,11 @@ NSString *localReceived = @"localReceived";
     
     [self checkSettings];
     
+    /*
     [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
 
     [TestFlight takeOff:@"83adb1d1f3551e721ff1c9fb7195d17e_MTI5Mjk0MjAxMi0wOS0wNiAxMDo0NToxMC44NzQ5MTI"];
-    
+    */
     return YES;
 }
 

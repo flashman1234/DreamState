@@ -271,7 +271,7 @@ static InAppSettings *sharedInstance = nil;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSLog(@"[[self.settingsReader.settings objectAtIndex:section] count] : %d", [[self.settingsReader.settings objectAtIndex:section] count]);
+
     return [[self.settingsReader.settings objectAtIndex:section] count];
 }
 
@@ -360,7 +360,6 @@ static InAppSettings *sharedInstance = nil;
     cell.setting = setting;
     [cell setValueDelegate:self];
     [cell setUIValues];
-    NSLog(@"cell : %@", cell);
     
     return cell;
 }

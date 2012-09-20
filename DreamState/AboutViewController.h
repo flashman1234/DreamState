@@ -14,6 +14,8 @@
 //    IBOutlet UITextView *contactText;
     
     IBOutlet UILabel *aboutText;
+    IBOutlet UIScrollView *scrollView;
+    
     IBOutlet UIButton *contactText;
     IBOutlet UIButton *findUs;
 }

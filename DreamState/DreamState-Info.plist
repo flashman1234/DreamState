@@ -33,7 +33,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.2</string>
+	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
@@ -42,10 +42,6 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>DS-DIGI.TFF</string>
-		<string>DS-Digital.ttf</string>
-		<string>Electrorocket.ttf</string>
-		<string>nineteen.ttf</string>
 		<string>Solari.ttf</string>
 	</array>
 	<key>UIFileSharingEnabled</key>

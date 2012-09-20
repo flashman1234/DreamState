@@ -11,7 +11,7 @@
 @interface HomeViewController : UIViewController
 
 -(IBAction)pressAlarmButton;
--(IBAction)launchFeedback;
+//-(IBAction)launchFeedback;
 
 @property(nonatomic, retain)IBOutlet UIButton *nextAlarmView;
 

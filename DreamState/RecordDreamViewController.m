@@ -120,7 +120,6 @@
     [self.view addSubview:mediaPlayer.view];    
     mediaPlayer.shouldAutoplay = NO;
     [mediaPlayer prepareToPlay];    
-    //NSLog(@"55555");
     [self addTextField];
     
 }
@@ -217,17 +216,12 @@
 
 -(void)stopRecordingAudio
 {
-    NSLog(@"111");
     if (sineWaveView) {
         [sineWaveView removeFromSuperview];
     }
-    NSLog(@"222");
     isRecording = NO;
     [aVAudioRecorder stop];  
-    NSLog(@"333");
     [self playDream];
-    NSLog(@"444");
-
 }
 
 

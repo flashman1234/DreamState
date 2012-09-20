@@ -53,7 +53,6 @@
 		056C69C41604FEE800B3D06D /* HowToViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 056C69C51604FEE800B3D06D /* HowToViewController.xib */; };
 		0589FC0815EF5F1C00121B9C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0589FC0715EF5F1B00121B9C /* AudioToolbox.framework */; };
 		058FCCD815DB9FA50030A4D9 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 058FCCD615DB9FA50030A4D9 /* HomeViewController.m */; };
-		058FCCD915DB9FA50030A4D9 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 058FCCD715DB9FA50030A4D9 /* HomeViewController.xib */; };
 		058FCCEE15DD31C20030A4D9 /* SineWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 058FCCED15DD31C10030A4D9 /* SineWaveView.m */; };
 		059A9C1115EB6DD40054F114 /* DS-Digital.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 059A9C1015EB6DD40054F114 /* DS-Digital.ttf */; };
 		059A9C1415EB6F5B0054F114 /* DS-DIGI.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 059A9C1315EB6F5B0054F114 /* DS-DIGI.TTF */; };
@@ -61,6 +60,7 @@
 		059A9C1915EB90430054F114 /* Electrorocket.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 059A9C1815EB90430054F114 /* Electrorocket.ttf */; };
 		059A9C1B15EB93580054F114 /* Solari.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 059A9C1A15EB93580054F114 /* Solari.ttf */; };
 		059A9C1F15ECF9A80054F114 /* blackalarmbell.png in Resources */ = {isa = PBXBuildFile; fileRef = 059A9C1E15ECF9A80054F114 /* blackalarmbell.png */; };
+		05A198D81609BE7300ED1ACD /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 058FCCD715DB9FA50030A4D9 /* HomeViewController.xib */; };
 		05A5CE1615C80AA70097DB1C /* AlarmListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5CE1415C80AA50097DB1C /* AlarmListViewController.m */; };
 		05A5CE1715C80AA70097DB1C /* AlarmListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A5CE1515C80AA60097DB1C /* AlarmListViewController.xib */; };
 		05A5CE1915C824A70097DB1C /* AlarmClock.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05A5CE1815C824A70097DB1C /* AlarmClock.plist */; };
@@ -80,13 +80,11 @@
 		05D9323315B9AEFB00983693 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9323215B9AEFB00983693 /* UIKit.framework */; };
 		05D9323515B9AEFB00983693 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9323415B9AEFB00983693 /* Foundation.framework */; };
 		05D9323715B9AEFB00983693 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9323615B9AEFB00983693 /* CoreGraphics.framework */; };
-		05D9323D15B9AEFB00983693 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05D9323B15B9AEFB00983693 /* InfoPlist.strings */; };
 		05D9323F15B9AEFB00983693 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9323E15B9AEFB00983693 /* main.m */; };
 		05D9324315B9AEFB00983693 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9324215B9AEFB00983693 /* AppDelegate.m */; };
 		05D9325415B9AEFB00983693 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9325315B9AEFB00983693 /* SenTestingKit.framework */; };
 		05D9325515B9AEFB00983693 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9323215B9AEFB00983693 /* UIKit.framework */; };
 		05D9325615B9AEFB00983693 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D9323415B9AEFB00983693 /* Foundation.framework */; };
-		05D9325E15B9AEFB00983693 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05D9325C15B9AEFB00983693 /* InfoPlist.strings */; };
 		05D9326115B9AEFB00983693 /* DreamStateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9326015B9AEFB00983693 /* DreamStateTests.m */; };
 		05D9327215B9B8FB00983693 /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9327015B9B8FB00983693 /* AlarmViewController.m */; };
 		05D9327315B9B8FB00983693 /* AlarmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05D9327115B9B8FB00983693 /* AlarmViewController.xib */; };
@@ -234,7 +232,6 @@
 		05D9323415B9AEFB00983693 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		05D9323615B9AEFB00983693 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		05D9323A15B9AEFB00983693 /* DreamState-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DreamState-Info.plist"; sourceTree = "<group>"; };
-		05D9323C15B9AEFB00983693 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		05D9323E15B9AEFB00983693 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		05D9324015B9AEFB00983693 /* DreamState-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DreamState-Prefix.pch"; sourceTree = "<group>"; };
 		05D9324115B9AEFB00983693 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -242,7 +239,6 @@
 		05D9325215B9AEFB00983693 /* DreamStateTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DreamStateTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05D9325315B9AEFB00983693 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		05D9325B15B9AEFB00983693 /* DreamStateTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DreamStateTests-Info.plist"; sourceTree = "<group>"; };
-		05D9325D15B9AEFB00983693 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		05D9325F15B9AEFB00983693 /* DreamStateTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DreamStateTests.h; sourceTree = "<group>"; };
 		05D9326015B9AEFB00983693 /* DreamStateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DreamStateTests.m; sourceTree = "<group>"; };
 		05D9326F15B9B8FB00983693 /* AlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmViewController.h; sourceTree = "<group>"; };
@@ -541,7 +537,6 @@
 				059A9C1E15ECF9A80054F114 /* blackalarmbell.png */,
 				05E8CDF815E4DB0C007EDF8F /* NavBarIcons */,
 				05D9323A15B9AEFB00983693 /* DreamState-Info.plist */,
-				05D9323B15B9AEFB00983693 /* InfoPlist.strings */,
 				05D9323E15B9AEFB00983693 /* main.m */,
 				05D9324015B9AEFB00983693 /* DreamState-Prefix.pch */,
 				052FEDF71600C87E0014DC37 /* Dream.h */,
@@ -565,7 +560,6 @@
 			isa = PBXGroup;
 			children = (
 				05D9325B15B9AEFB00983693 /* DreamStateTests-Info.plist */,
-				05D9325C15B9AEFB00983693 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -698,7 +692,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05D9323D15B9AEFB00983693 /* InfoPlist.strings in Resources */,
+				05A198D81609BE7300ED1ACD /* HomeViewController.xib in Resources */,
 				05D9327315B9B8FB00983693 /* AlarmViewController.xib in Resources */,
 				05D9327815B9B96400983693 /* CurrentDreamsViewController.xib in Resources */,
 				05D9327D15B9B97A00983693 /* RecordDreamViewController.xib in Resources */,
@@ -709,7 +703,6 @@
 				05A5CF5E15C94B060097DB1C /* InAppSettings@2x.png in Resources */,
 				05E5AA0815D27290004684E0 /* AlarmLabelViewController.xib in Resources */,
 				05E5AA7715D3C4A6004684E0 /* AlarmDaysViewController.xib in Resources */,
-				058FCCD915DB9FA50030A4D9 /* HomeViewController.xib in Resources */,
 				05E8CE1115E54462007EDF8F /* 11-clock.png in Resources */,
 				05E8CE1915E5454D007EDF8F /* play@2x.png in Resources */,
 				05E8CE1B15E54556007EDF8F /* record@2x.png in Resources */,
@@ -756,7 +749,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05D9325E15B9AEFB00983693 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -774,7 +766,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ $CONFIGURATION == Release ]; then\necho \"Bumping build number...\"\nplist=${PROJECT_DIR}/${INFOPLIST_FILE}\n\n# increment the build number (ie 115 to 116)\nbuildnum=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${plist}\")\nif [[ \"${buildnum}\" == \"\" ]]; then\necho \"No build number in $plist\"\nexit 2\nfi\n\nbuildnum=$(expr $buildnum + 1)\n/usr/libexec/Plistbuddy -c \"Set CFBundleVersion $buildnum\" \"${plist}\"\necho \"Bumped build number to $buildnum\"\n\nelse\necho $CONFIGURATION \" build - Not bumping build number.\"\nfi";
+			shellScript = "";
 		};
 		05D9325015B9AEFB00983693 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -855,25 +847,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		05D9323B15B9AEFB00983693 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				05D9323C15B9AEFB00983693 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		05D9325C15B9AEFB00983693 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				05D9325D15B9AEFB00983693 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		05D9326215B9AEFB00983693 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -881,6 +854,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -895,7 +869,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv6 armv7";
@@ -915,7 +889,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -925,32 +899,6 @@
 			name = Release;
 		};
 		05D9326515B9AEFB00983693 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD_32_BIT)",
-					armv6,
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DreamState/DreamState-Prefix.pch";
-				GCC_THUMB_SUPPORT = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INFOPLIST_FILE = "DreamState/DreamState-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/DreamState\"",
-				);
-				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "armv6 armv7";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		05D9326615B9AEFB00983693 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = (
@@ -972,6 +920,36 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv6 armv7";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		05D9326615B9AEFB00983693 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD_32_BIT)",
+					armv6,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Michal Thompson";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Michal Thompson";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DreamState/DreamState-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "DreamState/DreamState-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/DreamState\"",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0936DABC-B520-4287-BE98-772568334FB4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0936DABC-B520-4287-BE98-772568334FB4";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv6 armv7";
